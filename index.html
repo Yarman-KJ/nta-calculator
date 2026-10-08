@@ -5560,7 +5560,7 @@ const Planner = (()=>{
   if(u.name==='쇠뇌차')warnings.push('관통 계수·피해 유형은 선택한 가정');
   return {casualties,heroEnd:heroEnd===null?null:Math.max(0,heroEnd),losses:roster.map(z=>({unit:z.hero?'영웅':z.unit.name,total:z.total,dead:z.losses+(z.hpNow>0&&z.hpNow-Math.max(0,z.pending-z.shieldNow)<=0?1:0)})),siegeEnd:siegeEnd===null?null:Math.max(0,siegeEnd),success,cleared,turns,dealt,enemyRemaining:enemies.reduce((a,e)=>a+Math.max(0,e.hpNow),0),frontEnd:Math.max(0,frontEnd),backEnd:Math.max(0,backEnd),frontMin:Math.max(0,Math.min(victim.minHp,frontEnd)),warnings,events};
  }
- function mandatory(unit){const u=unitMap[unit];return !!u&&u.group!=='병기'&&u.range>=2&&u.range<=3;}
+ function mandatory(unit){const u=unitMap[unit];return !!u&&u.group!=='병기'&&((u.range>=2&&u.range<=3)||unit==='맥도');}
  function buildOpinion(unit){return data.weaponBuilds?.[unit]||{core:[],recommended:[],useful:[]};}
  function candidateItems(unit){return unitMap[unit]?.group==='병기'?[]:data.equipment.map(i=>i.name);}
  const fixedDamageItems=new Set(['다트','건곤도','갈고리검','분심계','가시공','현철 지팡이','태양 갑옷']);
