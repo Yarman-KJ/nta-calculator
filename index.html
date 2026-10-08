@@ -8,8 +8,8 @@
 
 .unit-cards button{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;padding:12px 8px}.unit-art{width:64px;height:64px;object-fit:contain;image-rendering:pixelated}.unit-cards button span{font-weight:600}
 </style></head><body><main class="shell">
-<header class="hero"><p class="eyebrow">NTA · 내 병종과 이번 판 장비</p><h1>장비는 병종에 맞게,<br>보스는 지금 편제에 맞게.</h1><p>병종별 추천과 보스 공략을 각각 고르고 확인하세요.</p><span class="badge">2026-10-08 NTA 정리 반영</span></header>
-<nav class="main-tabs" aria-label="계산기 메뉴"><button data-page="units" aria-pressed="true">병종별 장비 추천</button><button data-page="boss" aria-pressed="false">보스</button><button data-page="sources" aria-pressed="false">근거 이전 세팅</button></nav>
+<header class="hero"><h1>NTA 계산기</h1><p>병종별 장비 추천 · 보스 공략</p></header>
+<nav class="main-tabs" aria-label="계산기 메뉴"><button data-page="units" aria-pressed="true">병종별 장비 추천</button><button data-page="boss" aria-pressed="false">보스</button></nav>
 <section id="page-units" class="page">
 <section class="panel"><h2>1. 병종 선택</h2><div id="unit-filters" class="unit-filters" aria-label="병종 분류"></div><div id="unit-cards" class="unit-cards"></div><div id="unit-info" class="info"></div></section>
 <section class="panel"><div class="section-head"><h2>2. 이번 판 8개 장비 풀</h2><span id="pool-count" class="badge"></span><button id="clear-pool" class="subtle">풀 비우기</button></div><p class="muted">카드를 눌러 8개를 선택하세요. 처음 선택된 장비는 예시입니다. 장비 이미지와 장비명을 표시하고, 이미지가 안 열리면 분류 아이콘으로 대체합니다.</p><div id="match-pool" class="item-chips image-cards"></div><details><summary>실제 랜덤 2개를 이미 알고 있어요</summary><div class="fields"><label>랜덤 1<select id="random-one"></select></label><label>랜덤 2<select id="random-two"></select></label></div></details></section>
@@ -5573,7 +5573,7 @@ const Hub=(()=>{
  let unitFilter='전체',unit='쇠뇌',preset='two',token=0,pool=new Set(['회심검','유성추','다트','낭아봉','술 조롱박','구리 방패','정심회','덩굴 방패']),candidates=new Set(P.recommend(unit,[...pool])),custom=['','','',''];
  const gears={primary:[],secondary:[],hero:[]}, unitGearCache={};
  function invalidate(){token++;$('cancel-search').hidden=true;if($('boss-results').children.length)$('search-status').textContent='조건이 바뀌었습니다. 다시 확인하세요.';}
- function showPage(next){document.querySelectorAll('[data-page]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.page===next));document.querySelectorAll('.page').forEach(e=>e.hidden=e.id!=='page-'+next);}
+ function showPage(next){if(!["units","boss"].includes(next))return;document.querySelectorAll('[data-page]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.page===next));document.querySelectorAll('.page').forEach(e=>e.hidden=e.id!=='page-'+next);}
  function symbol(n){return /방패|갑옷|황월|호심/.test(n)?'🛡️':/조롱박|흡혈|치료|정심/.test(n)?'💚':/시간|모래/.test(n)?'⌛':/분노|쌍도끼/.test(n)?'🔥':/유성/.test(n)?'☄️':'⚔️';}
  function icon(n){const i=P.itemMap[n];return (i.icon||i.iconSource)?'<span class="item-art"><img alt="" loading="lazy" src="'+esc(i.icon||i.iconSource)+'" onload="this.nextElementSibling.hidden=true" onerror="this.hidden=true"><span class="item-symbol" aria-hidden="true">'+symbol(n)+'</span></span>':'<span class="item-symbol" aria-hidden="true">'+symbol(n)+'</span>';}
  function tier(n){const b=P.buildOpinion(unit);if(b.recommendationDisabled)return '';if(P.mandatory(unit)&&n==='유성추')return '필수';if((b.mole||[]).includes(n))return '두더지';return b.core.includes(n)?'코어':b.recommended.includes(n)?'추천':b.useful.includes(n)?'쓸만함':'';}
