@@ -38,7 +38,7 @@ body{background:radial-gradient(ellipse at top,#fbf2df 0%,#eee5d1 65%);backgroun
 <div class="info"><h3>공격 관련 정책 · 선택 시 1단계</h3><div class="fields"><label class="check"><input type="checkbox" data-policy="진격의 나팔">진격의 나팔</label><label class="check"><input type="checkbox" data-policy="야외 정복자">야외 정복자</label><label class="check"><input type="checkbox" data-policy="무기 정통">무기 정통</label><label class="check"><input type="checkbox" data-policy="궁병 정통">궁병 정통</label><label class="check"><input type="checkbox" data-policy="기병 정통">기병 정통</label><label class="check"><input type="checkbox" data-policy="신병의 힘">신병의 힘</label><label class="check"><input type="checkbox" data-policy="약육강식">약육강식</label><label class="check"><input type="checkbox" data-policy="파죽지세">파죽지세</label></div><label class="check"><input id="enemy-territory" type="checkbox">적군 영지에서 전투 (진격의 나팔 적용 조건)</label><p class="muted">선택하지 않은 정책은 적용하지 않습니다. 나팔 공격력+10%, 야외 피해+20%, 무기 정통 레벨당 공격력+1, 궁병 피해+10%, 기병 HP·공격력+8%, 1레벨 병사 HP·공격력+10%, 약육강식 6레벨 병사 피해+10%·받는 피해-10%, 파죽지세 높은 레벨 격차당 피해+10%. 병종 전용 정책은 병기에 적용하지 않습니다. 정책 중첩과 영웅·병기 적용 범위는 자료 기준의 가정입니다.</p></div><details><summary>교전 조건을 직접 바꾸기</summary><div class="fields"><label>검사할 최대 턴<input id="turns" type="number" value="30" min="1" max="120" step="0.1"></label><label>아군 첫 공격 턴<input id="ally-start" type="number" value="1" min="1" max="120" step="0.1"></label><label>적 첫 공격 턴<input id="enemy-start" type="number" value="1" min="1" max="120" step="0.1"></label><label>행동 순서<select id="order"><option value="enemy">적 먼저</option><option value="ally">아군 먼저</option></select></label><label>분노 미입력 시 스킬 간격(가정)<input id="enemy-skill" type="number" value="3" min="1" max="20" step="0.1"></label><label>주력 교전 거리 (영웅 포함)<input id="distance" type="number" value="4" min="1" max="7" step="0.1"></label><label>병종 2 교전 거리<input id="tank-distance" type="number" value="1" min="1" max="7" step="0.1"></label><label>병종 1 후열 피격 %<input id="dealer-exposure" type="number" value="0" min="0" max="100" step="0.1"></label><label>병기 피격 %<input id="siege-exposure" type="number" value="0" min="0" max="100" step="0.1"></label><label>주변 적 수<input id="adjacent" type="number" value="2" min="0" max="4" step="0.1"></label><label>쇠뇌차 관통 %<input id="pierce" type="number" value="3.5" min="0" max="3.5" step="0.1"></label><label>관통 피해 유형<select id="pierce-type"><option value="normal">일반 피해 비교</option><option value="fixed" selected>고정 피해 · 공략 기준</option></select></label><label>확률 조건<select id="probability"><option value="safe">아군 미발동·적 공격 보수</option><option value="mean">평균값 참고</option></select></label></div><label class="check"><input id="ignore-control" type="checkbox">기절 영향 없음으로 보정</label><p class="muted">분산·노출 비교는 위 피격 비율에 대한 조건부 비교입니다. 실제 격자 이동·어그로·영웅 능력을 완전 재현한 손실 예측은 아닙니다. 대표 개체의 집중 피격과 순차 교체로 손실을 근사합니다. 쇠뇌차 3.5% 최대치 조건·피해 유형은 V4에서 확인 필요로 남아 있어 직접 선택합니다.</p></details></section></section>
 
 <section id="page-sources" class="page panel" hidden><h2>근거 이전 세팅</h2><div id="source-content"></div><p><a href="PLANNER-MODEL.md">계산 모델</a> · <a href="README.md">사용·배포 안내</a> · <a href="TEST-RESULTS.md">검증 기록</a></p></section><footer>작성·추천·공략 출처: 사용자. 사용자 제공 NTA 정리와 정정 내용을 반영합니다.</footer></main><script>
-// 사용자 제공 NTA 자료와 정정 내용을 반영합니다.
+// 사용자 편집 추천 기준 반영
 const PROJECT_DATA = {
   "version": "2026-10-08",
   "units": [
@@ -4822,25 +4822,36 @@ const PROJECT_DATA = {
         "백사 채찍",
         "건곤도"
       ],
-      "useful": [],
+      "useful": [
+        "월아도",
+        "용연검",
+        "모래시계"
+      ],
       "source": "사용자 제공 NTA 공략",
       "date": "2026-10-03",
       "kind": "사용자 추천 기준",
       "author": "사용자",
-      "mole": []
+      "mole": [],
+      "recommendationDisabled": false,
+      "alternative": []
     },
     "검과 방패": {
       "core": [
-        "덩굴 방패",
         "술 조롱박",
+        "덩굴 방패",
         "정심회"
       ],
       "recommended": [
-        "회심검",
-        "갈고리검"
+        "호심경",
+        "천기산",
+        "명광 갑옷"
       ],
       "useful": [
-        "천기산"
+        "피해 반사 갑옷",
+        "태양 갑옷",
+        "금 사슬갑옷",
+        "회심검",
+        "갈고리검"
       ],
       "source": "사용자 제공 NTA 공략",
       "date": "2026-10-03",
@@ -4848,19 +4859,15 @@ const PROJECT_DATA = {
       "author": "사용자",
       "mole": [],
       "alternative": [
-        "피해 반사 갑옷",
+        "옥패",
+        "회피 신발",
+        "현목 영락",
         "구리 방패",
         "군기",
-        "태양 갑옷",
-        "금 사슬갑옷",
-        "호심경",
-        "옥패",
         "분노의 허리띠",
-        "회피 신발",
-        "모래시계",
-        "현목 영락",
-        "명광 갑옷"
-      ]
+        "모래시계"
+      ],
+      "recommendationDisabled": false
     },
     "검기병": {
       "core": [
@@ -4874,7 +4881,10 @@ const PROJECT_DATA = {
         "흡혈검"
       ],
       "useful": [
-        "모래시계"
+        "모래시계",
+        "구겸",
+        "시간 깃발",
+        "백참도"
       ],
       "source": "사용자 제공 NTA 공략",
       "date": "2026-10-03",
@@ -4883,13 +4893,15 @@ const PROJECT_DATA = {
       "mole": [
         "치료검",
         "황월",
+        "흑요석 갑옷",
+        "흡혈검",
         "구리 방패",
         "무쇠 방패",
-        "흡혈검",
-        "흑요석 갑옷",
         "현철 지팡이",
         "덩굴 방패"
-      ]
+      ],
+      "recommendationDisabled": false,
+      "alternative": []
     },
     "대도기병": {
       "core": [
@@ -4897,11 +4909,16 @@ const PROJECT_DATA = {
       ],
       "recommended": [
         "회심검",
-        "낭아봉"
+        "낭아봉",
+        "유성추"
       ],
       "useful": [
-        "유성추",
-        "가시공"
+        "가시공",
+        "시간 깃발",
+        "회피 신발",
+        "덩굴 방패",
+        "천기산",
+        "현철 지팡이"
       ],
       "source": "사용자 제공 NTA 공략",
       "date": "2026-10-03",
@@ -4910,12 +4927,19 @@ const PROJECT_DATA = {
       "mole": [
         "치료검",
         "황월",
-        "구리 방패",
-        "무쇠 방패",
-        "흡혈검",
         "흑요석 갑옷",
+        "흡혈검",
         "현철 지팡이",
+        "무쇠 방패",
+        "구리 방패",
         "덩굴 방패"
+      ],
+      "recommendationDisabled": false,
+      "alternative": [
+        "백참도",
+        "모래시계",
+        "쌍도끼",
+        "용연검"
       ]
     },
     "기병(도끼)": {
@@ -4926,10 +4950,19 @@ const PROJECT_DATA = {
       "recommended": [
         "흡혈검",
         "덩굴 방패",
-        "현철 지팡이",
         "건곤도"
       ],
-      "useful": [],
+      "useful": [
+        "천기산",
+        "도끼",
+        "호심경",
+        "금 사슬갑옷",
+        "백참도",
+        "회피 신발",
+        "시간 깃발",
+        "현철 지팡이",
+        "모래시계"
+      ],
       "source": "사용자 제공 NTA 공략",
       "date": "2026-10-03",
       "kind": "사용자 추천 기준",
@@ -4937,27 +4970,34 @@ const PROJECT_DATA = {
       "mole": [
         "치료검",
         "황월",
+        "흑요석 갑옷",
         "구리 방패",
         "무쇠 방패",
         "흡혈검",
-        "흑요석 갑옷",
         "현철 지팡이",
         "덩굴 방패"
-      ]
+      ],
+      "recommendationDisabled": false,
+      "alternative": []
     },
     "창기병": {
       "core": [
         "덩굴 방패",
         "흡혈검",
-        "천기산",
-        "현철 지팡이"
+        "천기산"
       ],
       "recommended": [
         "도끼",
-        "환도"
+        "환도",
+        "호심경"
       ],
       "useful": [
-        "금 사슬갑옷"
+        "금 사슬갑옷",
+        "현철 지팡이",
+        "회피 신발",
+        "황월",
+        "가시공",
+        "백참도"
       ],
       "source": "사용자 제공 NTA 공략",
       "date": "2026-10-03",
@@ -4966,12 +5006,17 @@ const PROJECT_DATA = {
       "mole": [
         "치료검",
         "황월",
+        "흑요석 갑옷",
         "구리 방패",
         "무쇠 방패",
         "흡혈검",
-        "흑요석 갑옷",
         "현철 지팡이",
         "덩굴 방패"
+      ],
+      "recommendationDisabled": false,
+      "alternative": [
+        "정심회",
+        "구겸"
       ]
     },
     "궁기병": {
@@ -4987,30 +5032,44 @@ const PROJECT_DATA = {
         "시간 깃발",
         "유성추"
       ],
-      "useful": [],
+      "useful": [
+        "백참도"
+      ],
       "source": "사용자 제공 NTA 공략",
       "date": "2026-10-03",
       "kind": "사용자 추천 기준",
       "author": "사용자",
-      "mole": []
+      "mole": [],
+      "recommendationDisabled": false,
+      "alternative": [
+        "월아도",
+        "용연검"
+      ]
     },
     "긴 창": {
       "core": [
         "쌍도끼",
         "유성추",
-        "다트"
+        "다트",
+        "가시공"
       ],
       "recommended": [
         "낭아봉",
         "회심검",
-        "가시공"
+        "구겸"
       ],
-      "useful": [],
+      "useful": [
+        "현철 지팡이",
+        "모래시계",
+        "시간 깃발"
+      ],
       "source": "사용자 제공 NTA 공략",
       "date": "2026-10-03",
       "kind": "사용자 추천 기준",
       "author": "사용자",
-      "mole": []
+      "mole": [],
+      "recommendationDisabled": false,
+      "alternative": []
     },
     "도끼방패": {
       "core": [],
@@ -5021,7 +5080,8 @@ const PROJECT_DATA = {
       "kind": "사용자 추천 기준",
       "author": "사용자",
       "mole": [],
-      "recommendationDisabled": true
+      "recommendationDisabled": true,
+      "alternative": []
     },
     "독궁": {
       "core": [],
@@ -5036,8 +5096,8 @@ const PROJECT_DATA = {
     },
     "망치방패": {
       "core": [
-        "덩굴 방패",
         "술 조롱박",
+        "덩굴 방패",
         "정심회",
         "회피 신발"
       ],
@@ -5052,37 +5112,46 @@ const PROJECT_DATA = {
       "author": "사용자",
       "mole": [],
       "alternative": [
-        "피해 반사 갑옷",
-        "군기",
-        "태양 갑옷",
         "호심경",
         "옥패",
+        "명광 갑옷",
+        "군기",
         "분노의 허리띠",
         "모래시계",
-        "현목 영락",
-        "명광 갑옷"
-      ]
+        "현목 영락"
+      ],
+      "recommendationDisabled": false
     },
     "맥도": {
       "core": [
         "회심검",
         "다트",
         "유성추",
-        "건곤도"
+        "시간 깃발",
+        "흡혈검"
       ],
       "recommended": [
         "낭아봉",
         "갈고리검"
       ],
       "useful": [
-        "흡혈검",
-        "시간 깃발"
+        "건곤도",
+        "백참도",
+        "현철 지팡이",
+        "모래시계",
+        "가시공",
+        "백사 채찍"
       ],
       "source": "사용자 제공 NTA 공략",
       "date": "2026-10-03",
       "kind": "사용자 추천 기준",
       "author": "사용자",
-      "mole": []
+      "mole": [],
+      "recommendationDisabled": false,
+      "alternative": [
+        "혈적자",
+        "천기산"
+      ]
     },
     "무거운 방패": {
       "core": [
@@ -5112,7 +5181,8 @@ const PROJECT_DATA = {
         "분노의 허리띠",
         "모래시계",
         "현목 영락"
-      ]
+      ],
+      "recommendationDisabled": false
     },
     "사냥꾼": {
       "core": [],
@@ -5134,7 +5204,6 @@ const PROJECT_DATA = {
       "recommended": [
         "회심검",
         "모래시계",
-        "유성추",
         "구겸"
       ],
       "useful": [],
@@ -5142,7 +5211,9 @@ const PROJECT_DATA = {
       "date": "2026-10-03",
       "kind": "사용자 추천 기준",
       "author": "사용자",
-      "mole": []
+      "mole": [],
+      "recommendationDisabled": false,
+      "alternative": []
     },
     "쌍창": {
       "core": [
@@ -5157,34 +5228,47 @@ const PROJECT_DATA = {
       ],
       "useful": [
         "시간 깃발",
-        "백참도"
-      ],
-      "source": "사용자 제공 NTA 공략",
-      "date": "2026-10-03",
-      "kind": "사용자 추천 기준",
-      "author": "사용자",
-      "mole": []
-    },
-    "장검": {
-      "core": [
-        "회심검",
-        "흡혈검",
-        "호심경"
-      ],
-      "recommended": [
-        "천기산",
-        "덩굴 방패",
-        "시간 깃발",
-        "백참도"
-      ],
-      "useful": [
+        "백참도",
+        "구겸",
+        "낭아봉",
+        "유성추",
         "회피 신발"
       ],
       "source": "사용자 제공 NTA 공략",
       "date": "2026-10-03",
       "kind": "사용자 추천 기준",
       "author": "사용자",
-      "mole": []
+      "mole": [],
+      "recommendationDisabled": true,
+      "alternative": [
+        "모래시계"
+      ]
+    },
+    "장검": {
+      "core": [
+        "흡혈검"
+      ],
+      "recommended": [
+        "천기산",
+        "덩굴 방패",
+        "시간 깃발",
+        "백참도",
+        "도끼",
+        "호심경"
+      ],
+      "useful": [
+        "회피 신발",
+        "현철 지팡이",
+        "회심검",
+        "황월"
+      ],
+      "source": "사용자 제공 NTA 공략",
+      "date": "2026-10-03",
+      "kind": "사용자 추천 기준",
+      "author": "사용자",
+      "mole": [],
+      "recommendationDisabled": false,
+      "alternative": []
     },
     "장과": {
       "core": [
@@ -5199,13 +5283,19 @@ const PROJECT_DATA = {
       ],
       "useful": [
         "모래시계",
-        "다트"
+        "다트",
+        "시간 깃발"
       ],
       "source": "사용자 제공 NTA 공략",
       "date": "2026-10-03",
       "kind": "사용자 추천 기준",
       "author": "사용자",
-      "mole": []
+      "mole": [],
+      "recommendationDisabled": false,
+      "alternative": [
+        "백사 채찍",
+        "백참도"
+      ]
     },
     "장궁": {
       "core": [
@@ -5215,16 +5305,25 @@ const PROJECT_DATA = {
         "유성추"
       ],
       "recommended": [
-        "건곤도",
         "회심검",
-        "시간 깃발"
+        "시간 깃발",
+        "구겸"
       ],
-      "useful": [],
+      "useful": [
+        "모래시계",
+        "건곤도",
+        "가시공",
+        "다트"
+      ],
       "source": "사용자 제공 NTA 공략",
       "date": "2026-10-03",
       "kind": "사용자 추천 기준",
       "author": "사용자",
-      "mole": []
+      "mole": [],
+      "recommendationDisabled": false,
+      "alternative": [
+        "현철 지팡이"
+      ]
     },
     "장창": {
       "core": [
@@ -5238,13 +5337,21 @@ const PROJECT_DATA = {
         "금 사슬갑옷"
       ],
       "useful": [
-        "덩굴 방패"
+        "덩굴 방패",
+        "유성추",
+        "천기산",
+        "모래시계"
       ],
       "source": "사용자 제공 NTA 공략",
       "date": "2026-10-03",
       "kind": "사용자 추천 기준",
       "author": "사용자",
-      "mole": []
+      "mole": [],
+      "recommendationDisabled": false,
+      "alternative": [
+        "백참도",
+        "명광 갑옷"
+      ]
     },
     "중기병": {
       "core": [
@@ -5257,9 +5364,9 @@ const PROJECT_DATA = {
         "호심경"
       ],
       "useful": [
-        "분노의 허리띠",
         "구리 방패",
-        "회피 신발"
+        "회피 신발",
+        "분노의 허리띠"
       ],
       "source": "사용자 제공 NTA 공략",
       "date": "2026-10-03",
@@ -5268,13 +5375,14 @@ const PROJECT_DATA = {
       "mole": [],
       "alternative": [
         "피해 반사 갑옷",
-        "군기",
         "태양 갑옷",
+        "군기",
         "옥패",
-        "모래시계",
         "현목 영락",
-        "명광 갑옷"
-      ]
+        "명광 갑옷",
+        "모래시계"
+      ],
+      "recommendationDisabled": false
     },
     "창방": {
       "core": [
@@ -5305,7 +5413,8 @@ const PROJECT_DATA = {
         "모래시계",
         "현목 영락",
         "명광 갑옷"
-      ]
+      ],
+      "recommendationDisabled": false
     },
     "칼방": {
       "core": [
@@ -5336,7 +5445,8 @@ const PROJECT_DATA = {
         "모래시계",
         "현목 영락",
         "명광 갑옷"
-      ]
+      ],
+      "recommendationDisabled": false
     },
     "화궁": {
       "core": [
@@ -5346,20 +5456,23 @@ const PROJECT_DATA = {
       ],
       "recommended": [
         "유성추",
-        "천기산",
         "낭아봉"
       ],
       "useful": [
         "갈고리검",
         "백참도",
         "다트",
-        "분심계"
+        "분심계",
+        "천기산",
+        "현철 지팡이"
       ],
       "source": "사용자 제공 NTA 공략",
       "date": "2026-10-03",
       "kind": "사용자 추천 기준",
       "author": "사용자",
-      "mole": []
+      "mole": [],
+      "recommendationDisabled": false,
+      "alternative": []
     }
   },
   "guideSources": [
@@ -5659,7 +5772,7 @@ const Planner = (()=>{
  const fixedDamageItems=new Set(['다트','건곤도','갈고리검','분심계','가시공','현철 지팡이','태양 갑옷']);
  function fixedCount(names){return names.filter(n=>fixedDamageItems.has(n)).length;}
  function prioritizeFixed(unit,all){const b=buildOpinion(unit),preferred=new Set([...b.core,...b.recommended,...b.useful,...(b.alternative||[]),...(mandatory(unit)?['유성추']:[])]);return all.filter(c=>{if(fixedCount(c.names)<=1)return true;return !all.some(a=>a.random.join('|')===c.random.join('|')&&fixedCount(a.names)<fixedCount(c.names)&&a.crafted.every(n=>preferred.has(n)));});}
- function recommend(unit){const b=buildOpinion(unit);if(unitMap[unit]?.group==='병기'||b.recommendationDisabled)return [];const list=[...new Set([...(mandatory(unit)?['유성추']:[]),...b.core,...b.recommended,...b.useful,...(b.alternative||[]),...(b.mole||[])])].filter(n=>itemMap[n]);const first=list.find(n=>fixedDamageItems.has(n));return [...list.filter(n=>!fixedDamageItems.has(n)||n===first),...list.filter(n=>fixedDamageItems.has(n)&&n!==first)].slice(0,8);}
+ function recommend(unit){const b=buildOpinion(unit);if(unitMap[unit]?.group==='병기'||b.recommendationDisabled)return [];const list=[...new Set([...(mandatory(unit)?['유성추']:[]),...b.core,...b.recommended])].filter(n=>itemMap[n]);const first=list.find(n=>fixedDamageItems.has(n));return [...list.filter(n=>!fixedDamageItems.has(n)||n===first),...list.filter(n=>fixedDamageItems.has(n)&&n!==first)].slice(0,8);}
  function buildScore(unit,names){const b=buildOpinion(unit);if(b.recommendationDisabled)return 0;return names.reduce((s,n)=>s+(b.core.includes(n)?6:b.recommended.includes(n)?3:b.useful.includes(n)?1:(b.alternative||[]).includes(n)?0.5:0),0)+(mandatory(unit)&&names.includes('유성추')?10:0);}
  function combos(pool,candidates,random,slots){const rs=random?.length===2?[random]:pair(pool);const adds=slots===0?[[]]:slots===1?candidates.map(n=>[n]):pair(candidates);return rs.flatMap(r=>adds.filter(a=>a.every(n=>!r.includes(n))).map(a=>({random:r,crafted:a,names:[...r,...a]})))}
  return {fixedCount,prioritizeFixed,data,itemMap,unitMap,clamp,roll,pair,options,loadout,combat,recommend,mandatory,combos,optionFields,buildOpinion,buildScore,candidateItems};
@@ -5693,7 +5806,7 @@ const Hub=(()=>{
  function symbol(n){return /방패|갑옷|황월|호심/.test(n)?'🛡️':/조롱박|흡혈|치료|정심/.test(n)?'💚':/시간|모래/.test(n)?'⌛':/분노|쌍도끼/.test(n)?'🔥':/유성/.test(n)?'☄️':'⚔️';}
  function icon(n){const i=P.itemMap[n];return (i.icon||i.iconSource)?'<span class="item-art"><img alt="" loading="lazy" src="'+esc(i.icon||i.iconSource)+'" onload="this.nextElementSibling.hidden=true" onerror="this.hidden=true"><span class="item-symbol" aria-hidden="true">'+symbol(n)+'</span></span>':'<span class="item-symbol" aria-hidden="true">'+symbol(n)+'</span>';}
  function tier(n){const b=P.buildOpinion(unit);if(b.recommendationDisabled)return '';const grade=P.mandatory(unit)&&n==='유성추'?'필수':b.core.includes(n)?'코어':b.recommended.includes(n)?'추천':b.useful.includes(n)?'쓸만함':(b.alternative||[]).includes(n)?'대체':'';return [grade,(b.mole||[]).includes(n)?'두더지':''].filter(Boolean).join(' · ');}
- function unitSummary(){editorRender();const u=P.unitMap[unit],b=P.buildOpinion(unit);$('unit-info').innerHTML='<strong>'+esc(u.display)+'</strong> · '+u.group+'<br>'+(b.recommendationDisabled?'추천 아이템 정리 중 · 후보를 직접 선택하세요.':'코어: '+b.core.map(esc).join(' · '));$('candidate-basis').innerHTML='<strong>사용자 추천 기준 · '+esc(u.display)+'</strong><p>역할 구분 없이 전체 장비에서 제작·제련 후보를 최대 8개 선택합니다. '+(b.recommendationDisabled?'이 병종은 추천 목록과 자동 채우기를 비워 두었습니다.': '코어 → 추천 → 쓸만함 → 대체 순으로 자동 후보를 채웁니다.'+(P.mandatory(unit)?' 유성추는 필수 후보로 유지합니다.':''))+'</p>';}
+ function unitSummary(){editorRender();const u=P.unitMap[unit],b=P.buildOpinion(unit);$('unit-info').innerHTML='<strong>'+esc(u.display)+'</strong> · '+u.group+'<br>'+(b.recommendationDisabled?'추천 아이템 정리 중 · 후보를 직접 선택하세요.':'코어: '+b.core.map(esc).join(' · '));$('candidate-basis').innerHTML='<strong>사용자 추천 기준 · '+esc(u.display)+'</strong><p>역할 구분 없이 전체 장비에서 제작·제련 후보를 최대 8개 선택합니다. '+(b.recommendationDisabled?'이 병종은 추천 목록과 자동 채우기를 비워 두었습니다.': '코어·추천만 자동으로 채웁니다. 쓸만함·대체는 직접 선택하면 조합에 포함됩니다.'+(P.mandatory(unit)?' 유성추는 필수 후보로 유지합니다.':''))+'</p>';}
  function unitIcon(u){return u.iconSource?'<img class="unit-art" src="'+esc(u.iconSource)+'" alt="" loading="lazy" onerror="this.hidden=true">':'';}
  function renderUnits(){ $('unit-filters').innerHTML=['전체','방패병','창병','궁병','기병'].map(g=>'<button data-group="'+g+'" aria-pressed="'+(g===unitFilter)+'">'+g+'</button>').join('');$('unit-filters').querySelectorAll('button').forEach(b=>b.onclick=()=>{unitFilter=b.dataset.group;renderUnits();});$('unit-cards').innerHTML=equippable.filter(u=>unitFilter==='전체'||u.group===unitFilter).map(u=>'<button data-unit="'+esc(u.name)+'" aria-pressed="'+(u.name===unit)+'">'+unitIcon(u)+'<span>'+esc(u.display)+'</span><small>'+u.group+'</small></button>').join('');$('unit-cards').querySelectorAll('button').forEach(b=>b.onclick=()=>{unit=b.dataset.unit;pool.clear();candidates.clear();custom=['','','',''];$('custom-build').innerHTML='';$('random-one').value='';$('random-two').value='';renderUnits();unitSummary();chips();recommend();});}
  function chips(){for(const [id,set,isPool] of [['match-pool',pool,true],['craft-candidates',candidates,false]]){ $(id).innerHTML=D.equipment.filter(i=>(!isPool||!i.extra)).map(i=>'<button data-name="'+esc(i.name)+'" aria-pressed="'+set.has(i.name)+'" '+((!set.has(i.name)&&set.size>=8)?'disabled':'')+' title="'+esc(i.cut)+'">'+icon(i.name)+'<span>'+esc(i.name)+'</span><small class="'+((P.buildOpinion(unit).mole||[]).includes(i.name)?'badge-mole':'')+'">'+esc(tier(i.name)||'선택 가능')+'</small></button>').join('');$(id).querySelectorAll('button').forEach(b=>b.onclick=()=>{const n=b.dataset.name;if(set.has(n))set.delete(n);else if(set.size<8)set.add(n);chips();});} $('pool-count').textContent=pool.size+'/8 선택';for(const id of ['random-one','random-two']){const old=$(id).value;$(id).innerHTML='<option value="">미확정</option>'+[...pool].map(n=>'<option>'+esc(n)+'</option>').join('');if(pool.has(old))$(id).value=old;}renderCustom();}
