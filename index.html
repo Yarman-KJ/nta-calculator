@@ -5900,6 +5900,24 @@ const Hub=(()=>{
 
 
 </script><script>
+/* 이름과 효과 검색. 방어 효과를 무시하는 공격 장비는 피감 검색에서 제외한다. */
+const EquipmentSearch=(()=>{
+ const norm=s=>String(s||'').toLowerCase().replace(/\s/g,'');
+ const groups=[
+  {words:['피감','피해감소','데미지감소','피해감쇄'],pattern:/피감|피해감소|피해감쇄/},
+  {words:['치명','치명타','크리','크리티컬'],pattern:/치명/},
+  {words:['공증','공격력증가'],pattern:/공증|공격력증가/},
+  {words:['실드','쉴드','보호막'],pattern:/실드|쉴드|보호막/},
+  {words:['고정딜','고정뎀','고정데미지','고정피해','고정전환'],pattern:/고정/},
+  {words:['피흡','흡혈'],pattern:/흡혈/},
+  {words:['체증','체력증가','hp증가'],pattern:/체력증가|hp증가/}
+ ];
+ function matches(item,query){const q=norm(query);if(!q)return true;if(norm(item.name).includes(q))return true;const cut=norm(item.cut),description=norm(item.description),group=groups.find(g=>g.words.includes(q));if(group)return group.pattern.test(cut);return (cut+description).includes(q);}
+ return {matches};
+})();
+if(typeof module!=='undefined')module.exports=EquipmentSearch;
+
+</script><script>
 /* 부대별 편성은 유지하고 기존 전투 모델에는 병종별 합계를 전달한다. */
 (()=>{
  const $=id=>document.getElementById(id);let squads=[{a:1,b:8,s:0}];
@@ -5932,7 +5950,7 @@ const Hub=(()=>{
  const saved=document.createElement('div');saved.className='squad-toolbar';saved.innerHTML='<button id="save-squads" class="subtle">편제 저장</button><button id="load-squads" class="subtle">저장한 편제</button><span id="save-squad-status" role="status"></span>';host.appendChild(saved);
  $('save-squads').onclick=()=>{try{localStorage.setItem('nta-squads-v1',JSON.stringify({squads,soldiers:$('field-soldiers').checked,siege:$('field-siege').checked,primary:$('boss-unit').value,secondary:$('tank-unit').value,level:$('unit-level').value,secondLevel:$('tank-level').value}));$('save-squad-status').textContent='이 브라우저에 저장했습니다.';}catch(e){$('save-squad-status').textContent='저장할 수 없습니다.';}};
  $('load-squads').onclick=()=>{try{const v=JSON.parse(localStorage.getItem('nta-squads-v1'));if(!v||!Array.isArray(v.squads)||!v.squads.length||v.squads.length>5||v.squads.some(x=>['a','b','s'].some(k=>!Number.isInteger(x[k])||x[k]<0||x[k]>9)||x.a+x.b+x.s>9)||!Planner.unitMap[v.primary]||!Planner.unitMap[v.secondary])throw Error();squads=v.squads;$('field-soldiers').checked=!!v.soldiers;$('field-siege').checked=!!v.siege;$('boss-unit').value=v.primary;$('tank-unit').value=v.secondary;$('unit-level').value=v.level;$('tank-level').value=v.secondLevel;for(const id of ['boss-unit','tank-unit'])$(id).dispatchEvent(new Event('change'));render();$('save-squad-status').textContent='편제를 불러왔습니다. 장비는 현재 입력을 유지합니다.';}catch(e){$('save-squad-status').textContent='저장한 편제가 없습니다.';}};
- for(const id of ['match-pool','craft-candidates']){const box=$(id),label=document.createElement('label');label.className='item-search';label.innerHTML='장비 찾기<input type="search" placeholder="장비 이름" aria-label="'+(id==='match-pool'?'이번 판 풀':'제련 후보')+' 장비 찾기">';box.before(label);const apply=()=>{const q=label.querySelector('input').value.replace(/\s/g,'');for(const e of box.children)e.hidden=!!q&&!e.textContent.replace(/\s/g,'').includes(q);};label.querySelector('input').oninput=apply;new MutationObserver(apply).observe(box,{childList:true});}
+ for(const id of ['match-pool','craft-candidates']){const box=$(id),label=document.createElement('label');label.className='item-search';label.innerHTML='장비 찾기<input type="search" placeholder="장비 이름·효과 (예: 치명, 피감)" aria-label="'+(id==='match-pool'?'이번 판 풀':'제련 후보')+' 장비 찾기">';box.before(label);const apply=()=>{const q=label.querySelector('input').value;for(const e of box.children){const item=Planner.itemMap[e.dataset.name]||Planner.data.equipment.find(i=>e.textContent.includes(i.name));e.hidden=!!q&&!(item?EquipmentSearch.matches(item,q):e.textContent.includes(q));}};label.querySelector('input').oninput=apply;new MutationObserver(apply).observe(box,{childList:true});}
  window.NTASquads={read:()=>squads.map(x=>({...x})),validate:()=>squads.every(x=>x.a+x.b+x.s>0)};
  render();
 })();
