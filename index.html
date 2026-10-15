@@ -6082,9 +6082,9 @@ if(typeof module!=='undefined')module.exports=EquipmentSearch;
   if(!Number.isFinite(perTile)||perTile<1){result.innerHTML='<strong>1칸 이동시간은 1초 이상 입력하세요.</strong>';return;}
   const rows=Array.from({length:5},(_,index)=>{
    const tiles=index+1,total=perTile*tiles;
-   return `<tr><th scope="row">${tiles}칸</th><td>${formatTime(total)}</td><td>${total}초</td></tr>`;
+   return `<tr><th scope="row">${tiles}칸</th><td>${formatTime(total)}</td></tr>`;
   }).join('');
-  result.innerHTML=`<h3>거리별 이동시간</h3><div class="table-wrap"><table><thead><tr><th>거리</th><th>도착시간</th><th>초</th></tr></thead><tbody>${rows}</tbody></table></div><p class="muted">1칸 ${formatTime(perTile)} 기준으로 계산했습니다.</p>`;
+  result.innerHTML=`<h3>거리별 이동시간</h3><div class="table-wrap"><table><thead><tr><th>거리</th><th>도착시간</th></tr></thead><tbody>${rows}</tbody></table></div><p class="muted">1칸 ${formatTime(perTile)} 기준으로 계산했습니다.</p>`;
  }
  formations.forEach(input=>input.addEventListener('change',()=>{
   if(input.checked)formations.filter(other=>other!==input).forEach(other=>{other.checked=false;});
