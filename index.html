@@ -87,10 +87,10 @@ body{background:radial-gradient(ellipse at top,#fbf2df 0%,#eee5d1 65%);backgroun
 <section id="page-attack" class="page" hidden>
 <section class="panel"><h2>공타 출격 기준</h2><p class="muted">「공타 시간 체크」의 영상 분석값을 기준으로 계산합니다. 공격 조합마다 초소 HP가 줄어드는 속도가 달라서, 실제 조건과 가장 가까운 기록을 고르세요.</p>
 <div class="fields"><label>공격 조합<select id="attack-scenario"><option value="">영상 조합 선택</option><option value="cavalry-policy">중기병 + 공성의 달인 30% (081250)</option><option value="shield-siege">망치&방패 + 투석차 (081930)</option><option value="cavalry-blade">중기병 + 대도기병 (082322)</option><option value="shield-bow">창&방패 + 화궁 (082751)</option><option value="custom">직접 실측값 입력</option></select></label><label>내 부대 이동 시간 (초)<input id="attack-travel" type="number" min="1" step="1" value="51"></label><label>도착 여유 시간 (초)<input id="attack-delay" type="number" min="0" step="1" value="0"></label></div>
-<div id="attack-manual" class="fields" hidden><label>관찰한 초소 피해량 (HP)<input id="attack-damage" type="number" min="0" step="1" value="28"></label><label>관찰 시간 (초)<input id="attack-elapsed" type="number" min="1" step="1" value="36"></label></div>
+<div id="attack-manual" class="fields" hidden><label>관찰 시작 HP<input id="attack-start-hp" type="number" min="1" step="1" value="135"></label><label>관찰 종료 HP<input id="attack-end-hp" type="number" min="0" step="1" value="107"></label><label>관찰 시간 (초)<input id="attack-elapsed" type="number" min="1" step="1" value="36"></label></div>
 <div id="attack-result" class="result" aria-live="polite"><p>공격 조합을 선택하면 출격 잔여 HP 기준을 계산합니다.</p></div>
 <details><summary>계산 기준과 영상에서 확인한 값</summary><p>초소 HP는 매 순간 숫자로 읽은 값이 아니라, Lv.20 초소 HP 135에서 피해 표시를 누적 차감해 재구성했습니다. 마지막 유효 피해 표시를 기준으로 이동시간 51초 전과 49초 전의 HP를 역산했습니다.</p><div class="table-wrap"><table><tr><th>영상 조건</th><th>중간 구간 평균 DPS</th><th>51초 전 HP</th><th>49초 전 HP</th></tr><tr><td>중기병 + 공성의 달인 30%</td><td>0.880</td><td>49</td><td>46</td></tr><tr><td>망치&방패 + 투석차</td><td>1.517</td><td>78</td><td>75</td></tr><tr><td>중기병 + 대도기병</td><td>0.740</td><td>38</td><td>37</td></tr><tr><td>창&방패 + 화궁</td><td>0.590</td><td>32</td><td>31</td></tr></table></div>
-<p>이동 51초·여유 0초면 ‘51초 전 HP’, 여유 2초면 ‘49초 전 HP’를 표시합니다. 다른 시간은 각 영상 중간 구간 평균 DPS로 계산하는 근사값입니다. 직접 실측 선택에서는 관찰 피해량 ÷ 관찰 시간으로 DPS를 구합니다.</p><p>투석차의 건물 피해 정책이나 병력·장비가 영상과 다르면 같은 프리셋 결과를 그대로 쓰지 말고 해당 조건으로 다시 실측하세요. 특히 공성의 달인 30% 영상은 피해 1/2가 섞인 기록이고, 투석차 영상은 피해 1/3이 섞였습니다.</p><p class="muted">‘도착 여유 시간’은 파괴 이후 도착시키려는 간격입니다. 기본은 0초이며, 영상으로 영지 전환 지연을 확인하지 못했습니다. HP 반올림값은 보장 컷이 아닌 사후 영상 재구성 또는 평균 DPS 추정입니다.</p></details></section></section>
+<p>이동 51초·여유 0초면 ‘51초 전 HP’, 여유 2초면 ‘49초 전 HP’를 표시합니다. 다른 시간은 각 영상 중간 구간 평균 DPS로 계산하는 근사값입니다. 직접 실측 선택에서는 관찰 시작 HP와 종료 HP의 차이를 관찰 시간으로 나눕니다. 정책이 포함된 편제도 그 구간의 실제 감소량으로 입력하면 됩니다.</p><p>투석차의 건물 피해 정책이나 병력·장비가 영상과 다르면 같은 프리셋 결과를 그대로 쓰지 말고 해당 조건으로 다시 실측하세요. 특히 공성의 달인 30% 영상은 피해 1/2가 섞인 기록이고, 투석차 영상은 피해 1/3이 섞였습니다.</p><p class="muted">‘도착 여유 시간’은 파괴 이후 도착시키려는 간격입니다. 기본은 0초이며, 영상으로 영지 전환 지연을 확인하지 못했습니다. HP 반올림값은 보장 컷이 아닌 사후 영상 재구성 또는 평균 DPS 추정입니다.</p></details></section></section>
 
 <section id="page-sources" class="page panel" hidden><h2>근거 이전 세팅</h2><div id="source-content"></div><p><a href="PLANNER-MODEL.md">계산 모델</a> · <a href="README.md">사용·배포 안내</a> · <a href="TEST-RESULTS.md">검증 기록</a></p></section><footer>작성·추천·공략 출처: 사용자. 사용자 제공 NTA 정리와 정정 내용을 반영합니다.</footer></main><script>
 // GitHub 최신 추천표와 전투 기준을 유지합니다.
@@ -6045,8 +6045,8 @@ if(typeof module!=='undefined')module.exports=EquipmentSearch;
 (()=>{
  const $=id=>document.getElementById(id);
  const scenario=$('attack-scenario'),travel=$('attack-travel'),delay=$('attack-delay');
- const manual=$('attack-manual'),damage=$('attack-damage'),elapsed=$('attack-elapsed'),result=$('attack-result');
- if(!scenario||!travel||!delay||!manual||!damage||!elapsed||!result)return;
+ const manual=$('attack-manual'),startHp=$('attack-start-hp'),endHp=$('attack-end-hp'),elapsed=$('attack-elapsed'),result=$('attack-result');
+ if(!scenario||!travel||!delay||!manual||!startHp||!endHp||!elapsed||!result)return;
  const records={
   'cavalry-policy':{name:'중기병 + 공성의 달인 30% (081250)',dps:0.880,hp51:49,hp49:46},
   'shield-siege':{name:'망치&방패 + 투석차 (081930)',dps:1.517,hp51:78,hp49:75},
@@ -6060,9 +6060,9 @@ if(typeof module!=='undefined')module.exports=EquipmentSearch;
   if(!Number.isFinite(t)||!Number.isFinite(lag)||t<1||lag<0){result.innerHTML='<strong>이동 시간은 1초 이상, 도착 여유 시간은 0초 이상 입력하세요.</strong>';return;}
   let dps,name,anchor=null;
   if(scenario.value==='custom'){
-   const d=Number(damage.value),s=Number(elapsed.value);
-   if(!Number.isFinite(d)||!Number.isFinite(s)||d<0||s<=0){result.innerHTML='<strong>관찰 피해량은 0 이상, 관찰 시간은 1초 이상 입력하세요.</strong>';return;}
-   dps=d/s;name='직접 실측값';
+   const beginning=Number(startHp.value),ending=Number(endHp.value),s=Number(elapsed.value);
+   if(!Number.isFinite(beginning)||!Number.isFinite(ending)||!Number.isFinite(s)||beginning<=0||ending<0||ending>=beginning||s<=0){result.innerHTML='<strong>시작 HP가 종료 HP보다 높게, 관찰 시간은 1초 이상 입력하세요.</strong>';return;}
+   dps=(beginning-ending)/s;name='직접 실측값 ('+(beginning-ending)+' HP 감소 / '+s+'초)';
   }else{
    const r=records[scenario.value];if(!r)return;
    dps=r.dps;name=r.name;
@@ -6074,7 +6074,7 @@ if(typeof module!=='undefined')module.exports=EquipmentSearch;
   const extra=anchor===null?'':`<p>선택한 영상에서 직접 역산한 값: 이동 ${t}초·여유 0초일 때 ${records[scenario.value].hp51} HP, 여유 2초일 때 ${records[scenario.value].hp49} HP</p>`;
   result.innerHTML=`<h3>출격 기준: 초소 잔여 HP 약 ${hp}</h3><p>${precision} · ${name}</p><p>적용 DPS ${dps.toFixed(3)} HP/초 × (이동 ${t}초 − 도착 여유 ${lag}초) = ${raw.toFixed(2)} HP</p>${extra}<p class="muted">영상 재구성·평균 DPS 기반 참고값입니다. 실전 성공을 보장하는 최소 HP가 아닙니다.</p>`;
  }
- [scenario,travel,delay,damage,elapsed].forEach(e=>e.addEventListener('input',calculate));
+ [scenario,travel,delay,startHp,endHp,elapsed].forEach(e=>e.addEventListener('input',calculate));
  [scenario,travel,delay].forEach(e=>e.addEventListener('change',calculate));
  calculate();
  window.NTAAttackCalculator={calculate:(dps,time,arrivalDelay=0)=>Math.round(Math.max(0,dps*(time-arrivalDelay))),records};
