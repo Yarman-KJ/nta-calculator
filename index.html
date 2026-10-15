@@ -95,7 +95,7 @@ body{background:radial-gradient(ellipse at top,#fbf2df 0%,#eee5d1 65%);backgroun
 <div class="info"><h3>공격 관련 정책 · 선택 시 1단계</h3><div class="fields"><label class="check"><input type="checkbox" data-policy="진격의 나팔">진격의 나팔</label><label class="check"><input type="checkbox" data-policy="야외 정복자">야외 정복자</label><label class="check"><input type="checkbox" data-policy="무기 정통">무기 정통</label><label class="check"><input type="checkbox" data-policy="궁병 정통">궁병 정통</label><label class="check"><input type="checkbox" data-policy="기병 정통">기병 정통</label><label class="check"><input type="checkbox" data-policy="신병의 힘">신병의 힘</label><label class="check"><input type="checkbox" data-policy="약육강식">약육강식</label><label class="check"><input type="checkbox" data-policy="파죽지세">파죽지세</label></div><label class="check"><input id="enemy-territory" type="checkbox">적군 영지에서 전투 (진격의 나팔 적용 조건)</label><p class="muted">선택하지 않은 정책은 적용하지 않습니다. 나팔 공격력+10%, 야외 피해+20%, 무기 정통 레벨당 공격력+1, 궁병 피해+10%, 기병 HP·공격력+8%, 1레벨 병사 HP·공격력+10%, 약육강식 6레벨 병사 피해+10%·받는 피해-10%, 파죽지세 높은 레벨 격차당 피해+10%. 병종 전용 정책은 병기에 적용하지 않습니다. 정책 중첩과 영웅·병기 적용 범위는 자료 기준의 가정입니다.</p></div><details><summary>교전 조건을 직접 바꾸기</summary><div class="fields"><label>검사할 최대 턴<input id="turns" type="number" value="30" min="1" max="120" step="1"></label><label>아군 첫 공격 턴<input id="ally-start" type="number" value="1" min="1" max="120" step="1"></label><label>적 첫 공격 턴<input id="enemy-start" type="number" value="1" min="1" max="120" step="1"></label><label>행동 순서<select id="order"><option value="enemy">적 먼저</option><option value="ally">아군 먼저</option></select></label><label>분노 미입력 시 스킬 간격(가정)<input id="enemy-skill" type="number" value="3" min="1" max="20" step="1"></label><label>병종 1 교전 거리<input id="distance" type="number" value="4" min="1" max="7" step="1"></label><label>병종 2 교전 거리<input id="tank-distance" type="number" value="1" min="1" max="7" step="1"></label><label>병종 2 후열 피격 %<input id="dealer-exposure" type="number" value="0" min="0" max="100" step="1"></label><label>병기 피격 %<input id="siege-exposure" type="number" value="0" min="0" max="100" step="1"></label><label>주변 적 수<input id="adjacent" type="number" value="2" min="0" max="4" step="1"></label><label>쇠뇌차 관통 %<input id="pierce" type="number" value="3.5" min="0" max="3.5" step="0.1"></label><label>관통 피해 유형<select id="pierce-type"><option value="normal">일반 피해 비교</option><option value="fixed" selected>고정 피해 · 공략 기준</option></select></label><label>확률 조건<select id="probability"><option value="safe">아군 미발동·적 공격 보수</option><option value="mean">평균값 참고</option></select></label></div><label class="check"><input id="ignore-control" type="checkbox">기절 영향 없음으로 보정</label><p class="muted">분산·노출 비교는 위 피격 비율에 대한 조건부 비교입니다. 실제 격자 이동·어그로·영웅 능력을 완전 재현한 손실 예측은 아닙니다. 대표 개체의 집중 피격과 순차 교체로 손실을 근사합니다. 쇠뇌차 3.5% 최대치 조건·피해 유형은 V4에서 확인 필요로 남아 있어 직접 선택합니다.</p></details></section></section>
 
 <section id="page-attack" class="page" hidden>
-<section class="panel"><h2>공타 이동시간</h2><p class="muted">편제와 정책을 체크하고, 내 부대의 1칸 이동시간을 입력하세요. 1~5칸 이동시간을 바로 계산합니다.</p>
+<section class="panel"><h2>공타 초소 HP 컷</h2><p class="muted">편제와 정책을 선택하고 내 부대의 1칸 이동시간을 입력하면, 1~5칸 거리별로 초소 HP가 얼마일 때 출발할지 계산합니다.</p>
 <fieldset class="attack-options"><legend>공격 편제</legend><div class="attack-checks">
 <label class="check"><input type="checkbox" name="attack-formation" value="tank">탱커만</label>
 <label class="check"><input type="checkbox" name="attack-formation" value="tank-bow">탱커 + 궁병</label>
@@ -107,8 +107,8 @@ body{background:radial-gradient(ellipse at top,#fbf2df 0%,#eee5d1 65%);backgroun
 </div></fieldset>
 <div class="fields attack-move-field"><label>내 부대 1칸 이동시간 (초)<input id="attack-tile-time" type="number" min="1" step="1" inputmode="numeric" placeholder="예: 12"></label></div>
 <p id="attack-condition-summary" class="muted" aria-live="polite">편제와 정책을 체크하면 선택한 조건이 여기에 표시됩니다.</p>
-<div id="attack-result" class="result" aria-live="polite"><p>1칸 이동시간을 입력하면 1~5칸 도착시간을 계산합니다.</p></div>
-<details><summary>계산 기준</summary><p>도착시간 = 1칸 이동시간 × 칸 수입니다. 정책 체크는 선택 조건을 기록합니다. 공성의 달인과 투석차 건물 피해 정책은 이동속도를 바꾸지 않으며, 초소 피해·출격 HP 계산에는 아직 연결하지 않았습니다.</p><p class="muted">「공타 시간 체크」의 영상에서는 30% 공성의 달인 발동에 따른 초소 피해 1·2, 투석차 공격에 따른 피해 1·3이 관측됐습니다. 투석차 피해가 정책으로 4가 되는 조건은 사용자가 지정한 선택값으로 표시합니다. 해당 정책 효과는 이동시간 표에는 영향을 주지 않습니다.</p></details></section></section>
+<div id="attack-result" class="result" aria-live="polite"><p>편제를 선택하고 1칸 이동시간을 입력하면, 거리별 초소 출격 HP 컷을 계산합니다.</p></div>
+<details><summary>계산 기준과 실측 근거</summary><p><strong>출격 기준 HP ≈ 초소 피해량/초 × (총 이동시간 − 2초)</strong>입니다. 거리별 총 이동시간은 1칸 이동시간에 칸 수를 곱합니다. 2초 보정은 총 이동시간에서 한 번만 적용합니다.</p><p>탱커만은 기존 기준값 7/9 HP/초를 참고값으로 사용합니다. 탱커+궁병은 창방+화궁 영상의 0.590 HP/초, 탱커+투석차는 망치&방패+투석차 영상의 91/60 HP/초를 참고합니다. 이 영상들은 사용자의 선택 편제와 완전히 동일한 통제 실험이 아니므로 결과는 예상 컷입니다.</p><p>공성의 달인 30%는 타격당 +1의 기대 피해로 계산합니다. 투석차 정책은 영상의 초소 피해 3 타격에 +1을 더합니다. 임의 발동 순서, 마지막 타격 간격, 초소 점유 판정 지연은 재현하지 않으므로 실전에서 몇 HP의 오차가 날 수 있습니다.</p></details></section></section>
 
 <section id="page-sources" class="page panel" hidden><h2>근거 이전 세팅</h2><div id="source-content"></div><p><a href="PLANNER-MODEL.md">계산 모델</a> · <a href="README.md">사용·배포 안내</a> · <a href="TEST-RESULTS.md">검증 기록</a></p></section><footer>작성·추천·공략 출처: 사용자. 사용자 제공 NTA 정리와 정정 내용을 반영합니다.</footer></main><script>
 // GitHub 최신 추천표와 전투 기준을 유지합니다.
@@ -6059,13 +6059,20 @@ if(typeof module!=='undefined')module.exports=EquipmentSearch;
 })();
 
 </script><script>
-/* 공타 이동시간: 편제·정책은 조건 표시, 1칸 이동시간으로 거리별 이동시간을 계산한다. */
+/* 공타 초소 HP 컷: 실측 DPS 참고값과 출격 근사식을 적용한다. */
 (()=>{
  const $=id=>document.getElementById(id);
  const tileTime=$('attack-tile-time'),result=$('attack-result'),summary=$('attack-condition-summary');
  const formations=[...document.querySelectorAll('input[name="attack-formation"]')];
  const siegeMaster=$('attack-siege-master'),trebuchetPolicy=$('attack-trebuchet-policy');
  if(!tileTime||!result||!summary||!formations.length||!siegeMaster||!trebuchetPolicy)return;
+
+ // Rates are reference observations, not universal unit constants.
+ const profiles={
+  tank:{label:'탱커만',dps:28/36,hitsPerSecond:28/36,trebuchetHitsPerSecond:0,source:'기존 공타 기준 7/9 HP/초'},
+  'tank-bow':{label:'탱커 + 궁병',dps:59/100,hitsPerSecond:59/100,trebuchetHitsPerSecond:0,source:'창방 + 화궁 영상 0.590 HP/초'},
+  'tank-trebuchet':{label:'탱커 + 투석차',dps:91/60,hitsPerSecond:57/60,trebuchetHitsPerSecond:39/60,source:'망치&방패 + 투석차 영상 91/60 HP/초'}
+ };
  const formatTime=seconds=>{
   const whole=Math.round(seconds),minutes=Math.floor(whole/60),remaining=whole%60;
   return minutes?`${minutes}분 ${remaining}초`:`${whole}초`;
@@ -6073,18 +6080,25 @@ if(typeof module!=='undefined')module.exports=EquipmentSearch;
  function calculate(){
   const selected=formations.find(input=>input.checked);
   const conditions=[];
-  if(selected)conditions.push(selected.parentElement.textContent.trim());
+  if(selected)conditions.push(profiles[selected.value]?.label||selected.parentElement.textContent.trim());
   if(siegeMaster.checked)conditions.push('공성의 달인 30%');
   if(trebuchetPolicy.checked)conditions.push('투석차 건물 피해 3 → 4');
-  summary.textContent=conditions.length?`선택 조건: ${conditions.join(' · ')}`:'편제와 정책을 체크하면 선택한 조건이 여기에 표시됩니다.';
+  summary.textContent=conditions.length?`선택 조건: ${conditions.join(' · ')}`:'편제와 정책을 선택하면 조건이 표시됩니다.';
   const raw=tileTime.value.trim(),perTile=Number(raw);
-  if(!raw){result.innerHTML='<p>1칸 이동시간을 입력하면 1~5칸 도착시간을 계산합니다.</p>';return;}
+  if(!selected){result.innerHTML='<p>먼저 공격 편제를 하나 선택하세요.</p>';return;}
+  if(!raw){result.innerHTML='<p>1칸 이동시간을 입력하면 거리별 초소 출격 HP 컷을 계산합니다.</p>';return;}
   if(!Number.isFinite(perTile)||perTile<1){result.innerHTML='<strong>1칸 이동시간은 1초 이상 입력하세요.</strong>';return;}
+  const profile=profiles[selected.value];
+  if(!profile){result.innerHTML='<p>편제 기준 자료를 확인할 수 없습니다.</p>';return;}
+  let dps=profile.dps;
+  if(siegeMaster.checked)dps+=profile.hitsPerSecond*0.3;
+  if(trebuchetPolicy.checked&&selected.value==='tank-trebuchet')dps+=profile.trebuchetHitsPerSecond;
   const rows=Array.from({length:5},(_,index)=>{
-   const tiles=index+1,total=perTile*tiles;
-   return `<tr><th scope="row">${tiles}칸</th><td>${formatTime(total)}</td></tr>`;
+   const tiles=index+1,total=perTile*tiles,activeSeconds=Math.max(0,total-2),cut=Math.max(0,Math.round(dps*activeSeconds));
+   return `<tr><th scope="row">${tiles}칸</th><td>${formatTime(total)}</td><td><strong>${cut} HP</strong></td></tr>`;
   }).join('');
-  result.innerHTML=`<h3>거리별 이동시간</h3><div class="table-wrap"><table><thead><tr><th>거리</th><th>도착시간</th></tr></thead><tbody>${rows}</tbody></table></div><p class="muted">1칸 ${formatTime(perTile)} 기준으로 계산했습니다.</p>`;
+  const warning=trebuchetPolicy.checked&&selected.value!=='tank-trebuchet'?'<p class="muted">투석차 정책은 투석차 편제에만 반영됩니다.</p>':'';
+  result.innerHTML=`<h3>거리별 초소 출격 HP 컷</h3><p><strong>참고 화력: ${dps.toFixed(3)} HP/초</strong> · ${profile.source}${siegeMaster.checked?' · 공성의 달인 기대값 반영':''}${trebuchetPolicy.checked&&selected.value==='tank-trebuchet'?' · 투석차 +1 반영':''}</p><div class="table-wrap"><table><thead><tr><th>거리</th><th>총 이동시간</th><th>초소가 이 HP일 때 출발</th></tr></thead><tbody>${rows}</tbody></table></div><p class="muted">HP 컷은 평균 피해 기준으로 반올림한 예상치입니다. 타격 순간과 초소 점유 판정에 따라 실제 결과는 달라질 수 있습니다.</p>${warning}`;
  }
  formations.forEach(input=>input.addEventListener('change',()=>{
   if(input.checked)formations.filter(other=>other!==input).forEach(other=>{other.checked=false;});
@@ -6093,7 +6107,18 @@ if(typeof module!=='undefined')module.exports=EquipmentSearch;
  [tileTime,siegeMaster,trebuchetPolicy].forEach(input=>input.addEventListener('input',calculate));
  [siegeMaster,trebuchetPolicy].forEach(input=>input.addEventListener('change',calculate));
  calculate();
- window.NTAAttackCalculator={calculate:(secondsPerTile)=>Array.from({length:5},(_,index)=>Math.round(Number(secondsPerTile)*(index+1))),formatTime};
+ window.NTAAttackCalculator={
+  calculate:(secondsPerTile,formation='tank',policies={})=>{
+   const profile=profiles[formation];
+   if(!profile||!Number.isFinite(Number(secondsPerTile)))return [];
+   const dps=profile.dps+(policies.siegeMaster?profile.hitsPerSecond*.3:0)+(policies.trebuchet&&formation==='tank-trebuchet'?profile.trebuchetHitsPerSecond:0);
+   return Array.from({length:5},(_,index)=>Math.max(0,Math.round(dps*Math.max(0,Number(secondsPerTile)*(index+1)-2))));
+  },
+  estimateDps:(formation='tank',policies={})=>{
+   const profile=profiles[formation];if(!profile)return null;
+   return profile.dps+(policies.siegeMaster?profile.hitsPerSecond*.3:0)+(policies.trebuchet&&formation==='tank-trebuchet'?profile.trebuchetHitsPerSecond:0);
+  },formatTime
+ };
 })();
 
 </script><script>
@@ -6120,7 +6145,7 @@ if(typeof module!=='undefined')module.exports=EquipmentSearch;
   '영웅 스킬·재능 보정':'英雄技能／天賦修正','스킬 피해 %':'技能傷害 %','시작 분노':'初始怒氣','최대 분노':'怒氣上限','영웅 피해감소 %':'英雄傷害減免 %','영웅 피격 비율 %':'英雄受擊比例 %',
   '3. 현재 장비':'3. 目前裝備','병종 2를 편제에 넣은 경우에만 계산에 적용됩니다.':'只有將兵種 2 編入隊伍時，才會納入計算。','4. 계산 결과':'4. 計算結果','계산하기':'開始計算','중지':'停止','교전 조건을 직접 바꾸기':'自訂交戰條件',
   '공격 관련 정책 · 선택 시 1단계':'攻擊類政策 · 選取時套用第 1 級','진격의 나팔':'進軍號角','야외 정복자':'野外征服者','무기 정통':'武器精通','궁병 정통':'弓兵精通','기병 정통':'騎兵精通','신병의 힘':'新兵之力','약육강식':'弱肉強食','파죽지세':'勢如破竹',
-  '공타 계산기':'攻擊時機計算器','공타 이동시간':'攻擊移動時間','공격 편제':'攻擊編隊','탱커만':'僅坦克','탱커 + 궁병':'坦克＋弓兵','탱커 + 투석차':'坦克＋投石車','정책':'政策','공성의 달인 (30%)':'攻城專精（30%）','투석차 건물 피해 +1 (3 → 4)':'投石車建築傷害 +1（3 → 4）','내 부대 1칸 이동시간 (초)':'我方部隊移動 1 格時間（秒）','예: 12':'例如：12','선택 조건:':'選擇條件：','편제와 정책을 체크하면 선택한 조건이 여기에 표시됩니다.':'勾選編隊與政策後，選擇條件會顯示於此。','1칸 이동시간을 입력하면 1~5칸 도착시간을 계산합니다.':'輸入移動 1 格的時間，即可計算 1～5 格抵達時間。','1칸 이동시간은 1초 이상 입력하세요.':'請輸入至少 1 秒的單格移動時間。','거리별 이동시간':'各距離移動時間','거리':'距離','도착시간':'抵達時間','초':'秒','1칸':'1 格','2칸':'2 格','3칸':'3 格','4칸':'4 格','5칸':'5 格','기준으로 계산했습니다.':'為基準計算。','계산 기준':'計算基準','도착시간 = 1칸 이동시간 × 칸 수입니다.':'抵達時間 = 單格移動時間 × 格數。','정책 체크는 선택 조건을 기록합니다.':'政策勾選僅記錄所選條件。','공성의 달인과 투석차 건물 피해 정책은 이동속도를 바꾸지 않으며, 초소 피해·출격 HP 계산에는 아직 연결하지 않았습니다.':'攻城專精與投石車建築傷害政策不會改變移動速度，目前尚未納入哨站傷害或出擊 HP 計算。','「공타 시간 체크」의 영상에서는 30% 공성의 달인 발동에 따른 초소 피해 1·2, 투석차 공격에 따른 피해 1·3이 관측됐습니다. 투석차 피해가 정책으로 4가 되는 조건은 사용자가 지정한 선택값으로 표시합니다. 해당 정책 효과는 이동시간 표에는 영향을 주지 않습니다.':'「攻擊時間確認」影片中觀察到攻城專精 30% 發動時哨站傷害為 1、2，投石車攻擊傷害為 1、3。投石車傷害因政策變為 4 的條件依使用者指定顯示；此政策不影響移動時間表。','작성·추천·공략 출처: 사용자. 사용자 제공 NTA 정리와 정정 내용을 반영합니다.':'撰寫、推薦與攻略來源：使用者。內容依使用者提供的 NTA 整理與修正更新。',
+  '공타 계산기':'攻擊時機計算器','공타 이동시간':'攻擊哨站 HP 出擊門檻','공타 초소 HP 컷':'攻擊哨站 HP 門檻','공격 편제':'攻擊編隊','탱커만':'僅坦克','탱커 + 궁병':'坦克＋弓兵','탱커 + 투석차':'坦克＋投石車','정책':'政策','공성의 달인 (30%)':'攻城專精（30%）','투석차 건물 피해 +1 (3 → 4)':'投石車建築傷害 +1（3 → 4）','내 부대 1칸 이동시간 (초)':'我方部隊移動 1 格時間（秒）','예: 12':'例如：12','선택 조건:':'選擇條件：','편제와 정책을 선택하면 조건이 표시됩니다.':'選擇編隊與政策後會顯示條件。','편제와 정책을 체크하면 선택한 조건이 여기에 표시됩니다.':'勾選編隊與政策後，選擇條件會顯示於此。','편제를 선택하고 1칸 이동시간을 입력하면, 거리별 초소 출격 HP 컷을 계산합니다.':'選擇編隊並輸入移動 1 格時間，即可計算各距離的哨站出擊 HP 門檻。','먼저 공격 편제를 하나 선택하세요.':'請先選擇一種攻擊編隊。','1칸 이동시간을 입력하면 거리별 초소 출격 HP 컷을 계산합니다.':'輸入移動 1 格時間，即可計算各距離的哨站出擊 HP 門檻。','1칸 이동시간은 1초 이상 입력하세요.':'請輸入至少 1 秒的單格移動時間。','거리별 초소 출격 HP 컷':'各距離哨站出擊 HP 門檻','참고 화력:':'參考火力：','HP/초':'HP／秒','창방 + 화궁 영상 0.590 HP/초':'槍盾＋火弓影片 0.590 HP／秒','망치&방패 + 투석차 영상 91/60 HP/초':'錘盾＋投石車影片 91/60 HP／秒','공성의 달인 기대값 반영':'已計入攻城專精期望值','투석차 +1 반영':'已計入投石車 +1','탱커 편제':'坦克編隊','투석차 편제':'投石車編隊','투석차 정책은 투석차 편제에만 반영됩니다.':'投石車政策只套用於投石車編隊。','HP 컷은 평균 피해 기준으로 반올림한 예상치입니다. 타격 순간과 초소 점유 판정에 따라 실제 결과는 달라질 수 있습니다.':'HP 門檻依平均傷害四捨五入估算。實際結果會因攻擊時機與哨站佔領判定而異。','계산 기준과 실측 근거':'計算方式與實測依據','출격 기준 HP ≈ 초소 피해량/초 × (총 이동시간 − 2초)':'出擊 HP 門檻 ≈ 哨站每秒承受傷害 ×（總移動時間 − 2 秒）','거리별 총 이동시간은 1칸 이동시간에 칸 수를 곱합니다. 2초 보정은 총 이동시간에서 한 번만 적용합니다.':'各距離總移動時間＝單格移動時間 × 格數。2 秒修正只從總移動時間扣除一次。','탱커만은 기존 기준값 7/9 HP/초를 참고값으로 사용합니다. 탱커+궁병은 창방+화궁 영상의 0.590 HP/초, 탱커+투석차는 망치&방패+투석차 영상의 91/60 HP/초를 참고합니다. 이 영상들은 사용자의 선택 편제와 완전히 동일한 통제 실험이 아니므로 결과는 예상 컷입니다.':'僅坦克使用既有基準 7/9 HP／秒作為參考。坦克＋弓兵參考槍盾＋火弓影片的 0.590 HP／秒；坦克＋投石車參考錘盾＋投石車影片的 91/60 HP／秒。影片編隊與此處選項並非完全相同的控制實驗，因此結果僅為估算門檻。','공성의 달인 30%는 타격당 +1의 기대 피해로 계산합니다. 투석차 정책은 영상의 초소 피해 3 타격에 +1을 더합니다. 임의 발동 순서, 마지막 타격 간격, 초소 점유 판정 지연은 재현하지 않으므로 실전에서 몇 HP의 오차가 날 수 있습니다.':'攻城專精 30% 以每次攻擊期望 +1 傷害計算。投石車政策會將影片中的哨站 3 點傷害提高 1。此估算未模擬隨機觸發順序、最後一次攻擊間隔與哨站佔領延遲，實戰可能相差數點 HP。','작성·추천·공략 출처: 사용자. 사용자 제공 NTA 정리와 정정 내용을 반영합니다.':'撰寫、推薦與攻略來源：使用者。內容依使用者提供的 NTA 整理與修正更新。',
   '공타 계산기':'攻擊時機計算器','중기병 + 공성의 달인 30% (081250)':'重騎兵 + 攻城專精 30%（081250）','망치&방패 + 투석차 (081930)':'錘盾兵 + 投石車（081930）','중기병 + 대도기병 (082322)':'重騎兵 + 大刀騎兵（082322）','창&방패 + 화궁 (082751)':'槍盾兵 + 火弓（082751）','작성·추천·공략 출처: 사용자. 사용자 제공 NTA 정리와 정정 내용을 반영합니다.':'撰寫、推薦與攻略來源：使用者。內容依使用者提供的 NTA 整理與修正更新。',
   '적군 영지에서 전투 (진격의 나팔 적용 조건)':'在敵方領地作戰（進軍號角生效條件）','작성·추천·공략 출처: 사용자. 사용자 제공 NTA 정리와 정정 내용을 반영합니다.':'撰寫、推薦與攻略來源：使用者。內容依使用者提供的 NTA 整理與修正更新。',
   '설정':'設定','병종별 추천 기준':'兵種推薦設定','사용자 추천 기준':'使用者推薦設定','설정 저장':'儲存設定',
@@ -6138,6 +6163,7 @@ if(typeof module!=='undefined')module.exports=EquipmentSearch;
  const terms=[
   ['병종별','各兵種'],['병종','兵種'],['병기','器械'],['자원지','資源地'],['장비','裝備'],['제련','精煉'],['제작','製作'],['후보','候選'],['조합','組合'],['분류','分類'],['난이도','難度'],['공략','攻略'],['설명','說明'],['기준','基準'],['계산','計算'],['결과','結果'],['조건','條件'],['편제','編隊'],['부대','部隊'],['영웅','英雄'],['병사','士兵'],['전열','前排'],['딜러','輸出'],['레벨','等級'],['인원','人數'],['공속','攻速'],['공격력','攻擊力'],['피해 감소','傷害減免'],['피해감소','傷害減免'],['피감','傷害減免'],['피해','傷害'],['고정 피해','固定傷害'],['고정딜','固定傷害'],['관통','穿透'],['사거리','射程'],['분노','怒氣'],['회피','閃避'],['흡혈','吸血'],['보호막','護盾'],['회복','回復'],['확률','機率'],['발동','觸發'],['증가','增加'],['감소','減少'],['추가','額外'],['대상','目標'],['주변','周圍'],['아군','我方'],['적군','敵方'],['적','敵人'],['현재','目前'],['최대','最大'],['최소','最低'],['시작','開始'],['매 턴','每回合'],['턴','回合'],['공격','攻擊'],['피격','受擊'],['손실','損失'],['무손실','零損失'],['선택','選擇'],['후보','候選'],['입력','輸入'],['비우기','清空'],['채우기','填入'],['저장','儲存'],['불러오기','載入'],['되돌리기','復原'],['사용자','使用者'],['자료','資料'],['출처','來源'],['정책','政策'],['효과','效果'],['옵션','詞條'],['랜덤','隨機'],['일반','一般'],['공통','共用'],['단독','單獨'],['필터','篩選'],['검색','搜尋'],['장착','裝備'],['전투','戰鬥'],['진입','進入'],['방향','方向'],['공격 순서','攻擊順序'],['유지','維持'],['중지','停止'],['미입력','未輸入'],['가정','假設'],['적용','套用'],['제외','排除'],['초과','超過'],['이하','以下'],['이상','以上'],['고정','固定'],['반올림','四捨五入'],['남은','剩餘'],['죽으면','陣亡時'],['설정','設定'],['복원','還原'],['자동','自動'],['직접','手動'],['추천','推薦'],['코어','核心'],['쓸만함','實用'],['대체','替代'],['필수','必選'],['두더지는 다른 등급과 중복 지정할 수 있습니다.','DIGGER 可與其他推薦等級重複標記。'],['두더지','DIGGER'],['전체','全部']
  ];
+ terms.push(['參考火力','參考火力'],['참고 화력','參考火力'],['초소','哨站'],['출격','出擊'],['거리별','各距離'],['HP 컷','HP 門檻'],['HP/초','HP／秒'],['총 이동시간','總移動時間'],['영상','影片'],['기대값','期望值']);
  const names={
   '강화 쇠뇌':'強化弩兵','검&방패':'劍盾','기병(검)':'劍騎兵','기병(대도)':'大刀騎兵','기병(도끼)':'斧騎兵','기병(창)':'槍騎兵','기병(활)':'弓騎兵','긴 창':'長槍','도끼&방패':'斧盾','독궁':'毒弓','망치&방패':'錘盾','맥도':'陌刀','무거운 방패':'重盾','사냥꾼':'獵人','쇠뇌':'弩兵','쌍창':'雙槍','장검':'長劍','장과':'長戈','장궁':'長弓','장창':'長槍兵','중기병':'重騎兵','창&방패':'槍盾','칼&방패':'刀盾','화궁':'火弓',
   '치료검':'治療劍','회심검':'會心劍','유성추':'流星錘','쌍도끼':'雙斧','월아도':'月牙刀','용연검':'龍淵劍','사슬갑옷':'鎖子甲','술 조롱박':'酒葫蘆','피해 반사 갑옷':'反傷甲','구리 방패':'銅盾','황월':'黃月','무쇠 방패':'鐵盾','흡혈검':'吸血劍','환도':'環刀','흑요석 갑옷':'黑曜石甲','다트':'飛鏢','덩굴 방패':'藤盾','낭아봉':'狼牙棒','군기':'軍旗','건곤도':'乾坤刀','태양 갑옷':'太陽甲','정심회':'定心環','적금순':'赤金盾','백사 채찍':'白蛇鞭','금 사슬갑옷':'金鎖子甲','갈고리검':'鉤鐮劍','호심경':'護心鏡','도끼':'斧','옥패':'玉佩','천기산':'天機傘','분심계':'分心計','구겸':'鉤鐮','분노의 허리띠':'怒氣腰帶','가시공':'刺球','회피 신발':'閃避靴','혈적자':'血滴子','시간 깃발':'時間旗','모래시계':'沙漏','현목 영락':'玄木瓔珞','현철 지팡이':'玄鐵杖','백참도':'白斬刀','명광 갑옷':'明光甲','쥐':'老鼠','고릴라':'猩猩','염소':'山羊','산적 두목':'山賊頭目','도적 두목':'山賊頭目','쇠뇌차':'弩砲車','투석차':'投石車'
