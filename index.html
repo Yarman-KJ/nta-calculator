@@ -106,10 +106,9 @@ body{background:radial-gradient(ellipse at top,#fbf2df 0%,#eee5d1 65%);backgroun
 <label class="check"><input id="attack-trebuchet-policy" type="checkbox">투석차 건물 피해 +1 (3 → 4)</label>
 </div></fieldset>
 <div class="fields attack-move-field"><label>내 부대 1칸 이동시간 (초)<input id="attack-tile-time" type="number" min="1" step="1" inputmode="numeric" placeholder="예: 12"></label></div>
-<div class="fields attack-move-field"><label id="attack-tank-count-field" hidden>탱커 수 (1~9마리, 기준 4마리)<input id="attack-tank-count" type="number" min="1" max="9" step="1" inputmode="numeric" value="4"></label></div>
 <p id="attack-condition-summary" class="muted" aria-live="polite">편제와 정책을 체크하면 선택한 조건이 여기에 표시됩니다.</p>
 <div id="attack-result" class="result" aria-live="polite"><p>편제를 선택하고 1칸 이동시간을 입력하면, 거리별 초소 출격 HP 컷을 계산합니다.</p></div>
-<details><summary>계산 기준과 실측 근거</summary><p><strong>예상 출격 HP = 초소 피해량/초 × (총 이동시간 − 2초)</strong>입니다. 거리별 총 이동시간은 1칸 이동시간에 칸 수를 곱합니다. 2초 보정은 프로젝트 원장의 공타 식을 따르며, 영상만으로 보정의 정확한 원인까지 확인되지는 않았습니다.</p><p><strong>탱커만:</strong> 기준은 탱커 4마리, 28 피해/36초 = 7/9 HP/초입니다. 입력한 탱커 수가 달라도 각자가 같은 주기로 타격한다고 보고 4마리 기준에 비례시킵니다. 9마리가 같은 주기로 동시에 때리는 가정이면 1.75 HP/초입니다.</p><p><strong>탱커+궁병:</strong> 창&방패+화궁 영상의 마지막 정상 49초 구간에서 초소 HP가 31 감소했습니다. 사이트는 이 구간의 31/49 HP/초를 참고값으로 씁니다. 영상 편제의 병사 수가 확인되지 않았고 4탱커 기준과 통제 비교한 영상도 아니므로, 이 값으로 궁병이 탱커보다 약하다고 결론 내리거나 궁병 수에 비례해 환산하지 않습니다.</p><p><strong>탱커+투석차:</strong> 망치&방패+투석차 영상의 마지막 49초 구간에서 HP 75 감소, 피해 표시 33회(그중 피해 3이 21회)였습니다. 투석차 정책은 이 구간의 피해 3 타격에 +1을 적용한 관측 빈도로 추정합니다. 영상 한 구간을 다른 편제나 전투에 적용하는 값은 추정치입니다.</p><p>공성의 달인 30%는 타격마다 +1이 붙는 기대값으로 계산합니다. 발동이 무작위라 실전 결과는 달라집니다. 영상 분석의 51초 이동 기준 역산값은 해당 전투 장면의 사후 재구성이지 다음 전투를 보장하는 수치는 아닙니다.</p></details></section></section>
+<details><summary>계산 기준과 실측 근거</summary><p><strong>예상 출격 HP = 초소 피해량/초 × (총 이동시간 − 2초)</strong>입니다. 거리별 총 이동시간은 1칸 이동시간에 칸 수를 곱합니다. 2초 보정은 프로젝트 원장의 공타 식을 따르며, 영상만으로 보정의 정확한 원인까지 확인되지는 않았습니다.</p><p><strong>탱커만:</strong> 확인된 기준은 탱커 4마리, 28 피해/36초 = 7/9 HP/초입니다. 탱커 수 입력 없이 사용자가 요청한 9명 동시 타격 가정을 고정 적용해 1.75 HP/초로 환산합니다. 이는 4마리 피해가 인원수에 선형 비례한다는 가정이며, 9명 편제의 실측값은 아닙니다.</p><p><strong>탱커+궁병:</strong> 창&방패+화궁 영상의 마지막 정상 49초 구간에서 초소 HP가 31 감소했습니다. 사이트는 이 구간의 31/49 HP/초를 참고값으로 씁니다. 영상 편제의 병사 수가 확인되지 않았고 4탱커 기준과 통제 비교한 영상도 아니므로, 이 값으로 궁병이 탱커보다 약하다고 결론 내리거나 궁병 수에 비례해 환산하지 않습니다.</p><p><strong>탱커+투석차:</strong> 망치&방패+투석차 영상의 마지막 49초 구간에서 HP 75 감소, 피해 표시 33회(그중 피해 3이 21회)였습니다. 투석차 정책은 이 구간의 피해 3 타격에 +1을 적용한 관측 빈도로 추정합니다. 영상 한 구간을 다른 편제나 전투에 적용하는 값은 추정치입니다.</p><p>공성의 달인 30%는 타격마다 +1이 붙는 기대값으로 계산합니다. 발동이 무작위라 실전 결과는 달라집니다. 영상 분석의 51초 이동 기준 역산값은 해당 전투 장면의 사후 재구성이지 다음 전투를 보장하는 수치는 아닙니다.</p></details></section></section>
 
 <section id="page-sources" class="page panel" hidden><h2>근거 이전 세팅</h2><div id="source-content"></div><p><a href="PLANNER-MODEL.md">계산 모델</a> · <a href="README.md">사용·배포 안내</a> · <a href="TEST-RESULTS.md">검증 기록</a></p></section><footer>작성·추천·공략 출처: 사용자. 사용자 제공 NTA 정리와 정정 내용을 반영합니다.</footer></main><script>
 // GitHub 최신 추천표와 전투 기준을 유지합니다.
@@ -6066,13 +6065,12 @@ if(typeof module!=='undefined')module.exports=EquipmentSearch;
  const tileTime=$('attack-tile-time'),result=$('attack-result'),summary=$('attack-condition-summary');
  const formations=[...document.querySelectorAll('input[name="attack-formation"]')];
  const siegeMaster=$('attack-siege-master'),trebuchetPolicy=$('attack-trebuchet-policy');
- const tankCount=$('attack-tank-count'),tankCountField=$('attack-tank-count-field');
  if(!tileTime||!result||!summary||!formations.length||!siegeMaster||!trebuchetPolicy)return;
 
  // Tank-only: user-confirmed reference is four tankers, 28 damage in 36 seconds.
  // Bow and trebuchet: use the final normal 49-second windows reconstructed from videos.
  const profiles={
-  tank:{label:'탱커만',dps:28/36,hitsPerSecond:28/36,trebuchetHitsPerSecond:0,source:'탱커 4마리 기준 28/36 HP/초',caveat:'같은 공격 주기 가정으로 탱커 수에 비례 조정'},
+  tank:{label:'탱커만',dps:(28/36)*(9/4),hitsPerSecond:(28/36)*(9/4),trebuchetHitsPerSecond:0,source:'탱커 4마리 기준 28/36 HP/초를 9명 동시 타격으로 환산',caveat:'9명 값은 4마리 기준에 선형 비례를 적용한 가정이며, 9명 편제의 실측값은 아닙니다.'},
   'tank-bow':{label:'탱커 + 궁병',dps:31/49,hitsPerSecond:31/49,trebuchetHitsPerSecond:0,source:'창&방패+화궁 영상 마지막 49초: HP 31 감소',caveat:'영상의 편제 인원 미확인; 인원수 비례 환산 불가'},
   'tank-trebuchet':{label:'탱커 + 투석차',dps:75/49,hitsPerSecond:33/49,trebuchetHitsPerSecond:21/49,source:'망치&방패+투석차 영상 마지막 49초: HP 75 감소',caveat:'같은 영상 구간의 피해 표시 33회 중 피해 3이 21회'}
  };
@@ -6081,11 +6079,9 @@ if(typeof module!=='undefined')module.exports=EquipmentSearch;
   const whole=Math.round(seconds),minutes=Math.floor(whole/60),remaining=whole%60;
   return minutes?`${minutes}분 ${remaining}초`:`${whole}초`;
  };
- function resolveProfile(key,requestedTankCount=4){
+ function resolveProfile(key){
   const source=profiles[key];if(!source)return null;
-  const count=clamp(Math.floor(Number(requestedTankCount)||4),1,9);
-  const scale=key==='tank'?count/4:1;
-  return {...source,tankCount:count,dps:source.dps*scale,hitsPerSecond:source.hitsPerSecond*scale};
+  return {...source};
  }
  function estimate(profile,policies={}){
   if(!profile)return null;
@@ -6100,16 +6096,15 @@ if(typeof module!=='undefined')module.exports=EquipmentSearch;
   const selected=formations.find(input=>input.checked);
   const conditions=[];
   if(selected)conditions.push(profiles[selected.value]?.label||selected.parentElement.textContent.trim());
-  if(selected?.value==='tank'&&tankCount)conditions.push(`탱커 ${clamp(Math.floor(Number(tankCount.value)||4),1,9)}마리`);
+  if(selected?.value==='tank')conditions.push('9명 동시 타격 가정');
   if(siegeMaster.checked)conditions.push('공성의 달인 30%');
   if(trebuchetPolicy.checked)conditions.push('투석차 건물 피해 3 → 4');
   summary.textContent=conditions.length?`선택 조건: ${conditions.join(' · ')}`:'편제와 정책을 선택하면 조건이 표시됩니다.';
-  if(tankCountField)tankCountField.hidden=selected?.value!=='tank';
   const raw=tileTime.value.trim(),perTile=Number(raw);
   if(!selected){result.innerHTML='<p>먼저 공격 편제를 하나 선택하세요.</p>';return;}
   if(!raw){result.innerHTML='<p>1칸 이동시간을 입력하면 1~5칸의 초소 출격 HP를 계산합니다.</p>';return;}
   if(!Number.isFinite(perTile)||perTile<1){result.innerHTML='<strong>1칸 이동시간은 1초 이상 입력하세요.</strong>';return;}
-  const profile=resolveProfile(selected.value,tankCount?.value);
+  const profile=resolveProfile(selected.value);
   if(!profile){result.innerHTML='<p>편제 기준 자료를 확인할 수 없습니다.</p>';return;}
   const dps=estimate(profile,{siegeMaster:siegeMaster.checked,trebuchet:trebuchetPolicy.checked&&selected.value==='tank-trebuchet'});
   const rows=Array.from({length:5},(_,index)=>{
@@ -6119,7 +6114,7 @@ if(typeof module!=='undefined')module.exports=EquipmentSearch;
   const warning=trebuchetPolicy.checked&&selected.value!=='tank-trebuchet'?'<p class="muted">투석차 정책은 투석차 편제에만 반영됩니다.</p>':'';
   const exactAnchor=perTile===51&&selected.value!=='tank'&&!siegeMaster.checked&&!trebuchetPolicy.checked
     ?`<p class="muted">영상 직접 역산 확인: 총 이동 51초 조건에서 ${Math.round(profile.dps*49)} HP (마지막 49초 관측값)</p>`:'';
-  const tankNote=selected.value==='tank'?`기준 4마리에서 ${profile.tankCount}마리로 같은 공격 주기를 가정해 비례 조정했습니다.`:'';
+  const tankNote=selected.value==='tank'?profile.caveat:'';
   const bowNote=selected.value==='tank-bow'?'이 값은 특정 영상 편제의 전체 피해입니다. 탱커 4마리 기준과 같은 조건의 비교가 아니므로, 궁병이 탱커보다 약하다는 뜻이 아닙니다. 궁병 수에 따른 정확한 환산 자료는 아직 없습니다.':'';
   result.innerHTML=`<h3>거리별 초소 출격 HP</h3><p><strong>계산 기준 화력: ${dps.toFixed(3)} HP/초</strong> · ${profile.source}</p><p class="muted">${tankNote||profile.caveat}</p>${bowNote?`<p class="muted">${bowNote}</p>`:''}<div class="table-wrap"><table><thead><tr><th>거리</th><th>총 이동시간</th><th>출발할 초소 HP</th></tr></thead><tbody>${rows}</tbody></table></div>${exactAnchor}<p class="muted">출격 HP는 평균 피해로 반올림한 예상치입니다. 공격 간격과 초소 점유 판정에 따라 실제 결과는 달라질 수 있습니다.</p>${warning}`;
  }
@@ -6127,17 +6122,17 @@ if(typeof module!=='undefined')module.exports=EquipmentSearch;
   if(input.checked)formations.filter(other=>other!==input).forEach(other=>{other.checked=false;});
   calculate();
  }));
- [tileTime,tankCount,siegeMaster,trebuchetPolicy].filter(Boolean).forEach(input=>input.addEventListener('input',calculate));
+ [tileTime,siegeMaster,trebuchetPolicy].forEach(input=>input.addEventListener('input',calculate));
  [siegeMaster,trebuchetPolicy].forEach(input=>input.addEventListener('change',calculate));
  calculate();
  window.NTAAttackCalculator={
   calculate:(secondsPerTile,formation='tank',policies={})=>{
-   const profile=resolveProfile(formation,policies.tankCount);
+   const profile=resolveProfile(formation);
    if(!profile||!Number.isFinite(Number(secondsPerTile)))return [];
    const dps=estimate(profile,policies);
    return Array.from({length:5},(_,index)=>Math.max(0,Math.round(dps*Math.max(0,Number(secondsPerTile)*(index+1)-2))));
   },
-  estimateDps:(formation='tank',policies={})=>estimate(resolveProfile(formation,policies.tankCount),policies),
+  estimateDps:(formation='tank',policies={})=>estimate(resolveProfile(formation),policies),
   formatTime
  };
 })();
@@ -6184,7 +6179,7 @@ if(typeof module!=='undefined')module.exports=EquipmentSearch;
   '초소가 이 HP일 때 출발':'哨站 HP 降至此數時出發',
  };
  Object.assign(exact,{
-  '탱커 수 (1~9마리, 기준 4마리)':'坦克數量（1～9 名，基準 4 名）',
+  '9명 동시 타격 가정':'假設 9 名同時攻擊',
   '거리별 초소 출격 HP':'各距離哨站出擊 HP','출발할 초소 HP':'出發時哨站 HP',
   '영상 직접 역산 확인:':'影片直接反推確認：',
   '이 값은 특정 영상 편제의 전체 피해입니다. 탱커 4마리 기준과 같은 조건의 비교가 아니므로, 궁병이 탱커보다 약하다는 뜻이 아닙니다. 궁병 수에 따른 정확한 환산 자료는 아직 없습니다.':'此數值是特定影片編隊的總傷害，並非與 4 名坦克在相同條件下比較，因此不代表弓兵比坦克弱。目前沒有可依弓兵數量準確換算的資料。',
