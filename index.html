@@ -111,9 +111,9 @@ body{background:radial-gradient(ellipse at top,#fbf2df 0%,#eee5d1 65%);backgroun
 <details><summary>계산 기준과 실측 근거</summary><p><strong>예상 출격 HP = 초소 피해량/초 × (총 이동시간 − 2초)</strong>입니다. 거리별 총 이동시간은 1칸 이동시간에 칸 수를 곱합니다. 2초 보정은 프로젝트 원장의 공타 식을 따르며, 영상만으로 보정의 정확한 원인까지 확인되지는 않았습니다. 예를 들어 1칸 이동시간이 33초라면 탱커 기준은 (7/9)×(33−2)=24.1, 반올림해 24HP입니다.</p><p><strong>탱커만:</strong> 확인된 기준은 탱커 4마리, 28 피해/36초 = 7/9 HP/초입니다. 이전에는 4마리 기준을 9명으로 비례 확대했지만 인원수에 따라 화력이 선형 증가한다는 근거가 없어 그 확대를 제거했습니다. 9명 동시 타격은 검증된 실측값으로 취급하지 않습니다.</p><p><strong>탱커+궁병:</strong> 창&방패+화궁 영상의 마지막 정상 49초 구간에서 초소 HP가 31 감소했습니다. 사이트는 이 구간의 31/49 HP/초를 참고값으로 씁니다. 영상 편제의 병사 수가 확인되지 않았고 4탱커 기준과 통제 비교한 영상도 아니므로, 이 값으로 궁병이 탱커보다 약하다고 결론 내리거나 궁병 수에 비례해 환산하지 않습니다.</p><p><strong>탱커+투석차:</strong> 망치&방패+투석차 영상의 마지막 49초 구간에서 HP 75 감소, 피해 표시 33회(그중 피해 3이 21회)였습니다. 투석차 정책은 이 구간의 피해 3 타격에 +1을 적용한 관측 빈도로 추정합니다. 영상 한 구간을 다른 편제나 전투에 적용하는 값은 추정치입니다.</p><p>공성의 달인 30%는 타격마다 +1이 붙는 기대값으로 계산합니다. 발동이 무작위라 실전 결과는 달라집니다. 영상 분석의 51초 이동 기준 역산값은 해당 전투 장면의 사후 재구성이지 다음 전투를 보장하는 수치는 아닙니다.</p></details></section></section>
 
 <section id="page-sources" class="page panel" hidden><h2>근거 이전 세팅</h2><div id="source-content"></div><p><a href="PLANNER-MODEL.md">계산 모델</a> · <a href="README.md">사용·배포 안내</a> · <a href="TEST-RESULTS.md">검증 기록</a></p></section><footer>작성·추천·공략 출처: 사용자. 사용자 제공 NTA 정리와 정정 내용을 반영합니다.</footer></main><script>
-// GitHub 최신 추천표와 전투 기준을 유지합니다.
+// 현행 통합 마스터와 사용자 정정·패치. 보관 도감은 재생성 입력으로만 사용.
 const PROJECT_DATA = {
-  "version": "2026-10-08",
+  "version": "2026-10-19",
   "units": [
     {
       "name": "강화 쇠뇌",
@@ -538,7 +538,7 @@ const PROJECT_DATA = {
       "range": 1,
       "speed": 4,
       "source": "https://acer-wiki.web.app/soldiers/%EA%B8%B0%EB%B3%91_%EB%8C%80%EB%8F%84",
-      "details": "[기병(대도)]\n• 시작분노: 2 / 최대분노: 4\n• 주력 스킬: 찍기 (대상에게 [[계수]%*공] 추가 고정 피해, 미변경 시 연속 중첩)\n• 보조 특성: -\n",
+      "details": "[기병(대도)]\n• 시작분노: 2 / 최대분노: 4\n• 주력 스킬: 찍기 (공격력의20~30% 추가 고정 피해, 같은 대상에게 찍기 시전 시 중첩, 대상 변경까지 유지)\n• 보조 특성: -\n",
       "skillTables": [
         [
           [
@@ -547,27 +547,27 @@ const PROJECT_DATA = {
           ],
           [
             "1",
-            "대상을 찍어 [15% × 공격력]에 해당하는 추가 고정 피해를 입힌다. 같은 대상을 벨 때마다 공격 대상이 변경될 때까지 추가 고정 피해가 중첩된다."
+            "찍기: 공격력의 20% 추가 고정 피해. 동일 대상에게 찍기를 시전하면 중첩, 대상 변경까지 유지."
           ],
           [
             "2",
-            "대상을 찍어 [20% × 공격력]에 해당하는 추가 고정 피해를 입힌다. 같은 대상을 벨 때마다 공격 대상이 변경될 때까지 추가 고정 피해가 중첩된다."
+            "찍기: 공격력의 22% 추가 고정 피해. 동일 대상에게 찍기를 시전하면 중첩, 대상 변경까지 유지."
           ],
           [
             "3",
-            "대상을 찍어 [25% × 공격력]에 해당하는 추가 고정 피해를 입힌다. 같은 대상을 벨 때마다 공격 대상이 변경될 때까지 추가 고정 피해가 중첩된다."
+            "찍기: 공격력의 24% 추가 고정 피해. 동일 대상에게 찍기를 시전하면 중첩, 대상 변경까지 유지."
           ],
           [
             "4",
-            "대상을 찍어 [30% × 공격력]에 해당하는 추가 고정 피해를 입힌다. 같은 대상을 벨 때마다 공격 대상이 변경될 때까지 추가 고정 피해가 중첩된다."
+            "찍기: 공격력의 26% 추가 고정 피해. 동일 대상에게 찍기를 시전하면 중첩, 대상 변경까지 유지."
           ],
           [
             "5",
-            "대상을 찍어 [35% × 공격력]에 해당하는 추가 고정 피해를 입힌다. 같은 대상을 벨 때마다 공격 대상이 변경될 때까지 추가 고정 피해가 중첩된다."
+            "찍기: 공격력의 28% 추가 고정 피해. 동일 대상에게 찍기를 시전하면 중첩, 대상 변경까지 유지."
           ],
           [
             "6",
-            "대상을 찍어 [40% × 공격력]에 해당하는 추가 고정 피해를 입힌다. 같은 대상을 벨 때마다 공격 대상이 변경될 때까지 추가 고정 피해가 중첩된다."
+            "찍기: 공격력의 30% 추가 고정 피해. 동일 대상에게 찍기를 시전하면 중첩, 대상 변경까지 유지."
           ]
         ]
       ],
@@ -1058,48 +1058,48 @@ const PROJECT_DATA = {
           "level": 1,
           "hp": 212,
           "attack": [
-            9,
-            9
+            10,
+            10
           ]
         },
         {
           "level": 2,
           "hp": 261,
           "attack": [
-            12,
-            12
+            14,
+            14
           ]
         },
         {
           "level": 3,
           "hp": 321,
           "attack": [
-            15,
-            15
+            18,
+            18
           ]
         },
         {
           "level": 4,
           "hp": 395,
           "attack": [
-            18,
-            18
+            22,
+            22
           ]
         },
         {
           "level": 5,
           "hp": 486,
           "attack": [
-            21,
-            21
+            26,
+            26
           ]
         },
         {
           "level": 6,
           "hp": 598,
           "attack": [
-            24,
-            24
+            30,
+            30
           ]
         }
       ],
@@ -2034,7 +2034,7 @@ const PROJECT_DATA = {
       "stats": [
         {
           "level": 1,
-          "hp": 177,
+          "hp": 208,
           "attack": [
             9,
             9
@@ -2042,7 +2042,7 @@ const PROJECT_DATA = {
         },
         {
           "level": 2,
-          "hp": 219,
+          "hp": 258,
           "attack": [
             11,
             11
@@ -2050,7 +2050,7 @@ const PROJECT_DATA = {
         },
         {
           "level": 3,
-          "hp": 272,
+          "hp": 320,
           "attack": [
             14,
             14
@@ -2058,7 +2058,7 @@ const PROJECT_DATA = {
         },
         {
           "level": 4,
-          "hp": 337,
+          "hp": 397,
           "attack": [
             17,
             17
@@ -2066,7 +2066,7 @@ const PROJECT_DATA = {
         },
         {
           "level": 5,
-          "hp": 418,
+          "hp": 492,
           "attack": [
             21,
             21
@@ -2074,7 +2074,7 @@ const PROJECT_DATA = {
         },
         {
           "level": 6,
-          "hp": 518,
+          "hp": 610,
           "attack": [
             26,
             26
@@ -2577,7 +2577,7 @@ const PROJECT_DATA = {
           8
         ],
         "source": "https://acer-wiki.web.app/equipment/%EB%A7%9D%EC%B9%98",
-        "description": " 충돌: 부딪친 대상을 1턴 동안 기절시킨다. "
+        "description": "충돌: 부딪친 최대4명의 대상을1턴 동안 추가로 기절시킨다."
       },
       "iconSource": "https://acer-wiki.web.app/images/soldiers/roster_icons/%EC%A4%91%EA%B8%B0%EB%B3%91.png"
     },
@@ -2955,7 +2955,7 @@ const PROJECT_DATA = {
           8
         ],
         "source": "https://acer-wiki.web.app/equipment/%ED%99%94%EA%B6%81",
-        "description": " 화염 발동 시 아군 화염 연쇄 발동 및 피해 20% 증폭 "
+        "description": "요원: 화염 발동 시 주변 아군의 화염을 추가 발동. 1회 추가 발동마다 해당 회차 화염 피해20% 증가. 연쇄 범위·중복 제한은 미확인."
       },
       "iconSource": "https://acer-wiki.web.app/images/soldiers/roster_icons/%ED%99%94%EA%B6%81.png"
     }
@@ -4173,10 +4173,10 @@ const PROJECT_DATA = {
       "hp_range": "[50-100]",
       "attack_range": "[4-10]",
       "ability_name": "공격력",
-      "ability_summary": "불화살후 아군불이20~50% 확률로 적방향1칸 확산",
+      "ability_summary": "불화살 발사 후 아군 땅의 불이15~30%확률로 적군 방향1칸 확산",
       "source_url": "https://acer-wiki.web.app/hero/%EC%9C%A1%EC%86%90_%28%EB%B0%B1%EC%96%B8%29",
       "classification": "누락",
-      "evidence_kind": "사이트 직접 확인·요약",
+      "evidence_kind": "사용자 제공 2026-10-19 패치",
       "game_verified": false,
       "nta_location": "DB:473-754 (재능만 수록); System:414-417 (일반 설명)",
       "note": "기존 고유 고급 재능과 별개 필드. 영웅 능력을 재능 대신 덮어쓰지 않음"
@@ -4593,53 +4593,54 @@ const PROJECT_DATA = {
       "name": "쥐",
       "hp": 1166,
       "atk": 66,
-      "speed": 9,
-      "range": 6,
-      "movement": 0,
       "dr": 0.7,
       "ranged": true,
       "kind": "boss",
       "level": 8,
-      "notes": "전염병: 2칸 내 피격 시 최대 HP 5% 고정 피해 중첩"
+      "notes": "전염병: 2칸 내 피격 시 최대 HP 5% 고정 피해 중첩",
+      "speed": 9,
+      "range": 6,
+      "movement": 0
     },
     "gorilla": {
       "name": "고릴라",
       "hp": 1002,
       "atk": 88,
-      "speed": 9,
-      "range": 6,
-      "movement": 0,
       "dr": 0.7,
       "ranged": true,
       "kind": "boss",
       "level": 8,
-      "notes": "격노: 다음 2회 300% 공격, 주변 50% 추가 고정 피해"
+      "notes": "격노: 다음 2회 300% 공격, 주변 50% 추가 고정 피해",
+      "speed": 9,
+      "range": 6,
+      "movement": 0
     },
     "goat": {
       "name": "염소",
       "hp": 1213,
       "atk": 76,
-      "speed": 9,
-      "range": 7,
-      "movement": 0,
       "dr": 0.7,
       "ranged": true,
       "kind": "boss",
       "level": 8,
-      "notes": "적진 파괴: 피격 대상 최대 HP 15% 추가 고정 피해·기절"
+      "notes": "적진 파괴: 피격 대상 최대 HP 15% 추가 고정 피해·기절",
+      "speed": 9,
+      "range": 7,
+      "movement": 0
     },
     "leader": {
       "name": "도적 두목",
-      "hp": 10341,
+      "hp": 1034,
       "atk": 106,
-      "speed": 4,
-      "range": 6,
-      "movement": 0,
       "dr": 0.7,
       "ranged": true,
       "kind": "boss",
       "level": 10,
-      "notes": "3연타·피해 누적 증가·2칸 내 광역; 겹사 금지"
+      "notes": "3연타·피해 누적 증가·2칸 내 광역; 겹사 금지",
+      "speed": 4,
+      "range": 6,
+      "movement": 0,
+      "auditNote": "기본HP1034 사용자 정정. 공격106/공속4는 구원장값이며 영상역산공격110·표시공속6과 충돌"
     },
     "grunt6": {
       "name": "산적단 졸개 Lv.6",
@@ -5561,20 +5562,178 @@ const PROJECT_DATA = {
     }
   },
   "guideSources": [
-    "NTA_Master_V4/NTA_Master_V4.md",
-    "NTA_통합공략_2026-10-08.md",
-    "NTA_사이트대조_2026-10-08/등급표_공략_추가조사.md",
-    "공략 작성 편집: 수정수정수정.docx"
+    "NTA_통합마스터.md"
   ],
+  "combatRules": {
+    "equalSpeed": "선두 부대부터, 부대 내 왼쪽 슬롯부터",
+    "distance": "맨해튼 거리",
+    "blockedRage": "보호막 전부 흡수·회피·Miss는 피격 분노 없음(공략 기록, 검증 대기)",
+    "bossTarget": "두목 최근접 후보 중 무작위, 같은 대상3연타(사용자 확정)",
+    "skillRage": "다음 본인 행동에 사용, 사용 후 0, 다단 스킬 1회 판정",
+    "beginnerRageRetention": "초급 스킬후40%확률 분노1보류; 확정1 또는 평균0.4분노를 실제문턱과 동일시하지 않음"
+  },
+  "bossRage": {
+    "leader": {
+      "start": 4,
+      "max": 6
+    },
+    "gorilla": {
+      "start": 4,
+      "max": 6
+    },
+    "rat": {
+      "start": 0,
+      "max": 0
+    },
+    "goat": {
+      "start": 4,
+      "max": 8
+    }
+  },
   "recommendationExclusions": {
     "groups": {
-      "궁병": ["술 조롱박", "정심회", "덩굴 방패", "사슬갑옷", "구리 방패", "황월", "무쇠 방패", "흑요석 갑옷", "피해 반사 갑옷", "군기", "태양 갑옷", "금 사슬갑옷", "호심경", "옥패", "분노의 허리띠", "회피 신발", "현목 영락", "명광 갑옷", "적금순"]
+      "궁병": [
+        "술 조롱박",
+        "정심회",
+        "덩굴 방패",
+        "사슬갑옷",
+        "구리 방패",
+        "황월",
+        "무쇠 방패",
+        "흑요석 갑옷",
+        "피해 반사 갑옷",
+        "군기",
+        "태양 갑옷",
+        "금 사슬갑옷",
+        "호심경",
+        "옥패",
+        "분노의 허리띠",
+        "회피 신발",
+        "현목 영락",
+        "명광 갑옷",
+        "적금순"
+      ]
     },
     "units": {
-      "궁기병": ["술 조롱박", "정심회", "덩굴 방패", "사슬갑옷", "구리 방패", "황월", "무쇠 방패", "흑요석 갑옷", "피해 반사 갑옷", "군기", "태양 갑옷", "금 사슬갑옷", "호심경", "옥패", "분노의 허리띠", "회피 신발", "현목 영락", "명광 갑옷", "적금순"],
-      "맥도": ["술 조롱박", "정심회", "덩굴 방패", "사슬갑옷", "구리 방패", "황월", "무쇠 방패", "흑요석 갑옷", "피해 반사 갑옷", "군기", "태양 갑옷", "금 사슬갑옷", "호심경", "옥패", "분노의 허리띠", "회피 신발", "현목 영락", "명광 갑옷", "적금순"],
-      "장과": ["술 조롱박", "정심회", "덩굴 방패", "사슬갑옷", "구리 방패", "황월", "무쇠 방패", "흑요석 갑옷", "피해 반사 갑옷", "군기", "태양 갑옷", "금 사슬갑옷", "호심경", "옥패", "분노의 허리띠", "회피 신발", "현목 영락", "명광 갑옷", "적금순"],
-      "긴 창": ["술 조롱박", "정심회", "덩굴 방패", "사슬갑옷", "구리 방패", "황월", "무쇠 방패", "흑요석 갑옷", "피해 반사 갑옷", "군기", "태양 갑옷", "금 사슬갑옷", "호심경", "옥패", "분노의 허리띠", "회피 신발", "현목 영락", "명광 갑옷", "적금순"]
+      "궁기병": [
+        "술 조롱박",
+        "정심회",
+        "덩굴 방패",
+        "사슬갑옷",
+        "구리 방패",
+        "황월",
+        "무쇠 방패",
+        "흑요석 갑옷",
+        "피해 반사 갑옷",
+        "군기",
+        "태양 갑옷",
+        "금 사슬갑옷",
+        "호심경",
+        "옥패",
+        "분노의 허리띠",
+        "회피 신발",
+        "현목 영락",
+        "명광 갑옷",
+        "적금순"
+      ],
+      "맥도": [
+        "술 조롱박",
+        "정심회",
+        "덩굴 방패",
+        "사슬갑옷",
+        "구리 방패",
+        "황월",
+        "무쇠 방패",
+        "흑요석 갑옷",
+        "피해 반사 갑옷",
+        "군기",
+        "태양 갑옷",
+        "금 사슬갑옷",
+        "호심경",
+        "옥패",
+        "분노의 허리띠",
+        "회피 신발",
+        "현목 영락",
+        "명광 갑옷",
+        "적금순"
+      ],
+      "장과": [
+        "술 조롱박",
+        "정심회",
+        "덩굴 방패",
+        "사슬갑옷",
+        "구리 방패",
+        "황월",
+        "무쇠 방패",
+        "흑요석 갑옷",
+        "피해 반사 갑옷",
+        "군기",
+        "태양 갑옷",
+        "금 사슬갑옷",
+        "호심경",
+        "옥패",
+        "분노의 허리띠",
+        "회피 신발",
+        "현목 영락",
+        "명광 갑옷",
+        "적금순"
+      ],
+      "긴 창": [
+        "술 조롱박",
+        "정심회",
+        "덩굴 방패",
+        "사슬갑옷",
+        "구리 방패",
+        "황월",
+        "무쇠 방패",
+        "흑요석 갑옷",
+        "피해 반사 갑옷",
+        "군기",
+        "태양 갑옷",
+        "금 사슬갑옷",
+        "호심경",
+        "옥패",
+        "분노의 허리띠",
+        "회피 신발",
+        "현목 영락",
+        "명광 갑옷",
+        "적금순"
+      ]
+    }
+  },
+  "patch20261019": {
+    "source": "사용자 제공 패치 공지",
+    "date": "2026-10-19",
+    "beginnerRageRetention": {
+      "chance": 0.4,
+      "amount": 1
+    },
+    "broadswordSlash": {
+      "range": [
+        0.2,
+        0.3
+      ],
+      "perLevel": [
+        0.2,
+        0.22,
+        0.24,
+        0.26,
+        0.28,
+        0.3
+      ],
+      "stackScope": "동일 개체가 같은 대상에게 찍기 시전, 대상 변경까지",
+      "intermediateLevelsVerified": true,
+      "coefficientSource": "사용자 확정: Lv1 20%, 이후 레벨당2%포인트 증가"
+    },
+    "summoning": {
+      "oldBudgetsReusable": false,
+      "newRate": null,
+      "newPityCount": null
+    },
+    "rewardPoints": {
+      "dailyRecovery": 50,
+      "cap": null,
+      "initialGrantUnchanged": true
     }
   },
   "author": "사용자",
@@ -5596,30 +5755,19 @@ const PROJECT_DATA = {
       "note": "진입 시점·배치·행동 순서의 세부 조건은 별도 확인 필요. 전역 최소 병력으로 확정하지 않음."
     }
   ],
-  "combatRules": {
-    "equalSpeed": "선두 부대부터, 부대 내 왼쪽 슬롯부터",
-    "distance": "맨해튼 거리",
-    "blockedRage": "보호막 전부 흡수·회피·Miss는 피격 분노 없음(공략 기록, 검증 대기)",
-    "bossTarget": "두목 최근접 무작위(사용자 최신 정정)",
-    "skillRage": "다음 본인 행동에 사용, 사용 후 0, 다단 스킬 1회 판정"
-  },
-  "bossRage": {
-    "leader": {
-      "start": 4,
-      "max": 6
+  "damageProcessingRules": {
+    "source": "사용자 직접 확정",
+    "hpReference": "immediatelyBeforeAttack",
+    "damageFormulaSource": "https://acer-wiki.web.app/guides/?id=CcWfP51JNscjVenmONyd",
+    "resolution": "calculateThenApplyTogetherPerAttack",
+    "dartConversion": "simultaneous",
+    "shields": {
+      "differentTypes": "independent",
+      "sameType": "nonstacking",
+      "sameTypeRefresh": "unspecified",
+      "consumptionPriority": "unspecified"
     },
-    "gorilla": {
-      "start": 4,
-      "max": 6
-    },
-    "rat": {
-      "start": 0,
-      "max": 0
-    },
-    "goat": {
-      "start": 4,
-      "max": 8
-    }
+    "engineFullyImplements": false
   }
 };
 
@@ -5746,6 +5894,18 @@ const Planner = (()=>{
    case '장궁':return [1];case '대도기병':return [1];default:return [1];
   }
  }
+ function broadswordCoefficient(level,conservative=true){
+  const patch=data.patch20261019?.broadswordSlash;
+  if(!patch)return .1+.05*level;
+  return patch.perLevel[level-1]??patch.range[conservative?0:1];
+ }
+ function broadswordStack(actor,member,target,coefficient,cast){
+  actor.slashStates??=new Map();
+  let state=actor.slashStates.get(member);
+  if(!state||state.target!==target){state={target,value:0};actor.slashStates.set(member,state);}
+  if(!cast)return 0;
+  state.value+=coefficient;return state.value;
+ }
  function combat(cfg,names,q,{trace=false}={}){
   if(cfg.heroes){if(!Array.isArray(cfg.heroes)||cfg.heroes.length<1||cfg.heroes.length>4)throw Error('영웅은 1~4명까지 출전할 수 있습니다.');if(new Set(cfg.heroes.map(h=>h.name)).size!==cfg.heroes.length)throw Error('영웅 중복 출전 불가');const h=cfg.heroes[0];cfg={...cfg,heroName:h.name,heroUnit:h.unit,heroLevel:h.level,heroHp:h.hp,heroAtk:h.atk,heroRageStart:h.rageStart,heroRageMax:h.rageMax,skillMul:h.skillMul,heroDr:h.dr,heroExposure:h.exposure,heroItems:h.items,heroStats:h.stats,heroEffects:h.effects,heroRolls:h.rolls,heroWeaponHp:h.weaponHp,heroWeaponAtk:h.weaponAtk};if(cfg.mode==='hero'){cfg={...cfg,unit:h.unit,level:h.level,baseDr:h.dr,itemStats:h.stats,effectValues:h.effects,itemRolls:h.rolls,weaponHp:h.weaponHp,weaponAtk:h.weaponAtk};names=h.items;}}
 
@@ -5828,7 +5988,10 @@ const Planner = (()=>{
       const crit=selected.conservative?1:1+selected.crit*(selected.critMul-1);
       const base=(atk*k+selected.current*e.hpNow)*(1+selected.up+(policySet.has("파죽지세")&&u.group!=="병기"?Math.max(0,L-e.level)*.1:0)+(fresh?selected.whip:0));
       let fixedHit=base*selected.conv*crit*actions;let hit=base*(selected.conv+(1-selected.conv)*(1-dr))*crit*actions;
-      if(!selected.hero&&skill&&u.name==='대도기병'){selected.cumulative=(selected.cumulative||0)+.1+.05*L;hit+=atk*selected.cumulative}
+      if(!selected.hero&&u.name==='대도기병'){
+       const extra=atk*broadswordStack(selected,i,e,broadswordCoefficient(L,selected.conservative),skill);
+       hit+=extra;fixedHit+=extra;
+      }
       if(!selected.hero&&skill&&u.name==='검기병')hit+=Math.max(0,e.hp-e.hpNow)*.1;
       if(!selected.hero&&u.name==='쇠뇌차'){const pct=cfg.pierce/100;hit+=e.hp*pct*(cfg.pierceFixed?1:1-dr);if(cfg.pierceFixed)fixedHit+=e.hp*pct}
       const manualFixed=e.hp*selected.fixedPct+selected.fixedFlat;hit+=manualFixed;fixedHit+=manualFixed;
@@ -5859,6 +6022,13 @@ const Planner = (()=>{
   const frontEnd=victim.hpNow-Math.max(0,victim.pending-victim.shieldNow),backEnd=selected.hpNow-Math.max(0,selected.pending-selected.shieldNow);
   const siegeEnd=siege?siege.hpNow-Math.max(0,siege.pending-siege.shieldNow):null;const heroEnd=companion?companion.hpNow-Math.max(0,companion.pending-companion.shieldNow):null;const casualties=roster.reduce((a,z)=>a+z.losses+(z.hpNow>0&&z.hpNow-Math.max(0,z.pending-z.shieldNow)<=0?1:0),0);const success=cleared&&casualties===0&&frontEnd>0&&backEnd>0&&(siegeEnd===null||siegeEnd>0)&&(heroEnd===null||heroEnd>0)&&extraHeroes.every(h=>h.hpNow-Math.max(0,h.pending-h.shieldNow)>0);
   const warnings=[...new Set(roster.flatMap(z=>z.warnings||[]))];
+  if(data.patch20261019){
+   const dao=roster.filter(z=>z.unit.name==='대도기병');
+   if(dao.length)warnings.push('대도 찍기는 개체·대상별 중첩, 대상 변경 시 초기화하는 기본 규칙을 반영. 언월도50% 비축·이전 효과는 미반영입니다.');
+   if(roster.some(z=>z.unit.name==='화궁'))warnings.push('10/19 화궁 요원 연쇄·회차별20% 증가와 육손15~30% 확산은 격자 연쇄 미구현으로 계산에 반영되지 않습니다.');
+   if(roster.some(z=>z.unit.name==='중기병'))warnings.push('10/19 중기병 전용충돌 최대4명·1턴 추가기절은 경로·기절대상 미재현으로 계산에 반영되지 않습니다.');
+   if(roster.some(z=>z.hero))warnings.push('10/19 초급 분노1보류는40%확률입니다. 영웅 재능 수동보정에 확정1보류를 적용하면 안 됩니다.');
+  }
   warnings.push('병종 제어·광역·전용장비 일부는 단순화: 상세 모델 문서 참고');
   if(enemies.some(e=>e.kind==='boss'&&e.id!=='leader'&&e.rageMax===null))warnings.push('3렙지 보스 시작/최대 분노 미입력: 스킬 주기 가정으로 계산. 확정 무손실 판정 아님');
   if(memberOrder.length)warnings.push('개별 공속·동률 좌우 슬롯의 아군 행동 순서를 반영했습니다. 전장 좌표·사거리 내 대상 우선·무작위 광역의 실제 배치는 미재현하여 조건부 손실입니다.');else warnings.push('개체별 공속·부대 내 좌우 순서·최근접 무작위 타깃·2칸 최대8명 광역은 아직 미재현. 피격 비율을 사용한 조건부 손실');
@@ -5879,7 +6049,7 @@ const Planner = (()=>{
  function recommend(unit){const b=buildOpinion(unit);if(unitMap[unit]?.group==='병기'||b.recommendationDisabled)return [];const list=[...new Set([...(mandatory(unit)?['유성추']:[]),...b.core,...b.recommended])].filter(n=>itemMap[n]&&!recommendationExcluded(unit,n));const first=list.find(n=>fixedDamageItems.has(n));return [...list.filter(n=>!fixedDamageItems.has(n)||n===first),...list.filter(n=>fixedDamageItems.has(n)&&n!==first)].slice(0,8);}
  function buildScore(unit,names){const b=buildOpinion(unit);if(b.recommendationDisabled)return 0;return names.reduce((s,n)=>s+(recommendationExcluded(unit,n)?0:b.core.includes(n)?6:b.recommended.includes(n)?3:b.useful.includes(n)?1:(b.alternative||[]).includes(n)?0.5:0),0)+(mandatory(unit)&&names.includes('유성추')?10:0);}
  function combos(pool,candidates,random,slots){const rs=random?.length===2?[random]:pair(pool);const adds=slots===0?[[]]:slots===1?candidates.map(n=>[n]):pair(candidates);return rs.flatMap(r=>adds.filter(a=>a.every(n=>!r.includes(n))).map(a=>({random:r,crafted:a,names:[...r,...a]})))}
- return {fixedCount,prioritizeFixed,data,itemMap,unitMap,clamp,roll,pair,options,loadout,combat,recommend,mandatory,combos,recommendationCombos,optionFields,buildOpinion,buildScore,candidateItems,recommendationExcluded};
+ return {broadswordCoefficient,broadswordStack,fixedCount,prioritizeFixed,data,itemMap,unitMap,clamp,roll,pair,options,loadout,combat,recommend,mandatory,combos,recommendationCombos,optionFields,buildOpinion,buildScore,candidateItems,recommendationExcluded};
 })();
 
 
