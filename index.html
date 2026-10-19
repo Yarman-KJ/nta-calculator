@@ -6463,7 +6463,7 @@ if(typeof module!=='undefined')module.exports=EquipmentSearch;
  const sortedNames=Object.entries(names).sort((a,b)=>b[0].length-a[0].length);
  const textOriginal=new WeakMap(),attrOriginal=new WeakMap();
  const queryLang=new URLSearchParams(location.search).get('lang');
- let lang=queryLang==='zh-TW'?'zh-TW':(localStorage.getItem('nta-language')||'ko');
+ let lang=queryLang==='zh-TW'?'zh-TW':queryLang==='ko'?'ko':(localStorage.getItem('nta-language')||'ko');
  function convert(s){if(lang==='ko')return s;const normalized=s.replace(/\s+/g,' ').trim();if(exact[s]||exact[normalized])return exact[s]||exact[normalized];let out=s;const protectedNames=[];for(const [k,v] of sortedNames){const token=`\uE000${protectedNames.length}\uE001`;if(out.includes(k)){out=out.split(k).join(token);protectedNames.push([token,v]);}}for(const [k,v] of sortedTerms)out=out.split(k).join(v);for(const [token,value] of protectedNames)out=out.split(token).join(value);return out;}
  function setText(n){if(!textOriginal.has(n))textOriginal.set(n,n.nodeValue);const v=convert(textOriginal.get(n));if(n.nodeValue!==v)n.nodeValue=v;}
  function visit(root){if(root.nodeType===3){setText(root);return;}const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;while((n=walker.nextNode()))setText(n);const nodes=root.nodeType===1?[root,...root.querySelectorAll('*')]:[];for(const e of nodes)for(const a of ['aria-label','title','placeholder','alt'])if(e.hasAttribute(a)){let saved=attrOriginal.get(e);if(!saved){saved={};attrOriginal.set(e,saved);}if(!(a in saved))saved[a]=e.getAttribute(a);const v=convert(saved[a]);if(e.getAttribute(a)!==v)e.setAttribute(a,v);}}
