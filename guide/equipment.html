@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>장비 구성 공략</title>
+<style>
+  :root{color-scheme:light;--ink:#292b2e;--muted:#716c61;--line:#e5ddcc;--paper:#fffdf7;--soft:#f4f0e5;--green:#52694a;--gold:#a17a34}
+  *{box-sizing:border-box}body{margin:0;background:#f4f3ef;color:var(--ink);font-family:"Malgun Gothic",Arial,sans-serif;line-height:1.75}
+  article{max-width:900px;margin:24px auto;padding:clamp(20px,4vw,38px);background:#fff;border:1px solid #e8e2d5;border-radius:14px}
+  header{margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--line)}h1{margin:0;color:var(--green);font-size:clamp(25px,4vw,32px);line-height:1.3}header p{margin:10px 0 0;color:var(--muted)}
+  section{margin:26px 0 0}h2{margin:0 0 10px;color:#465c3e;font-size:21px;line-height:1.4}p{margin:9px 0}strong{color:#3e4f38}
+  .item{display:inline-flex;align-items:center;gap:6px;margin:2px 3px;padding:3px 9px 3px 5px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);font-size:.92em;font-weight:700;line-height:1.45;white-space:nowrap;vertical-align:middle}
+  .item img{width:27px;height:27px;object-fit:contain;image-rendering:pixelated}.item img[hidden]{display:none}
+  .note{margin:14px 0;padding:12px 15px;border-left:4px solid var(--gold);border-radius:4px;background:var(--soft)}
+  .formula{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0}.formula>div{padding:12px;border:1px solid var(--line);border-radius:10px;background:#fbfaf5}.formula b{display:block;margin-bottom:4px;color:var(--green)}
+  .ending{margin-top:24px;padding:16px;border-radius:12px;background:#eef2e9;font-weight:700}
+  @media(max-width:600px){body{background:#fff}article{margin:0;padding:20px 16px;border:0;border-radius:0}.formula{grid-template-columns:1fr;gap:7px}section{margin-top:22px}.item{gap:5px;padding-right:8px;font-size:.88em}.item img{width:24px;height:24px}}
+</style>
+<body><article>
+  <header>
+    <h1>장비</h1>
+    <p>병종의 역할과 전투 방식에 맞춰 장비를 조합하는 기준을 정리했습니다. 모든 병종에 통하는 한 가지 정답은 없습니다.</p>
+  </header>
+
+  <section>
+    <h2>탱커: 피해 감소를 바탕으로 버티기</h2>
+    <p>탱커는 <strong>원거리 피해 감소</strong>를 바탕으로 회복을 챙기고, 필요한 경우 보호막을 보조로 더합니다. 예를 들어 <span class="item"><img src="https://acer-wiki.web.app/images/equipment/icons/019_%EB%8D%A9%EC%BF%A8_%EB%B0%A9%ED%8C%A8.png" alt="덩굴 방패">덩굴 방패</span>로 원거리 공격을 줄이고, <span class="item"><img src="https://acer-wiki.web.app/images/equipment/icons/008_%EC%88%A0_%EC%A1%B0%EB%A1%B1%EB%B0%95.png" alt="술 조롱박">술 조롱박</span>이나 <span class="item"><img src="https://acer-wiki.web.app/images/equipment/icons/024_%EC%A0%95%EC%8B%AC%ED%9A%8C.png" alt="정심회">정심회</span>처럼 회복을 돕는 장비를 조합할 수 있습니다.</p>
+    <p>피해 감소 장비만 네 칸 채워도 고정 피해를 충분히 버티지 못할 수 있습니다. 고정 피해는 일반 피해 감소와 별도로 계산되므로, 회복과 보호 효과까지 고려해 여러 종류의 공격에 대응하는 편이 안정적입니다.</p>
+    <div class="note"><strong>보호막은 우선순위가 낮습니다.</strong> 다른 장비와 비교했을 때 장비 칸을 쓴 만큼의 효율을 맞추기 어려워, 기본 구성보다는 필요한 상황에서 보조로 선택합니다. <span class="item"><img src="https://acer-wiki.web.app/images/equipment/icons/010_%EA%B5%AC%EB%A6%AC_%EB%B0%A9%ED%8C%A8.png" alt="구리 방패">구리 방패</span><span class="item"><img src="https://acer-wiki.web.app/images/equipment/icons/011_%ED%99%A9%EC%9B%94.png" alt="황월">황월</span><span class="item"><img src="https://acer-wiki.web.app/images/equipment/icons/025_%EC%A0%81%EA%B8%88%EC%88%9C.png" alt="적금순">적금순</span></div>
+  </section>
+
+  <section>
+    <h2>딜러: 공격 피해와 고정 피해를 나눠 챙기기</h2>
+    <p>일반적인 딜러는 <strong>공격 피해를 높이는 장비 하나와 고정 피해 장비 하나</strong>를 기본으로 생각합니다. 남은 칸은 공격 기회, 부족한 피해, 생존 중 현재 조합에 필요한 효과로 채웁니다.</p>
+    <p>공격 피해를 키우는 선택지로 <span class="item"><img src="https://acer-wiki.web.app/images/equipment/icons/002_%ED%9A%8C%EC%8B%AC%EA%B2%80.png" alt="회심검">회심검</span> 등을 볼 수 있고, 고정 피해 장비는 <span class="item"><img src="https://acer-wiki.web.app/images/equipment/icons/018_%EB%8B%A4%ED%8A%B8.png" alt="다트">다트</span>, <span class="item"><img src="https://acer-wiki.web.app/images/equipment/icons/028_%EA%B0%88%EA%B3%A0%EB%A6%AC%EA%B2%80.png" alt="갈고리검">갈고리검</span>, <span class="item"><img src="https://acer-wiki.web.app/images/equipment/icons/022_%EA%B1%B4%EA%B3%A4%EB%8F%84.png" alt="건곤도">건곤도</span>처럼 발동 방식이 서로 다릅니다. 병종의 공격 방식에 맞는지 확인하고 골라야 합니다.</p>
+  </section>
+
+  <section>
+    <h2>근거리 딜탱: 공격을 이어갈 생존력</h2>
+    <p>근거리 딜탱은 장비 칸이 빠듯해 고정 피해까지 챙기기 어려울 수 있습니다. 이때는 <strong>딜 장비 하나와 회복 장비 하나</strong>를 기본으로 두고, 나머지 두 칸은 탱킹·회복·공격 중 필요한 효과를 조합합니다.</p>
+    <p>고정 피해 대신 생존을 보완해 오래 버티면서 공격하는 방식입니다. 예를 들어 <span class="item"><img src="https://acer-wiki.web.app/images/equipment/icons/013_%ED%9D%A1%ED%98%88%EA%B2%80.png" alt="흡혈검">흡혈검</span>처럼 공격과 회복을 잇는 장비를 고려할 수 있습니다. 상대 공격이 강하면 생존을, 공격 기회가 충분하면 피해를 더 보완합니다.</p>
+  </section>
+
+  <section>
+    <h2>스킬 딜러: 스킬의 강점을 키우기</h2>
+    <p>화궁처럼 스킬 피해가 중요한 병종은 공격력을 높여 스킬의 피해를 키우는 방향으로 구성합니다. <span class="item"><img src="https://acer-wiki.web.app/images/equipment/icons/039_%EC%8B%9C%EA%B0%84_%EA%B9%83%EB%B0%9C.png" alt="시간 깃발">시간 깃발</span>과 <span class="item"><img src="https://acer-wiki.web.app/images/equipment/icons/006_%EC%9A%A9%EC%97%B0%EA%B2%80.png" alt="용연검">용연검</span>을 바탕으로 공격력을 더할 수 있습니다. <span class="item"><img src="https://acer-wiki.web.app/images/equipment/icons/004_%EC%8C%8D%EB%8F%84%EB%81%BC.png" alt="쌍도끼">쌍도끼</span>는 스킬을 더 자주 쓰도록 돕고, <span class="item"><img src="https://acer-wiki.web.app/images/equipment/icons/003_%EC%9C%A0%EC%84%B1%EC%B6%94.png" alt="유성추">유성추</span>는 사거리와 회피 대응을 보완합니다.</p>
+    <p>파밍에서는 <span class="item"><img src="https://acer-wiki.web.app/images/equipment/icons/028_%EA%B0%88%EA%B3%A0%EB%A6%AC%EA%B2%80.png" alt="갈고리검">갈고리검</span>이나 <span class="item"><img src="https://acer-wiki.web.app/images/equipment/icons/020_%EB%82%AD%EC%95%84%EB%B4%89.png" alt="낭아봉">낭아봉</span>처럼 실제 사냥에 도움이 되는 장비도 고려할 수 있습니다. 전쟁용과 파밍용은 목적에 따라 구분해서 봅니다.</p>
+  </section>
+
+  <section>
+    <h2>광역·다수 타격 스킬 딜러</h2>
+    <p>쇠뇌는 <span class="item"><img src="https://acer-wiki.web.app/images/equipment/icons/020_%EB%82%AD%EC%95%84%EB%B4%89.png" alt="낭아봉">낭아봉</span>, <span class="item"><img src="https://acer-wiki.web.app/images/equipment/icons/028_%EA%B0%88%EA%B3%A0%EB%A6%AC%EA%B2%80.png" alt="갈고리검">갈고리검</span>, <span class="item"><img src="https://acer-wiki.web.app/images/equipment/icons/003_%EC%9C%A0%EC%84%B1%EC%B6%94.png" alt="유성추">유성추</span>를 중심으로 보고, 남은 자리에 <span class="item"><img src="https://acer-wiki.web.app/images/equipment/icons/004_%EC%8C%8D%EB%8F%84%EB%81%BC.png" alt="쌍도끼">쌍도끼</span> 또는 <span class="item"><img src="https://acer-wiki.web.app/images/equipment/icons/040_%EB%AA%A8%EB%9E%98%EC%8B%9C%EA%B3%84.png" alt="모래시계">모래시계</span>를 조합하는 구성이 잘 어울립니다.</p>
+    <p>장궁에도 이 구성이 잘 맞습니다. 광역 공격으로 적 딜러를 타격할 수 있어, 상대 공격력을 활용하는 <span class="item"><img src="https://acer-wiki.web.app/images/equipment/icons/034_%EA%B5%AC%EA%B2%B8.png" alt="구겸">구겸</span>도 자주 사용합니다.</p>
+  </section>
+
+  <section>
+    <h2>사거리가 필요한 원거리 딜러</h2>
+    <p>맥도·쇠뇌·긴창·장과처럼 원거리 딜러 역할을 맡는 병종은 공격 거리와 안정성도 함께 봅니다. <strong>사거리 2~3인 병종은 유성추를 기본 후보에 반드시 포함</strong>하고, 공격 거리가 필요하거나 회피 대응이 중요한 조합에서는 먼저 고려합니다. 공격 피해와 고정 피해를 조합해 나머지 효과를 채웁니다.</p>
+  </section>
+
+  <section>
+    <h2>원거리 딜러를 잡는 병종</h2>
+    <p>검기병처럼 원거리 딜러를 잡는 역할의 병종은 <strong>가시공을 필수로 챙깁니다. 긴창도 여기에 포함됩니다.</strong> <span class="item"><img src="https://acer-wiki.web.app/images/equipment/icons/036_%EA%B0%80%EC%8B%9C%EA%B3%B5.png" alt="가시공">가시공</span>은 처치할 때 주변에 피해를 주므로, 처치를 낼 수 있는 병종과 조합할수록 효과를 살리기 좋습니다.</p>
+  </section>
+
+  <section>
+    <h2>피해 계산에서 기억할 점</h2>
+    <div class="formula">
+      <div><b>비율 피해</b>공격력과 추가 피해를 합친 뒤 피해 계수를 적용합니다.</div>
+      <div><b>피해 증가</b>피해 증가 옵션은 서로 곱하는 대신 합산합니다.</div>
+      <div><b>고정 피해</b>일반 피해 감소와 별도로 계산됩니다.</div>
+    </div>
+    <p>같은 고정 피해 장비라도 일반 공격, 처치, 스킬 등 발동 조건과 적용 대상이 다릅니다. 그러므로 장비 이름이나 분류만 보고 고르기보다, 병종의 역할과 공격 방식에 효과가 맞는지 확인해야 합니다.</p>
+  </section>
+
+  <p class="ending">매 판 달라지는 랜덤 옵션 8개와 제련 옵션을 보고, 먼저 필요한 장비를 정한 뒤 나오지 않았을 때 쓸 차선책까지 준비해두세요. 병종과 전투 목적에 맞춰 조합하면 매번 처음부터 고민하는 시간을 줄일 수 있습니다.</p>
+</article>
+<script>
+  document.querySelectorAll('.item img').forEach(img=>img.addEventListener('error',()=>{img.hidden=true;}));
+</script>
+</body></html>
