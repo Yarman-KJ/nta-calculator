@@ -6327,7 +6327,8 @@ const Planner = (()=>{
  }
  function mandatory(unit){const u=unitMap[unit];return !!u&&u.group!=='병기'&&((u.range>=2&&u.range<=3)||unit==='맥도');}
  function recommendationExcluded(unit,name){const u=unitMap[unit],rules=data.recommendationExclusions||{};return (rules.groups?.[u?.group]||[]).includes(name)||(rules.units?.[unit]||[]).includes(name);}
- function recommendationCombos(unit,all){return all.filter(c=>c.names.every(name=>!recommendationExcluded(unit,name)));}
+ const incompatibleRecommendationPairs=[['회피 신발','피해 반사 갑옷']];
+ function recommendationCombos(unit,all){return all.filter(c=>c.names.every(name=>!recommendationExcluded(unit,name))&&!incompatibleRecommendationPairs.some(([a,b])=>c.names.includes(a)&&c.names.includes(b)));}
  function buildOpinion(unit){const source=data.weaponBuilds?.[unit]||{core:[],recommended:[],useful:[]};return Object.fromEntries(['core','recommended','useful','alternative','mole'].map(k=>[k,(source[k]||[]).filter(n=>k==='mole'||!recommendationExcluded(unit,n))]).concat([['recommendationDisabled',source.recommendationDisabled===true],['author',source.author],['source',source.source],['date',source.date],['kind',source.kind]]));}
  function candidateItems(unit){return unitMap[unit]?.group==='병기'?[]:data.equipment.map(i=>i.name);}
  const fixedDamageItems=new Set(['다트','건곤도','갈고리검','분심계','가시공','현철 지팡이','태양 갑옷']);
