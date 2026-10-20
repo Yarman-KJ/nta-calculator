@@ -6132,7 +6132,7 @@ const Planner = (()=>{
      const multipliers=skillHits(selected,skill,cfgActor);
      for(const [strikeIndex,k] of multipliers.entries()){
       e=enemies.find(e=>e.hpNow>0);if(!e)break;
-      const fresh=!freshByUnit[i].has(e);let atk=selected.atk*(1+(selected.grow||0)*t)+(selected.buff?L+1:0);
+      const memberFresh=freshByUnit[i]||(freshByUnit[i]=new Set()),fresh=!memberFresh.has(e);let atk=selected.atk*(1+(selected.grow||0)*t)+(selected.buff?L+1:0);
       if(u.name==='맥도'&&!hero)atk=(selected.conservative?u.stats[L-1].attack[0]:roll(u.stats[L-1].attack,selected.q))+(selected.atk-roll(u.stats[L-1].attack,selected.q));
       const ignore=1-(1-selected.ignDr)*(u.name==='맥도'?1-L*.05:1);
       let dr=1-(1-e.dr)*(1-(u.range>2?(e.rangedDr||0):0));dr*=1-ignore;
@@ -6151,7 +6151,7 @@ const Planner = (()=>{
       if(fresh&&selected.once){const fixed=e.hp*selected.once;hit+=fixed;fixedHit+=fixed;if(i===0)selected.shieldNow+=fixed*.4*(1+(selected.shieldAmp||0))}
       const applied=harm(e,hit,fixedHit,u.range>2,strikeIndex>0);if(e.gear?.reflect&&i===0)takeHit(selected,0,(5+Math.floor(e.hp/50))*(cfg.conservative?1:e.gear.reflect),true,0,t);if(i===0)heal(selected,applied*selected.life+(selected.hitHeal||0));
       if(!selected.hero&&i===0&&skill&&u.name==='검과 방패')selected.shieldNow+=applied*.8;
-      freshByUnit[i].add(e);
+      memberFresh.add(e);
       if(i===0&&e.id==='rat'&&actorDistance<=2){if(selected===tank)tankRatStacks++;else ratStacks++;}
       if(!selected.hero&&skill&&u.name==='장검'){e.bleed=atk*(.4+.05*L);e.bleedTurns=3}
       if(e.hpNow>0&&selected.exec&&e.hpNow<e.hp*selected.exec)harm(e,e.hpNow);
