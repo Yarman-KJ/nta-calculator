@@ -44,6 +44,11 @@ body{background:radial-gradient(ellipse at top,#fbf2df 0%,#eee5d1 65%);backgroun
 .squad-presets button{border:1px solid var(--line);border-radius:8px;background:var(--soft);color:var(--ink);padding:12px 16px}
 .check{gap:12px;min-height:48px}.compact-help,.compact-policy,.hero-details{margin:20px 0}
 #make-recommendations,#analyze-boss{margin-top:12px;margin-bottom:16px}#search-status{margin:12px 0}
+.role-variant-picker{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:10px 0;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--bg)}
+.role-variant-picker>span{font-size:13px;font-weight:700;color:var(--ink);margin-right:2px}
+.role-variant-picker button[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:#fff}
+.role-note{margin:8px 0;padding:9px 11px;border-left:3px solid var(--green);background:var(--soft);border-radius:0 8px 8px 0;line-height:1.5}
+@media(max-width:600px){.role-variant-picker{gap:6px;padding:7px}.role-variant-picker button{min-height:38px}}
 @media(max-width:600px){.panel{padding:20px 16px;margin:20px 0}.fields{gap:16px;margin:18px 0}.item-search{max-width:none;margin:24px 0}.image-cards{gap:12px}.image-cards button{padding:13px 7px;min-height:116px}.unit-cards{gap:10px}.unit-cards button{padding:14px 7px}.gear-row,.squad-card,.result{padding:16px}.section-head{gap:12px}.squad-toolbar,.squad-presets{gap:12px}.info,.callout{padding:16px}}
 
 .image-cards{grid-template-columns:repeat(auto-fill,minmax(112px,1fr))}.image-cards button{word-break:keep-all;overflow-wrap:break-word}@media(max-width:600px){.image-cards{grid-template-columns:repeat(3,minmax(0,1fr))}}
@@ -5298,48 +5303,45 @@ const PROJECT_DATA = {
     "강화 쇠뇌": {
       "core": [
         "회심검",
-        "낭아봉",
-        "다트"
+        "낭아봉"
       ],
       "recommended": [
+        "다트",
         "유성추",
-        "백사 채찍",
-        "건곤도"
+        "백사 채찍"
       ],
       "useful": [
-        "월아도",
-        "용연검",
-        "모래시계"
+        "건곤도",
+        "모래시계",
+        "월아도"
       ],
-      "source": "사용자 제공 NTA 공략",
-      "date": "2026-10-03",
-      "kind": "사용자 추천 기준",
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
       "author": "사용자",
       "mole": [],
       "recommendationDisabled": false,
-      "alternative": []
+      "alternative": [],
+      "roleNote": "공격력·타격 효과를 함께 살립니다. 다트 외 고정 피해는 옵션과 전용무기 구성을 보고 더합니다."
     },
     "검과 방패": {
       "core": [
         "술 조롱박",
-        "덩굴 방패",
-        "정심회"
+        "정심회",
+        "덩굴 방패"
       ],
       "recommended": [
-        "호심경",
-        "천기산",
-        "명광 갑옷"
+        "분노의 허리띠",
+        "천기산"
       ],
       "useful": [
+        "흡혈검",
         "피해 반사 갑옷",
-        "태양 갑옷",
-        "금 사슬갑옷",
-        "회심검",
-        "갈고리검"
+        "사슬갑옷"
       ],
-      "source": "사용자 제공 NTA 공략",
-      "date": "2026-10-03",
-      "kind": "사용자 추천 기준",
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
       "author": "사용자",
       "mole": [],
       "alternative": [
@@ -5348,31 +5350,29 @@ const PROJECT_DATA = {
         "현목 영락",
         "구리 방패",
         "군기",
-        "분노의 허리띠",
         "모래시계"
       ],
-      "recommendationDisabled": false
+      "recommendationDisabled": false,
+      "roleNote": "술 조롱박·정심회·덩굴 방패가 기본 생존 세트입니다. 셋 중 하나를 빼야 한다면 술 조롱박을 상황에 맞는 탱 장비로 바꿉니다. 스택과 높은 기본 능력치가 갖춰지면 천기산 등 공격 장비도 검토합니다."
     },
     "검기병": {
       "core": [
-        "유성추",
-        "가시공"
-      ],
-      "recommended": [
+        "가시공",
         "쌍도끼",
-        "현철 지팡이",
-        "금 사슬갑옷",
         "흡혈검"
       ],
-      "useful": [
-        "모래시계",
-        "구겸",
-        "시간 깃발",
-        "백참도"
+      "recommended": [
+        "유성추",
+        "현철 지팡이"
       ],
-      "source": "사용자 제공 NTA 공략",
-      "date": "2026-10-03",
-      "kind": "사용자 추천 기준",
+      "useful": [
+        "회심검",
+        "구겸",
+        "금 사슬갑옷"
+      ],
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
       "author": "사용자",
       "mole": [
         "치료검",
@@ -5385,28 +5385,27 @@ const PROJECT_DATA = {
         "덩굴 방패"
       ],
       "recommendationDisabled": false,
-      "alternative": []
+      "alternative": [],
+      "roleNote": "원거리 딜러 대응 역할에서는 가시공을 우선합니다. 쌍도끼·흡혈검은 공격 지속과 생존을 보완합니다."
     },
     "대도기병": {
       "core": [
-        "흡혈검"
+        "시간 깃발",
+        "쌍도끼"
       ],
       "recommended": [
-        "회심검",
-        "낭아봉",
+        "모래시계",
+        "흡혈검",
         "유성추"
       ],
       "useful": [
+        "백참도",
         "가시공",
-        "시간 깃발",
-        "회피 신발",
-        "덩굴 방패",
-        "천기산",
-        "현철 지팡이"
+        "회심검"
       ],
-      "source": "사용자 제공 NTA 공략",
-      "date": "2026-10-03",
-      "kind": "사용자 추천 기준",
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
       "author": "사용자",
       "mole": [
         "치료검",
@@ -5420,36 +5419,27 @@ const PROJECT_DATA = {
       ],
       "recommendationDisabled": false,
       "alternative": [
-        "백참도",
-        "모래시계",
-        "쌍도끼",
         "용연검"
-      ]
+      ],
+      "roleNote": "시간 깃발은 공격력 옵션이 붙었을 때 핵심 가치가 높습니다. 쌍도끼는 스킬 회전이 실제로 좋아지는 경우에 사용합니다."
     },
     "기병(도끼)": {
       "core": [
-        "회심검",
+        "건곤도",
         "낭아봉"
       ],
       "recommended": [
-        "흡혈검",
-        "덩굴 방패",
-        "건곤도"
+        "회심검",
+        "흡혈검"
       ],
       "useful": [
-        "천기산",
-        "도끼",
-        "호심경",
-        "금 사슬갑옷",
-        "백참도",
-        "회피 신발",
-        "시간 깃발",
-        "현철 지팡이",
-        "모래시계"
+        "다트",
+        "덩굴 방패",
+        "금 사슬갑옷"
       ],
-      "source": "사용자 제공 NTA 공략",
-      "date": "2026-10-03",
-      "kind": "사용자 추천 기준",
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
       "author": "사용자",
       "mole": [
         "치료검",
@@ -5462,30 +5452,27 @@ const PROJECT_DATA = {
         "덩굴 방패"
       ],
       "recommendationDisabled": false,
-      "alternative": []
+      "alternative": [],
+      "roleNote": "건곤도의 주변 피해와 낭아봉의 현재 HP 비례 피해를 중심으로 구성합니다."
     },
     "창기병": {
       "core": [
-        "덩굴 방패",
         "흡혈검",
-        "천기산"
+        "덩굴 방패"
       ],
       "recommended": [
-        "도끼",
-        "환도",
-        "호심경"
+        "갈고리검",
+        "시간 깃발",
+        "쌍도끼"
       ],
       "useful": [
-        "금 사슬갑옷",
-        "현철 지팡이",
-        "회피 신발",
-        "황월",
-        "가시공",
-        "백참도"
+        "천기산",
+        "환도",
+        "유성추"
       ],
-      "source": "사용자 제공 NTA 공략",
-      "date": "2026-10-03",
-      "kind": "사용자 추천 기준",
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
       "author": "사용자",
       "mole": [
         "치료검",
@@ -5501,71 +5488,70 @@ const PROJECT_DATA = {
       "alternative": [
         "정심회",
         "구겸"
-      ]
+      ],
+      "roleNote": "흡혈과 방어를 기본으로 두고, 방어 장비 한 칸은 상대 공격 유형에 맞춥니다. 잃은 HP 비례 피해 재능이 있을 때 갈고리검 가치가 올라갑니다."
     },
     "궁기병": {
       "core": [
-        "회심검",
         "낭아봉",
-        "다트"
+        "갈고리검"
       ],
       "recommended": [
-        "갈고리검",
-        "건곤도",
-        "가시공",
-        "시간 깃발",
-        "유성추"
+        "쌍도끼",
+        "회심검",
+        "다트"
       ],
       "useful": [
-        "백참도"
+        "유성추",
+        "건곤도",
+        "현철 지팡이"
       ],
-      "source": "사용자 제공 NTA 공략",
-      "date": "2026-10-03",
-      "kind": "사용자 추천 기준",
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
       "author": "사용자",
       "mole": [],
       "recommendationDisabled": false,
       "alternative": [
         "월아도",
         "용연검"
-      ]
+      ],
+      "roleNote": "낭아봉·갈고리검 등 공격 방식에 맞는 고정 피해를 우선 검토합니다. 탱·유틸 탱 장비는 추천에서 제외합니다."
     },
     "긴 창": {
       "core": [
         "쌍도끼",
         "유성추",
-        "다트",
         "가시공"
       ],
       "recommended": [
-        "낭아봉",
-        "회심검",
+        "다트",
         "구겸"
       ],
       "useful": [
-        "현철 지팡이",
-        "모래시계",
-        "시간 깃발"
+        "낭아봉",
+        "회심검",
+        "백참도"
       ],
-      "source": "사용자 제공 NTA 공략",
-      "date": "2026-10-03",
-      "kind": "사용자 추천 기준",
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
       "author": "사용자",
       "mole": [],
       "recommendationDisabled": false,
-      "alternative": []
+      "alternative": [],
+      "roleNote": "원거리 딜러를 노리는 세팅이면 가시공을 우선합니다. 사거리 2~3 조건에 해당하면 유성추가 필수입니다."
     },
     "도끼방패": {
       "core": [
-        "덩굴 방패",
-        "술 조롱박"
-      ],
-      "recommended": [
         "흡혈검",
-        "분노의 허리띠"
+        "덩굴 방패"
       ],
+      "recommended": [],
       "useful": [
-        "환도"
+        "구겸",
+        "환도",
+        "정심회"
       ],
       "source": "사용자 제공 NTA 공략",
       "date": "2026-10-03",
@@ -5573,293 +5559,318 @@ const PROJECT_DATA = {
       "author": "사용자",
       "mole": [],
       "recommendationDisabled": false,
-      "alternative": []
+      "alternative": [],
+      "defaultVariant": "melee",
+      "variants": {
+        "melee": {
+          "label": "근접형",
+          "core": [
+            "흡혈검",
+            "덩굴 방패"
+          ],
+          "recommended": [],
+          "useful": [
+            "구겸",
+            "환도",
+            "정심회"
+          ],
+          "roleNote": "근접 운용: 흡혈검으로 공격을 이어가고 덩굴 방패로 원거리 피해를 줄입니다."
+        },
+        "throw": {
+          "label": "투척형",
+          "core": [
+            "유성추",
+            "가시공"
+          ],
+          "recommended": [],
+          "useful": [
+            "구겸",
+            "환도",
+            "정심회"
+          ],
+          "roleNote": "투척 운용: 유성추로 사거리를 확보하고 가시공으로 처치 연계를 노립니다."
+        }
+      },
+      "roleNote": "투척형과 근접형은 별도 추천입니다. 이번 판 운용 방식을 선택하세요."
     },
     "독궁": {
       "core": [
-        "갈고리검",
-        "낭아봉"
+        "쌍도끼"
       ],
       "recommended": [
-        "쌍도끼",
-        "유성추"
+        "유성추",
+        "분심계"
       ],
       "useful": [
-        "모래시계",
-        "구겸"
+        "갈고리검",
+        "현철 지팡이"
       ],
-      "source": "사용자 제공 NTA 공략",
-      "date": "2026-10-03",
-      "kind": "사용자 추천 기준",
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
       "author": "사용자",
       "mole": [],
-      "recommendationDisabled": false
+      "recommendationDisabled": false,
+      "roleNote": "중독 유지가 병종의 핵심입니다. 쌍도끼는 분노와 스킬 회전이 실제로 개선되는지 함께 봅니다.",
+      "alternative": []
     },
     "망치방패": {
       "core": [
         "술 조롱박",
         "덩굴 방패",
-        "정심회",
-        "회피 신발"
+        "정심회"
       ],
       "recommended": [
-        "구리 방패",
+        "회피 신발",
         "금 사슬갑옷"
       ],
-      "useful": [],
-      "source": "사용자 제공 NTA 공략",
-      "date": "2026-10-03",
-      "kind": "사용자 추천 기준",
+      "useful": [
+        "옥패",
+        "구리 방패",
+        "명광 갑옷"
+      ],
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
       "author": "사용자",
       "mole": [],
       "alternative": [
         "호심경",
-        "옥패",
-        "명광 갑옷",
         "군기",
         "분노의 허리띠",
         "모래시계",
         "현목 영락"
       ],
-      "recommendationDisabled": false
+      "recommendationDisabled": false,
+      "roleNote": "술 조롱박·정심회·덩굴 방패가 기본 생존 세트입니다. 술 조롱박을 빼는 상황이면 회피 신발이나 금 사슬갑옷 등으로 목적에 맞게 대체합니다."
     },
     "맥도": {
       "core": [
-        "회심검",
-        "다트",
         "유성추",
-        "시간 깃발",
-        "흡혈검"
+        "회심검"
       ],
       "recommended": [
+        "다트",
         "낭아봉",
-        "갈고리검"
+        "흡혈검"
       ],
       "useful": [
         "건곤도",
-        "백참도",
-        "현철 지팡이",
         "가시공",
-        "백사 채찍",
-        "모래시계"
+        "시간 깃발"
       ],
-      "source": "사용자 제공 NTA 공략",
-      "date": "2026-10-03",
-      "kind": "사용자 추천 기준",
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
       "author": "사용자",
       "mole": [],
       "recommendationDisabled": false,
       "alternative": [
         "혈적자",
         "천기산"
-      ]
+      ],
+      "roleNote": "유성추·회심검을 중심으로 공격 기회와 공격력을 확보합니다. 탱·유틸 탱 장비는 추천에서 제외합니다."
     },
     "무거운 방패": {
       "core": [
-        "덩굴 방패",
         "술 조롱박",
-        "태양 갑옷",
-        "정심회",
-        "피해 반사 갑옷"
+        "덩굴 방패",
+        "정심회"
       ],
       "recommended": [
+        "피해 반사 갑옷",
         "명광 갑옷"
       ],
       "useful": [
-        "회피 신발"
+        "금 사슬갑옷",
+        "옥패",
+        "호심경"
       ],
-      "source": "사용자 제공 NTA 공략",
-      "date": "2026-10-03",
-      "kind": "사용자 추천 기준",
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
       "author": "사용자",
       "mole": [],
       "alternative": [
         "구리 방패",
         "군기",
-        "금 사슬갑옷",
-        "호심경",
-        "옥패",
         "분노의 허리띠",
         "모래시계",
         "현목 영락"
       ],
-      "recommendationDisabled": false
+      "recommendationDisabled": false,
+      "roleNote": "술 조롱박·정심회·덩굴 방패가 기본 생존 세트입니다. 반사 갑옷은 반격 효율이 있는 상대에게 추천합니다."
     },
     "사냥꾼": {
-      "core": [
-        "회심검",
-        "낭아봉"
-      ],
+      "core": [],
       "recommended": [
-        "현철 지팡이",
         "유성추",
-        "쌍도끼"
-      ],
-      "useful": [],
-      "source": "사용자 제공 NTA 공략",
-      "date": "2026-10-03",
-      "kind": "사용자 추천 기준",
-      "author": "사용자",
-      "mole": [],
-      "recommendationDisabled": false
-    },
-    "쇠뇌": {
-      "core": [
         "낭아봉",
-        "갈고리검",
-        "쌍도끼"
+        "갈고리검"
       ],
-      "recommended": [
-        "회심검",
-        "구겸",
+      "useful": [
+        "쌍도끼",
+        "다트",
         "모래시계"
       ],
-      "useful": [],
-      "source": "사용자 제공 NTA 공략",
-      "date": "2026-10-03",
-      "kind": "사용자 추천 기준",
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
       "author": "사용자",
       "mole": [],
       "recommendationDisabled": false,
+      "roleNote": "격려 유지와 지원 역할이 핵심입니다. 고정 코어 장비보다 사거리·타격 기회·지원 운영에 맞춰 고릅니다.",
       "alternative": []
+    },
+    "쇠뇌": {
+      "core": [
+        "쌍도끼",
+        "낭아봉",
+        "갈고리검"
+      ],
+      "recommended": [
+        "유성추",
+        "회심검"
+      ],
+      "useful": [
+        "다트",
+        "모래시계",
+        "구겸"
+      ],
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
+      "author": "사용자",
+      "mole": [],
+      "recommendationDisabled": false,
+      "alternative": [],
+      "roleNote": "다단 공격과 스킬 회전을 살립니다. 사거리 2~3 조건에 해당하면 유성추를 포함합니다."
     },
     "쌍창": {
       "core": [
         "쌍도끼",
-        "흡혈검",
-        "천기산",
-        "덩굴 방패"
+        "흡혈검"
       ],
       "recommended": [
-        "도끼",
+        "덩굴 방패",
+        "시간 깃발",
         "갈고리검"
       ],
       "useful": [
-        "시간 깃발",
-        "백참도",
-        "구겸",
-        "낭아봉",
-        "유성추",
-        "회피 신발"
+        "천기산",
+        "현철 지팡이",
+        "백참도"
       ],
-      "source": "사용자 제공 NTA 공략",
-      "date": "2026-10-03",
-      "kind": "사용자 추천 기준",
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
       "author": "사용자",
       "mole": [],
       "recommendationDisabled": false,
       "alternative": [
         "모래시계"
-      ]
+      ],
+      "roleNote": "쌍도끼·흡혈검으로 공격 회전과 생존을 갖춘 뒤, 덩굴 방패나 시간 깃발 등으로 부족한 기능을 보완합니다."
     },
     "장검": {
       "core": [
-        "흡혈검"
+        "흡혈검",
+        "시간 깃발"
       ],
       "recommended": [
-        "천기산",
         "덩굴 방패",
-        "시간 깃발",
-        "백참도",
         "도끼",
-        "호심경"
+        "갈고리검"
       ],
       "useful": [
-        "회피 신발",
-        "현철 지팡이",
-        "회심검",
-        "황월"
+        "천기산",
+        "환도",
+        "호심경"
       ],
-      "source": "사용자 제공 NTA 공략",
-      "date": "2026-10-03",
-      "kind": "사용자 추천 기준",
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
       "author": "사용자",
       "mole": [],
       "recommendationDisabled": false,
-      "alternative": []
+      "alternative": [],
+      "roleNote": "흡혈검을 바탕으로 공격력 옵션 시간 깃발을 검토합니다. 시간 깃발은 공격력 옵션일 때 우선도가 높습니다."
     },
     "장과": {
       "core": [
-        "유성추",
         "쌍도끼",
-        "낭아봉"
+        "유성추"
       ],
       "recommended": [
         "갈고리검",
+        "낭아봉"
+      ],
+      "useful": [
         "회심검",
         "건곤도"
       ],
-      "useful": [
-        "모래시계",
-        "다트",
-        "시간 깃발"
-      ],
-      "source": "사용자 제공 NTA 공략",
-      "date": "2026-10-03",
-      "kind": "사용자 추천 기준",
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
       "author": "사용자",
       "mole": [],
       "recommendationDisabled": false,
       "alternative": [
         "백사 채찍",
         "백참도"
-      ]
+      ],
+      "roleNote": "쌍도끼·유성추를 중심으로 공격 기회와 스킬 회전을 확보합니다. 탱·유틸 탱 장비는 추천에서 제외합니다."
     },
     "장궁": {
       "core": [
-        "낭아봉",
         "쌍도끼",
-        "갈고리검",
-        "유성추"
+        "낭아봉"
       ],
       "recommended": [
-        "회심검",
-        "시간 깃발",
-        "구겸"
+        "갈고리검",
+        "구겸",
+        "유성추"
       ],
       "useful": [
-        "모래시계",
-        "건곤도",
-        "가시공",
-        "다트"
+        "회심검",
+        "다트",
+        "분심계"
       ],
-      "source": "사용자 제공 NTA 공략",
-      "date": "2026-10-03",
-      "kind": "사용자 추천 기준",
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
       "author": "사용자",
       "mole": [],
       "recommendationDisabled": false,
       "alternative": [
         "현철 지팡이"
-      ]
+      ],
+      "roleNote": "쌍도끼·낭아봉을 중심으로 분노 회전과 다수 타격을 살립니다. 탱·유틸 탱 장비는 추천에서 제외합니다."
     },
     "장창": {
       "core": [
-        "회피 신발",
-        "회심검",
-        "흡혈검",
-        "호심경"
+        "회피 신발"
       ],
       "recommended": [
-        "도끼",
-        "금 사슬갑옷"
+        "흡혈검",
+        "덩굴 방패",
+        "회심검"
       ],
       "useful": [
-        "덩굴 방패",
-        "유성추",
-        "천기산",
-        "모래시계"
+        "호심경",
+        "금 사슬갑옷"
       ],
-      "source": "사용자 제공 NTA 공략",
-      "date": "2026-10-03",
-      "kind": "사용자 추천 기준",
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
       "author": "사용자",
       "mole": [],
       "recommendationDisabled": false,
       "alternative": [
         "백참도",
         "명광 갑옷"
-      ]
+      ],
+      "roleNote": "회피와 자체 회복을 활용합니다. 사거리 2~3 조건에 해당하면 유성추를 포함합니다."
     },
     "중기병": {
       "core": [
@@ -5868,46 +5879,45 @@ const PROJECT_DATA = {
         "정심회"
       ],
       "recommended": [
-        "금 사슬갑옷",
-        "호심경"
+        "피해 반사 갑옷"
       ],
       "useful": [
-        "구리 방패",
-        "회피 신발",
+        "금 사슬갑옷",
+        "명광 갑옷",
         "분노의 허리띠"
       ],
-      "source": "사용자 제공 NTA 공략",
-      "date": "2026-10-03",
-      "kind": "사용자 추천 기준",
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
       "author": "사용자",
       "mole": [],
       "alternative": [
-        "피해 반사 갑옷",
         "태양 갑옷",
         "군기",
         "옥패",
         "현목 영락",
-        "명광 갑옷",
         "모래시계"
       ],
-      "recommendationDisabled": false
+      "recommendationDisabled": false,
+      "roleNote": "술 조롱박·정심회·덩굴 방패가 기본 생존 세트입니다. 술 조롱박을 빼야 할 때 피해 반사 갑옷 등으로 대체합니다."
     },
     "창방": {
       "core": [
-        "덩굴 방패",
         "술 조롱박",
+        "덩굴 방패",
         "정심회"
       ],
       "recommended": [
-        "분노의 허리띠",
-        "호심경",
-        "회심검",
+        "분노의 허리띠"
+      ],
+      "useful": [
+        "금 사슬갑옷",
+        "천기산",
         "쌍도끼"
       ],
-      "useful": [],
-      "source": "사용자 제공 NTA 공략",
-      "date": "2026-10-03",
-      "kind": "사용자 추천 기준",
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
       "author": "사용자",
       "mole": [],
       "alternative": [
@@ -5915,32 +5925,33 @@ const PROJECT_DATA = {
         "구리 방패",
         "군기",
         "태양 갑옷",
-        "금 사슬갑옷",
         "옥패",
         "회피 신발",
         "모래시계",
         "현목 영락",
         "명광 갑옷"
       ],
-      "recommendationDisabled": false
+      "recommendationDisabled": false,
+      "roleNote": "술 조롱박·정심회·덩굴 방패가 기본 생존 세트입니다. 술 조롱박을 빼는 상황이면 분노의 허리띠 등으로 대체합니다."
     },
     "칼방": {
       "core": [
-        "황월",
         "정심회",
-        "분노의 허리띠",
-        "덩굴 방패",
+        "황월",
         "적금순"
       ],
       "recommended": [
         "술 조롱박",
-        "금 사슬갑옷",
+        "덩굴 방패"
+      ],
+      "useful": [
+        "옥패",
+        "회피 신발",
         "피해 반사 갑옷"
       ],
-      "useful": [],
-      "source": "사용자 제공 NTA 공략",
-      "date": "2026-10-03",
-      "kind": "사용자 추천 기준",
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
       "author": "사용자",
       "mole": [],
       "alternative": [
@@ -5948,39 +5959,35 @@ const PROJECT_DATA = {
         "군기",
         "태양 갑옷",
         "호심경",
-        "옥패",
-        "회피 신발",
         "모래시계",
         "현목 영락",
         "명광 갑옷"
       ],
-      "recommendationDisabled": false
+      "recommendationDisabled": false,
+      "roleNote": "보호막 제공·강화와 정심회를 중심으로 구성합니다. 일반 탱커와 같은 고정 3종 세트로 평가하지 않습니다."
     },
     "화궁": {
       "core": [
-        "용연검",
-        "쌍도끼",
-        "시간 깃발"
+        "시간 깃발",
+        "쌍도끼"
       ],
       "recommended": [
-        "유성추",
-        "낭아봉"
+        "용연검",
+        "분심계"
       ],
       "useful": [
-        "갈고리검",
         "백참도",
-        "다트",
-        "분심계",
-        "천기산",
-        "현철 지팡이"
+        "유성추",
+        "천기산"
       ],
-      "source": "사용자 제공 NTA 공략",
-      "date": "2026-10-03",
-      "kind": "사용자 추천 기준",
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
       "author": "사용자",
       "mole": [],
       "recommendationDisabled": false,
-      "alternative": []
+      "alternative": [],
+      "roleNote": "시간 깃발의 공격력 옵션과 쌍도끼로 스킬 화력을 높입니다. 분심계는 스킬 적중·확산을 노릴 때 추천합니다."
     }
   },
   "guideSources": [
@@ -6214,7 +6221,7 @@ const PROJECT_DATA = {
           "utility"
         ],
         "evidence": "user-confirmed",
-        "note": "기본 생존 축이며, 네 번째 칸과 전투별 교체는 상황에 따라 판단"
+        "note": "술 조롱박·정심회·덩굴 방패가 탱커 기본 세트. 셋 중 하나를 빼야 할 때는 술 조롱박을 상황에 맞는 탱 장비로 대체."
       },
       "tankHybrid": {
         "label": "생존 기반 공격 확장",
@@ -6259,18 +6266,122 @@ const PROJECT_DATA = {
         ],
         "evidence": "user-confirmed",
         "note": "처치가 가능한 상황에서 가시공의 주변 처치 효과를 검토"
+      },
+      "rangedDamage": {
+        "label": "공격력형 원거리",
+        "functions": [
+          "fixedDamage",
+          "attackScaling",
+          "range"
+        ],
+        "evidence": "user-authored"
+      },
+      "rangedMultiHit": {
+        "label": "광역·다단 원거리",
+        "functions": [
+          "onHitDamage",
+          "attackCycle",
+          "range"
+        ],
+        "evidence": "user-authored"
+      },
+      "meleeBruiser": {
+        "label": "근거리 딜탱",
+        "functions": [
+          "sustain",
+          "attackScaling"
+        ],
+        "evidence": "user-authored"
+      },
+      "lostHpSpear": {
+        "label": "잃은 HP 비례 창병",
+        "functions": [
+          "sustain",
+          "onHitDamage",
+          "attackScaling"
+        ],
+        "evidence": "user-authored"
+      },
+      "skillSupport": {
+        "label": "지원·스킬 운용",
+        "functions": [
+          "skillDamage",
+          "rageCycle",
+          "allyProtection"
+        ],
+        "evidence": "user-authored"
       }
     },
     "unitProfiles": {
+      "강화 쇠뇌": [
+        "rangedDamage",
+        "multiHit"
+      ],
       "검과 방패": [
         "tankBaseline",
         "tankHybrid"
       ],
+      "검기병": [
+        "rangedCounter",
+        "meleeBruiser"
+      ],
+      "대도기병": [
+        "meleeBruiser",
+        "skillDamage"
+      ],
+      "기병(도끼)": [
+        "multiHit",
+        "meleeBruiser"
+      ],
+      "창기병": [
+        "lostHpSpear"
+      ],
+      "궁기병": [
+        "rangedMultiHit"
+      ],
+      "긴 창": [
+        "rangedCounter",
+        "lostHpSpear"
+      ],
+      "도끼방패": [
+        "meleeBruiser",
+        "rangedCounter"
+      ],
+      "독궁": [
+        "skillSupport",
+        "rangedMultiHit"
+      ],
       "망치방패": [
         "tankBaseline"
       ],
+      "맥도": [
+        "rangedDamage",
+        "multiHit"
+      ],
       "무거운 방패": [
         "tankBaseline"
+      ],
+      "사냥꾼": [
+        "skillSupport"
+      ],
+      "쇠뇌": [
+        "rangedMultiHit"
+      ],
+      "쌍창": [
+        "meleeBruiser"
+      ],
+      "장검": [
+        "meleeBruiser",
+        "skillDamage"
+      ],
+      "장과": [
+        "rangedMultiHit"
+      ],
+      "장궁": [
+        "rangedMultiHit"
+      ],
+      "장창": [
+        "meleeBruiser"
       ],
       "중기병": [
         "tankBaseline"
@@ -6281,20 +6392,8 @@ const PROJECT_DATA = {
       "칼방": [
         "shieldSupport"
       ],
-      "쇠뇌": [
-        "multiHit"
-      ],
-      "장궁": [
-        "multiHit"
-      ],
       "화궁": [
         "skillDamage"
-      ],
-      "검기병": [
-        "rangedCounter"
-      ],
-      "긴 창": [
-        "rangedCounter"
       ]
     },
     "equipmentFunctions": {
@@ -6814,14 +6913,16 @@ const Planner = (()=>{
  function recommendationExcluded(unit,name){const u=unitMap[unit],rules=data.recommendationExclusions||{};return (rules.groups?.[u?.group]||[]).includes(name)||(rules.units?.[unit]||[]).includes(name);}
  function recommendationProfile(unit){const model=data.recommendationFramework||{},ids=model.unitProfiles?.[unit]||[],profiles=ids.map(id=>model.profiles?.[id]).filter(Boolean);return {ids,profiles,functions:[...new Set(profiles.flatMap(p=>p.functions||[]))],label:profiles.map(p=>p.label).filter(Boolean).join(' · ')};}
  function recommendationRoleFit(unit,names){const model=data.recommendationFramework||{},profile=recommendationProfile(unit),tags=new Set(names.flatMap(n=>model.equipmentFunctions?.[n]||[])),reasons=[];let score=0;const reward=(tag,label,weight=.2)=>{if(profile.functions.includes(tag)&&tags.has(tag)){score+=weight;reasons.push(label);}};
-  reward('rangedMitigation','원거리 피해 감소');reward('sustain','회복·흡혈');reward('shieldSource','보호막 제공');reward('shieldAmplification','보호막 강화');
+  reward('rangedMitigation','원거리 피해 감소');reward('sustain','회복·흡혈');reward('shieldSource','보호막 제공');reward('shieldAmplification','보호막 강화');reward('fixedDamage','고정 피해');reward('range','사거리');
   reward('attackScaling','공격 확장',profile.ids.includes('tankHybrid') ? .25 : .1);reward('onHitDamage','타격 효과');reward('attackCycle','공격 기회');reward('skillDamage','스킬 효과');reward('rageCycle','분노 회전');reward('killSplash','처치 광역');
   if(profile.ids.includes('tankHybrid')&&tags.has('rangedMitigation')&&tags.has('sustain')&&names.some(n=>(model.equipmentFunctions?.[n]||[]).includes('attackScaling'))){score+=.15;reasons.push('생존 기반 공격 확장');}
   return {score,reasons,profileIds:profile.ids,label:profile.label};
  }
  const incompatibleRecommendationPairs=data.recommendationFramework?.constraints?.incompatiblePairs||[['회피 신발','피해 반사 갑옷']];
  function recommendationCombos(unit,all){return all.filter(c=>c.names.every(name=>!recommendationExcluded(unit,name))&&!incompatibleRecommendationPairs.some(([a,b])=>c.names.includes(a)&&c.names.includes(b)));}
- function buildOpinion(unit){const source=data.weaponBuilds?.[unit]||{core:[],recommended:[],useful:[]};return Object.fromEntries(['core','recommended','useful','alternative','mole'].map(k=>[k,(source[k]||[]).filter(n=>k==='mole'||!recommendationExcluded(unit,n))]).concat([['recommendationDisabled',source.recommendationDisabled===true],['author',source.author],['source',source.source],['date',source.date],['kind',source.kind]]));}
+ const activeRecommendationVariants=new Map();
+ function setRecommendationVariant(unit,key){const variants=data.weaponBuilds?.[unit]?.variants||{};if(!variants[key])return false;activeRecommendationVariants.set(unit,key);return true;}
+ function buildOpinion(unit){const source=data.weaponBuilds?.[unit]||{core:[],recommended:[],useful:[]},variants=source.variants||{},variantKey=activeRecommendationVariants.get(unit)||source.defaultVariant||'',variant=variants[variantKey],resolved=variant?{...source,...variant}:source;return Object.fromEntries(['core','recommended','useful','alternative','mole'].map(k=>[k,(resolved[k]||[]).filter(n=>k==='mole'||!recommendationExcluded(unit,n))]).concat([['recommendationDisabled',source.recommendationDisabled===true],['author',source.author],['source',source.source],['date',source.date],['kind',source.kind],['roleNote',resolved.roleNote||source.roleNote||''],['variantKey',variant?variantKey:''],['variantLabel',variant?.label||''],['variants',variants],['defaultVariant',source.defaultVariant||'']]));}
  function candidateItems(unit){return unitMap[unit]?.group==='병기'?[]:data.equipment.map(i=>i.name);}
  const fixedDamageItems=new Set(['다트','건곤도','갈고리검','분심계','가시공','현철 지팡이']);
  function fixedCount(names){return names.filter(n=>fixedDamageItems.has(n)).length;}
@@ -6933,7 +7034,7 @@ const Planner = (()=>{
   return {minimum:minParts.reduce((p,c)=>p*c,1),terminal:endParts.reduce((p,c)=>p*c,1)};
  }
  function singleOptionChance(optionChance,poolSize=8,drawCount=2){if(!Number.isFinite(optionChance)||!Number.isFinite(poolSize)||!Number.isFinite(drawCount)||poolSize<=0||drawCount<0)return null;return clamp(optionChance,0,1)*Math.min(poolSize,drawCount)/poolSize;}
- return {broadswordCoefficient,broadswordStack,fixedCount,fixedDamageLimit,prioritizeFixed,data,itemMap,unitMap,clamp,roll,betterRollChance,reforgeMilestoneChance,reforgeFinalPathExpected,dedicatedReforgeExpected,reforgeGearExpected,singleOptionChance,pair,options,loadout,combat,recommend,mandatory,combos,recommendationCombos,rankRecommendationCombos,optionFields,buildOpinion,buildScore,recommendationProfile,recommendationRoleFit,candidateItems,recommendationExcluded};
+ return {broadswordCoefficient,broadswordStack,fixedCount,fixedDamageLimit,prioritizeFixed,data,itemMap,unitMap,clamp,roll,betterRollChance,reforgeMilestoneChance,reforgeFinalPathExpected,dedicatedReforgeExpected,reforgeGearExpected,singleOptionChance,pair,options,loadout,combat,recommend,mandatory,combos,recommendationCombos,rankRecommendationCombos,optionFields,buildOpinion,buildScore,recommendationProfile,recommendationRoleFit,candidateItems,recommendationExcluded,setRecommendationVariant};
 })();
 
 
@@ -6943,7 +7044,7 @@ const Hub=(()=>{
  const P=Planner,D=P.data,$=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const num=(id,a=0,b=1e9)=>P.clamp(id==='pierce'?$(id).value:Math.round(Number($(id).value)),a,b),equippable=D.units.filter(u=>u.group!=='병기');
 
- const editorKey='nta-recommendations-v1',originalBuilds=JSON.parse(JSON.stringify(D.weaponBuilds));let personalBuilds={};
+ const editorKey='nta-recommendations-v2',originalBuilds=JSON.parse(JSON.stringify(D.weaponBuilds));let personalBuilds={};
  function validateBuilds(input){if(!input||typeof input!=='object'||Array.isArray(input))throw Error('기준 파일 형식이 올바르지 않습니다.');const out={};for(const [name,b] of Object.entries(input)){if(!equippable.some(u=>u.name===name)||!b||typeof b!=='object')throw Error('알 수 없는 병종입니다.');const clean={...originalBuilds[name],author:'사용자',recommendationDisabled:b.recommendationDisabled===true};const seen=new Set();for(const k of ['core','recommended','useful','alternative','mole']){if(k==='alternative'&&b[k]===undefined)b={...b,alternative:[]};if(!Array.isArray(b[k])||new Set(b[k]).size!==b[k].length||b[k].some(n=>typeof n!=='string'||!P.itemMap[n]||(k!=='mole'&&seen.has(n))))throw Error('장비 목록에 잘못된 값 또는 중복이 있습니다.');clean[k]=b[k].filter(n=>k==='mole'||!P.recommendationExcluded(name,n));if(k!=='mole')b[k].forEach(n=>seen.add(n));}out[name]=clean;}return out;}
  try{personalBuilds=validateBuilds(JSON.parse(localStorage.getItem(editorKey)||'{}'));Object.assign(D.weaponBuilds,personalBuilds);}catch(e){console.warn('개인 추천 기준을 불러오지 못했습니다.');}
  let editorCategory='core',editorUndo=[];
@@ -6968,7 +7069,15 @@ const Hub=(()=>{
  function tier(n){const b=P.buildOpinion(unit);if(b.recommendationDisabled)return '';const blocked=P.recommendationExcluded(unit,n),grade=!blocked?(P.mandatory(unit)&&n==='유성추'?'필수':b.core.includes(n)?'코어':b.recommended.includes(n)?'추천':b.useful.includes(n)?'쓸만함':(b.alternative||[]).includes(n)?'대체':''):'';return [grade,(b.mole||[]).includes(n)?'두더지':''].filter(Boolean).join(' · ');}
  function poolClassification(n){const b=P.buildOpinion(unit);if(b.recommendationDisabled)return '추천 미정';if(P.recommendationExcluded(unit,n))return '비추천';return tier(n)||'추천 미분류';}
   function cutSummary(name,kind='option'){const item=P.itemMap[name],criteria=inputCriteria(name);if(!item)return '';const relevant=criteria.filter(c=>kind==='option'?c.kind==='effect':true);const suffix=key=>P.optionFields(name).find(x=>x[0]===key)?.[3]||'';const show=(c,value)=>c.key+(c.lowerBetter?' ≤ ':' ≥ ')+value+suffix(c.key);const minimum=relevant.map(c=>show(c,c.min));const terminal=criteria.filter(c=>c.kind==='effect'&&c.end!==null).map(c=>show(c,c.end));if(kind==='crafted'){if(item.statCut)minimum.unshift('스탯 '+item.statCut);for(const [key,label] of [['hp','HP'],['atk','공격력']]){const range=item[key];if(Array.isArray(range)&&range[0]!==range[1])terminal.push(label+' ≥ '+Math.ceil(range[1]*.9));}}const fallback=kind==='option'?item.cut:item.statCut;return '<div class="item-cut-meta"><span class="cut-value cut-min"><b>최소</b><span>'+esc(minimum.join(' · ')||fallback||'기준 확인 필요')+'</span></span><span class="cut-value cut-terminal"><b>종결</b><span>'+esc(terminal.join(' · ')||'기준 확인 필요')+'</span></span></div>';}
- function unitSummary(){editorRender();const u=P.unitMap[unit],b=P.buildOpinion(unit);$('unit-info').innerHTML='<strong>'+esc(u.display)+'</strong> · '+u.group+'<br>'+(b.recommendationDisabled?'추천 아이템 정리 중 · 후보를 직접 선택하세요.':'코어: '+b.core.map(esc).join(' · '));$('candidate-basis').innerHTML='<strong>사용자 추천 기준 · '+esc(u.display)+'</strong><p>역할 구분 없이 전체 장비에서 제작·제련 후보를 최대 8개 선택합니다. '+(b.recommendationDisabled?'이 병종은 추천 목록과 자동 채우기를 비워 두었습니다.': '코어·추천 등급은 색으로 표시하고, 제련 후보는 직접 눌러 선택합니다.'+(P.mandatory(unit)?' 유성추는 필수 후보로 유지합니다.':''))+'</p>';const explanation=$('candidate-basis').querySelector('p');if(explanation){const d=document.createElement('details');d.innerHTML='<summary>설명 보기</summary>';explanation.replaceWith(d);d.appendChild(explanation);d.insertAdjacentHTML('beforebegin','<p class="muted">추천 등급은 표시만 · 후보 장비는 직접 선택</p>');}}
+ function unitSummary(){
+  editorRender();const u=P.unitMap[unit],b=P.buildOpinion(unit),variants=b.variants||{},variantEntries=Object.entries(variants);
+  const coreText=b.core.length?'코어: '+b.core.map(esc).join(' · '):(variantEntries.length?'핵심: 운용 방식 선택':'핵심 기능 기준 추천');
+  $('unit-info').innerHTML='<strong>'+esc(u.display)+'</strong> · '+u.group+'<br>'+(b.recommendationDisabled?'추천 아이템 정리 중 · 후보를 직접 선택하세요.':coreText);
+  const variantPicker=variantEntries.length?'<div class="role-variant-picker"><span>운용 방식</span>'+variantEntries.map(([key,v])=>'<button type="button" class="subtle" data-role-variant="'+esc(key)+'" aria-pressed="'+(b.variantKey===key)+'">'+esc(v.label||key)+'</button>').join('')+'</div>':'';
+  $('candidate-basis').innerHTML='<strong>사용자 추천 기준 · '+esc(u.display)+'</strong>'+variantPicker+(b.roleNote?'<p class="role-note">'+esc(b.roleNote)+'</p>':'')+'<p>역할 구분 없이 전체 장비에서 제작·제련 후보를 최대 8개 선택합니다. '+(b.recommendationDisabled?'이 병종은 추천 목록과 자동 채우기를 비워 두었습니다.': '코어·추천 등급은 색으로 표시하고, 제련 후보는 직접 눌러 선택합니다.'+(P.mandatory(unit)?' 유성추는 필수 후보로 유지합니다.':''))+'</p>';
+  $('candidate-basis').querySelectorAll('[data-role-variant]').forEach(button=>button.onclick=()=>{if(P.setRecommendationVariant(unit,button.dataset.roleVariant)){unitSummary();chips();recommend();}});
+  const explanation=$('candidate-basis').querySelector('p:not(.role-note)');if(explanation){const d=document.createElement('details');d.innerHTML='<summary>설명 보기</summary>';explanation.replaceWith(d);d.appendChild(explanation);d.insertAdjacentHTML('beforebegin','<p class="muted">추천 등급은 표시만 · 후보 장비는 직접 선택</p>');}
+ }
  function unitIcon(u){return u.iconSource?'<img class="unit-art" src="'+esc(u.iconSource)+'" alt="" loading="lazy" onerror="this.hidden=true">':'';}
  function syncBuildDestination(){return $('build-target').value;}
  function renderUnits(){ $('unit-filters').innerHTML=['전체','방패병','창병','궁병','기병'].map(g=>'<button data-group="'+g+'" aria-pressed="'+(g===unitFilter)+'">'+g+'</button>').join('');$('unit-filters').querySelectorAll('button').forEach(b=>b.onclick=()=>{unitFilter=b.dataset.group;renderUnits();});$('unit-cards').innerHTML=equippable.filter(u=>unitFilter==='전체'||u.group===unitFilter).map(u=>'<button data-unit="'+esc(u.name)+'" aria-pressed="'+(u.name===unit)+'">'+unitIcon(u)+'<span>'+esc(u.display)+'</span><small>'+u.group+'</small></button>').join('');$('unit-cards').querySelectorAll('button').forEach(b=>b.onclick=()=>{const previousUnit=unit,previousTarget=$('build-target').value;unitGearCache[previousTarget+':'+previousUnit]=(gears.custom||[]).map(g=>({name:g.name,stats:{...g.stats},values:{...g.values}}));customWeaponCache[previousTarget+':'+previousUnit]={...customWeapon};unit=b.dataset.unit;syncBuildDestination();pool.clear();poolMarks.clear();candidates.clear();const target=$('build-target').value,existing=unitGearCache[target+':'+unit];customWeapon=customWeaponCache[target+':'+unit]||{hp:null,atk:null};if(existing)loadCustomBuild(existing.map(g=>g.name||''),existing);else{custom=['','','',''];gears.custom=[];}renderUnits();unitSummary();chips();recommend();});}
@@ -7140,7 +7249,7 @@ function guide(cfg){const enc=D.encounters.find(e=>e.id===cfg.encounter)||select
  function compactPage(){for(const el of document.querySelectorAll('.panel > p.muted,.panel > p.callout'))if(el.textContent.length>70){const d=document.createElement('details');d.className='compact-help';d.innerHTML='<summary>설명 보기</summary>';el.replaceWith(d);d.appendChild(el);}const policy=document.querySelector('[data-policy]').closest('.info'),settings=$('page-boss').querySelector('details:has(#turns)'),button=$('analyze-boss'),d=document.createElement('details');d.className='compact-policy';d.innerHTML='<summary id="policy-summary">공격 정책 · 1단계</summary>';policy.replaceWith(d);d.appendChild(policy);button.before(d,settings);$('page-boss').querySelectorAll('[data-policy]').forEach(e=>e.addEventListener('change',()=>{$('policy-summary').textContent='공격 정책 · 1단계 · '+document.querySelectorAll('[data-policy]:checked').length+'개 선택';}));}
  function formationSummary(){if(!$('formation-summary')||!$('boss-unit')?.value)return;const pieces=[];if(preset!=='hero'&&preset!=='siege')pieces.push(P.unitMap[$('boss-unit').value].display+' '+Math.round(Number($('count').value))+'명');if(['two','two-siege'].includes(preset))pieces.push(P.unitMap[$('tank-unit').value].display+' '+Math.round(Number($('tank-count').value))+'명');if(['siege','unit-siege','two-siege'].includes(preset)&&$('siege-unit').value)pieces.push($('siege-unit').value+' '+Math.round(Number($('siege-count').value))+'대');if(preset==='hero'||$('include-hero').checked)pieces.push('영웅 '+heroCount()+'명');$('formation-summary').textContent=pieces.join(' + ');}
  function arrangeResults(){const box=$('boss-results'),guide=$('boss-guide'),cut=$('boss-cut');if(!guide)return;const loss=[...box.children].find(e=>e!==guide&&e!==cut&&e.classList.contains('result'));if(loss)box.prepend(loss);if(cut&&loss)loss.after(cut);if(guide)(cut||loss)?.after(guide);}
- function sourceInfo(){ $('source-content').innerHTML='<h3>최근 NTA 정리 반영</h3><p>2026-10-08 추가 자료의 병종별 코어·추천·쓸만함 관계표 24종을 적용했습니다. 작성·추천 기준은 사용자이며 장비별 숫자 컷은 사용자 제공 NTA 정리의 일반 추천값입니다.</p><h3>자료 적용 순서</h3><p>사용자 정정 → 사용자 제공 NTA 정리 → 사용자 공략 기록. 보스 본 장비 최대 기본 스탯, 두목 제련 기본HP·공격력50%·효과최대100%는 이번 사용자 정정을 우선 적용합니다.</p><h3>최신 V4 검증 대기</h3><p>황월의 확률 발동/보호막 변경, 건곤도의 상성 공격력 보정, 보호막·회피·Miss에서 분노가 차지 않는다는 예외는 최신 V4에서도 검증 대기입니다. 추천표의 평가와 확정 게임 규칙을 구분합니다.</p><h3>병종별 추천 근거</h3>'+equippable.map(u=>{const b=P.buildOpinion(u.name);return '<details><summary>'+esc(u.display)+' · '+esc(u.weapon?.name||u.name)+'</summary><p>코어: '+b.core.map(esc).join(' + ')+'<br>추천: '+b.recommended.map(esc).join(' + ')+'<br>쓸만함·유틸: '+b.useful.map(esc).join(' + ')+'<br>두더지: '+(b.mole||[]).map(esc).join(' + ')+'</p></details>';}).join('')+'<h3>이전 장비 세팅</h3>'+D.history.map(h=>'<article class="result"><strong>'+esc(h.title)+'</strong><p>'+h.items.map(esc).join(' + ')+'</p><p>'+esc(h.note)+'</p><a href="chatgpt-conversation://'+h.thread+'">장비 분석 대화</a></article>').join('')+'<h3>보스·자원지 기록</h3>'+D.encounters.map(e=>'<p><strong>'+esc(e.difficulty)+'</strong> — '+esc(e.formation)+'</p>').join('')+'<h3>장비별 추천 옵션과 원문</h3>'+D.equipment.map(i=>'<details><summary>'+esc(i.name)+'</summary><p>'+esc(i.description)+'</p><p>일반 추천 옵션: '+esc(i.cut)+'<br>기본 스탯 참고: '+esc(i.statCut)+'</p></details>').join('');}
+ function sourceInfo(){ $('source-content').innerHTML='<h3>최근 NTA 정리 반영</h3><p>2026-10-21 사용자 통합안의 병종별 코어·추천·쓸만함 기준을 반영했습니다. 병종 역할과 조건을 함께 보고, 탱커 기본 세트와 기존 예외 규칙을 유지합니다.</p><h3>자료 적용 순서</h3><p>사용자 정정 → 사용자 제공 NTA 정리 → 사용자 공략 기록. 보스 본 장비 최대 기본 스탯, 두목 제련 기본HP·공격력50%·효과최대100%는 이번 사용자 정정을 우선 적용합니다.</p><h3>최신 V4 검증 대기</h3><p>황월의 확률 발동/보호막 변경, 건곤도의 상성 공격력 보정, 보호막·회피·Miss에서 분노가 차지 않는다는 예외는 최신 V4에서도 검증 대기입니다. 추천표의 평가와 확정 게임 규칙을 구분합니다.</p><h3>병종별 추천 근거</h3>'+equippable.map(u=>{const b=P.buildOpinion(u.name);return '<details><summary>'+esc(u.display)+' · '+esc(u.weapon?.name||u.name)+'</summary><p>코어: '+b.core.map(esc).join(' + ')+'<br>추천: '+b.recommended.map(esc).join(' + ')+'<br>쓸만함·유틸: '+b.useful.map(esc).join(' + ')+'<br>두더지: '+(b.mole||[]).map(esc).join(' + ')+(b.roleNote?'<br>역할 기준: '+esc(b.roleNote):'')+'</p></details>';}).join('')+'<h3>이전 장비 세팅</h3>'+D.history.map(h=>'<article class="result"><strong>'+esc(h.title)+'</strong><p>'+h.items.map(esc).join(' + ')+'</p><p>'+esc(h.note)+'</p><a href="chatgpt-conversation://'+h.thread+'">장비 분석 대화</a></article>').join('')+'<h3>보스·자원지 기록</h3>'+D.encounters.map(e=>'<p><strong>'+esc(e.difficulty)+'</strong> — '+esc(e.formation)+'</p>').join('')+'<h3>장비별 추천 옵션과 원문</h3>'+D.equipment.map(i=>'<details><summary>'+esc(i.name)+'</summary><p>'+esc(i.description)+'</p><p>일반 추천 옵션: '+esc(i.cut)+'<br>기본 스탯 참고: '+esc(i.statCut)+'</p></details>').join('');}
  function renderGuide(){
   const host=$('guide-content');if(!host)return;
   host.innerHTML='<details class="guide-part guide-checklist-part"><summary>✅ 초보자 체크리스트<span class="guide-part-hint">첫날 · 둘째날 · 셋째날</span></summary><div class="guide-checklist-body"><div class="guide-checklist-head"><p>진행한 항목을 체크하면 이 브라우저에 저장됩니다.</p><button type="button" class="guide-check-reset">체크 초기화</button></div><div class="guide-checkgrid"><fieldset><legend>첫날 목표</legend><label><input type="checkbox" data-guide-check="day1-0">도감 확인</label><label><input type="checkbox" data-guide-check="day1-1">달팽이 그리기</label><label><input type="checkbox" data-guide-check="day1-2">거점 14레벨</label><label><input type="checkbox" data-guide-check="day1-3">대장간 14레벨(전용무기 제련)</label><label><input type="checkbox" data-guide-check="day1-4">영지 100개+</label><label><input type="checkbox" data-guide-check="day1-5">팀 게임이면 대사관 8</label></fieldset><fieldset><legend>둘째날 목표</legend><label><input type="checkbox" data-guide-check="day2-0">거점 18레벨</label><label><input type="checkbox" data-guide-check="day2-1">2번째 전용무기 제작</label><label><input type="checkbox" data-guide-check="day2-2">팀 게임이면 대사관 13</label></fieldset><fieldset><legend>셋째날 목표</legend><label><input type="checkbox" data-guide-check="day3-0">거점 20레벨</label><label><input type="checkbox" data-guide-check="day3-1">6렙 병력 최대한 영끌</label><label><input type="checkbox" data-guide-check="day3-2">전무 제련(임시옵션, 여름 중 완성)</label><label><input type="checkbox" data-guide-check="day3-3">영지 190 이하 유지(안전 할 때 까지 절대 넘지 말 것)</label></fieldset></div><h4>🎯 반드시 숙지해야 할 핵심 사항</h4></div></details><details class="guide-part"><summary>기본편<span class="guide-part-hint">초반 성장 · 파밍 · 장비</span></summary><iframe class="guide-frame" src="guide/basic.html" loading="lazy" title="초보자를 위한 공략 기본편"></iframe></details><details class="guide-part"><summary>전투편<span class="guide-part-hint">공타 · 전투 준비 · 거점 전투</span></summary><iframe class="guide-frame" src="guide/combat.html" loading="lazy" title="초보자를 위한 전투 공략"></iframe></details><details class="guide-part"><summary>장비<span class="guide-part-hint">역할별 구성 · 피해 계산 · 차선책</span></summary><iframe class="guide-frame" src="guide/equipment.html" loading="lazy" title="병종 역할에 맞는 장비 구성"></iframe></details>';
@@ -7490,7 +7599,37 @@ if(typeof module!=='undefined')module.exports=EquipmentSearch;
   const textOriginal=new WeakMap(),attrOriginal=new WeakMap(),frameTitleOriginal=new WeakMap(),guideFrameBound=new WeakSet();
  const queryLang=new URLSearchParams(location.search).get('lang');
  let lang=queryLang==='zh-TW'?'zh-TW':queryLang==='ko'?'ko':(localStorage.getItem('nta-language')||'ko');
-  function convert(s){if(lang==='ko')return s;const normalized=s.replace(/\s+/g,' ').trim();let out=exact[s]||exact[normalized];if(!out){out=s;const protectedNames=[];for(const [k,v] of sortedNames){const token=`\uE000${protectedNames.length}\uE001`;if(out.includes(k)){out=out.split(k).join(token);protectedNames.push([token,v]);}}for(const [k,v] of sortedTerms)out=out.split(k).join(v);for(const [token,value] of protectedNames)out=out.split(token).join(value);}return out.replaceAll('攻타','攻擊方先手').replaceAll('수타','防守方迎戰').replaceAll('공타','主動攻擊').replace(/(\d+)개를/g,'$1 件').replace(/(\d+)개/g,'$1 個').replace(/(\d+)번에서/g,'在第$1步');}
+ Object.assign(exact,{
+  '운용 방식':'運用方式','근접형':'近戰型','투척형':'投擲型','핵심 기능 기준 추천':'依核心功能推薦',
+  '사용자 추천 기준':'使用者推薦設定','코어:':'核心：','핵심: 운용 방식 선택':'核心：選擇運用方式',
+  '공격력·타격 효과를 함께 살립니다. 다트 외 고정 피해는 옵션과 전용무기 구성을 보고 더합니다.':'同時發揮攻擊力與命中效果。除飛鏢外，其他固定傷害裝備請依詞條與專屬武器配置評估。',
+  '술 조롱박·정심회·덩굴 방패가 기본 생존 세트입니다. 셋 중 하나를 빼야 한다면 술 조롱박을 상황에 맞는 탱 장비로 바꿉니다. 스택과 높은 기본 능력치가 갖춰지면 천기산 등 공격 장비도 검토합니다.':'酒葫蘆、定心環與藤蔓盾是基本生存組合。需要替換其中一件時，改用符合情況的坦克裝備替換酒葫蘆。具備層數與高基礎能力值時，也可考慮天機傘等攻擊裝備。',
+  '원거리 딜러 대응 역할에서는 가시공을 우선합니다. 쌍도끼·흡혈검은 공격 지속과 생존을 보완합니다.':'負責應對遠程輸出時優先選擇荊棘球。雙斧與吸血劍可補足持續輸出與生存能力。',
+  '시간 깃발은 공격력 옵션이 붙었을 때 핵심 가치가 높습니다. 쌍도끼는 스킬 회전이 실제로 좋아지는 경우에 사용합니다.':'時間旗在帶有攻擊力詞條時價值較高。只有在能實際改善技能循環時才使用雙斧。',
+  '건곤도의 주변 피해와 낭아봉의 현재 HP 비례 피해를 중심으로 구성합니다.':'以乾坤刀的範圍傷害與狼牙棒依目標目前 HP 造成的傷害為主。',
+  '흡혈과 방어를 기본으로 두고, 방어 장비 한 칸은 상대 공격 유형에 맞춥니다. 잃은 HP 비례 피해 재능이 있을 때 갈고리검 가치가 올라갑니다.':'以吸血與防禦為基礎，並依敵方攻擊類型調整一格防具。擁有依損失 HP 增傷的天賦時，鉤鐮的價值會提高。',
+  '낭아봉·갈고리검 등 공격 방식에 맞는 고정 피해를 우선 검토합니다. 탱·유틸 탱 장비는 추천에서 제외합니다.':'優先考慮狼牙棒、鉤鐮等符合攻擊方式的固定傷害裝備。推薦清單不包含坦克與坦克型輔助裝備。',
+  '원거리 딜러를 노리는 세팅이면 가시공을 우선합니다. 사거리 2~3 조건에 해당하면 유성추가 필수입니다.':'若定位為追擊遠程輸出，優先選擇荊棘球。符合射程 2～3 的條件時，流星錘為必選。',
+  '근접 운용: 흡혈검으로 공격을 이어가고 덩굴 방패로 원거리 피해를 줄입니다.':'近戰：以吸血劍維持攻擊，並用藤蔓盾降低遠程傷害。',
+  '투척 운용: 유성추로 사거리를 확보하고 가시공으로 처치 연계를 노립니다.':'投擲：以流星錘確保射程，並利用荊棘球串聯擊殺。',
+  '투척형과 근접형 추천을 분리합니다. 투척형은 유성추·가시공, 근접형은 흡혈검·덩굴 방패를 중심으로 선택합니다.':'投擲型與近戰型分開推薦。投擲型以流星錘、荊棘球為主；近戰型以吸血劍、藤蔓盾為主。',
+  '중독 유지가 병종의 핵심입니다. 쌍도끼는 분노와 스킬 회전이 실제로 개선되는지 함께 봅니다.':'維持中毒是此兵種的核心。選擇雙斧時，也要確認是否確實改善怒氣與技能循環。',
+  '술 조롱박·정심회·덩굴 방패가 기본 생존 세트입니다. 술 조롱박을 빼는 상황이면 회피 신발이나 금 사슬갑옷 등으로 목적에 맞게 대체합니다.':'酒葫蘆、定心環與藤蔓盾是基本生存組合。需要替換酒葫蘆時，可依需求改用閃避鞋或金鎖甲等坦克裝備。',
+  '유성추·회심검을 중심으로 공격 기회와 공격력을 확보합니다. 탱·유틸 탱 장비는 추천에서 제외합니다.':'以流星錘、會心劍確保攻擊機會與攻擊力。推薦清單不包含坦克與坦克型輔助裝備。',
+  '술 조롱박·정심회·덩굴 방패가 기본 생존 세트입니다. 반사 갑옷은 반격 효율이 있는 상대에게 추천합니다.':'酒葫蘆、定心環與藤蔓盾是基本生存組合。面對適合反擊的敵人時，可考慮反傷甲。',
+  '격려 유지와 지원 역할이 핵심입니다. 고정 코어 장비보다 사거리·타격 기회·지원 운영에 맞춰 고릅니다.':'維持鼓舞與支援隊伍是主要任務。選裝備時著重射程、攻擊機會與支援需求，而非固定核心裝備。',
+  '다단 공격과 스킬 회전을 살립니다. 사거리 2~3 조건에 해당하면 유성추를 포함합니다.':'強化多段攻擊與技能循環。符合射程 2～3 的條件時，納入流星錘。',
+  '쌍도끼·흡혈검으로 공격 회전과 생존을 갖춘 뒤, 덩굴 방패나 시간 깃발 등으로 부족한 기능을 보완합니다.':'先以雙斧、吸血劍兼顧攻擊循環與生存，再用藤蔓盾或時間旗補足所需功能。',
+  '흡혈검을 바탕으로 공격력 옵션 시간 깃발을 검토합니다. 시간 깃발은 공격력 옵션일 때 우선도가 높습니다.':'以吸血劍為基礎，並考慮帶攻擊力詞條的時間旗。時間旗帶有攻擊力詞條時優先度較高。',
+  '쌍도끼·유성추를 중심으로 공격 기회와 스킬 회전을 확보합니다. 탱·유틸 탱 장비는 추천에서 제외합니다.':'以雙斧、流星錘確保攻擊機會與技能循環。推薦清單不包含坦克與坦克型輔助裝備。',
+  '쌍도끼·낭아봉을 중심으로 분노 회전과 다수 타격을 살립니다. 탱·유틸 탱 장비는 추천에서 제외합니다.':'以雙斧、狼牙棒強化怒氣循環與多目標攻擊。推薦清單不包含坦克與坦克型輔助裝備。',
+  '회피와 자체 회복을 활용합니다. 사거리 2~3 조건에 해당하면 유성추를 포함합니다.':'善用閃避與自我恢復。符合射程 2～3 的條件時，納入流星錘。',
+  '술 조롱박·정심회·덩굴 방패가 기본 생존 세트입니다. 술 조롱박을 빼야 할 때 피해 반사 갑옷 등으로 대체합니다.':'酒葫蘆、定心環與藤蔓盾是基本生存組合。需要替換酒葫蘆時，可改用反傷甲等坦克裝備。',
+  '술 조롱박·정심회·덩굴 방패가 기본 생존 세트입니다. 술 조롱박을 빼는 상황이면 분노의 허리띠 등으로 대체합니다.':'酒葫蘆、定心環與藤蔓盾是基本生存組合。需要替換酒葫蘆時，可改用怒氣腰帶等坦克裝備。',
+  '보호막 제공·강화와 정심회를 중심으로 구성합니다. 일반 탱커와 같은 고정 3종 세트로 평가하지 않습니다.':'以提供／強化護盾與定心環為核心。此兵種不套用一般坦克的固定三件組。',
+  '시간 깃발의 공격력 옵션과 쌍도끼로 스킬 화력을 높입니다. 분심계는 스킬 적중·확산을 노릴 때 추천합니다.':'以帶攻擊力詞條的時間旗與雙斧提高技能傷害。若要利用技能命中與擴散，可選擇分心計。'
+ });
+ function convert(s){if(lang==='ko')return s;const normalized=s.replace(/\s+/g,' ').trim();let out=exact[s]||exact[normalized];if(!out){out=s;const protectedNames=[];for(const [k,v] of sortedNames){const token=`\uE000${protectedNames.length}\uE001`;if(out.includes(k)){out=out.split(k).join(token);protectedNames.push([token,v]);}}for(const [k,v] of sortedTerms)out=out.split(k).join(v);for(const [token,value] of protectedNames)out=out.split(token).join(value);}return out.replaceAll('攻타','攻擊方先手').replaceAll('수타','防守方迎戰').replaceAll('공타','主動攻擊').replace(/(\d+)개를/g,'$1 件').replace(/(\d+)개/g,'$1 個').replace(/(\d+)번에서/g,'在第$1步');}
  function setText(n){if(!textOriginal.has(n))textOriginal.set(n,n.nodeValue);const v=convert(textOriginal.get(n));if(n.nodeValue!==v)n.nodeValue=v;}
  function visit(root){if(root.nodeType===3){setText(root);return;}const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;while((n=walker.nextNode()))setText(n);const nodes=root.nodeType===1?[root,...root.querySelectorAll('*')]:[];for(const e of nodes)for(const a of ['aria-label','title','placeholder','alt'])if(e.hasAttribute(a)){let saved=attrOriginal.get(e);if(!saved){saved={};attrOriginal.set(e,saved);}if(!(a in saved))saved[a]=e.getAttribute(a);const v=convert(saved[a]);if(e.getAttribute(a)!==v)e.setAttribute(a,v);}}
  selector.value=lang;document.documentElement.lang=lang==='zh-TW'?'zh-Hant':'ko';document.title=convert(document.title);visit(document.body);visitGuideFrames();
