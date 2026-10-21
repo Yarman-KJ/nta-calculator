@@ -5556,27 +5556,44 @@ const PROJECT_DATA = {
       "alternative": []
     },
     "도끼방패": {
-      "core": [],
-      "recommended": [],
-      "useful": [],
+      "core": [
+        "덩굴 방패",
+        "술 조롱박"
+      ],
+      "recommended": [
+        "흡혈검",
+        "분노의 허리띠"
+      ],
+      "useful": [
+        "환도"
+      ],
       "source": "사용자 제공 NTA 공략",
       "date": "2026-10-03",
       "kind": "사용자 추천 기준",
       "author": "사용자",
       "mole": [],
-      "recommendationDisabled": true,
+      "recommendationDisabled": false,
       "alternative": []
     },
     "독궁": {
-      "core": [],
-      "recommended": [],
-      "useful": [],
+      "core": [
+        "갈고리검",
+        "낭아봉"
+      ],
+      "recommended": [
+        "쌍도끼",
+        "유성추"
+      ],
+      "useful": [
+        "모래시계",
+        "구겸"
+      ],
       "source": "사용자 제공 NTA 공략",
       "date": "2026-10-03",
       "kind": "사용자 추천 기준",
       "author": "사용자",
       "mole": [],
-      "recommendationDisabled": true
+      "recommendationDisabled": false
     },
     "망치방패": {
       "core": [
@@ -5669,15 +5686,22 @@ const PROJECT_DATA = {
       "recommendationDisabled": false
     },
     "사냥꾼": {
-      "core": [],
-      "recommended": [],
+      "core": [
+        "회심검",
+        "낭아봉"
+      ],
+      "recommended": [
+        "현철 지팡이",
+        "유성추",
+        "쌍도끼"
+      ],
       "useful": [],
       "source": "사용자 제공 NTA 공략",
       "date": "2026-10-03",
       "kind": "사용자 추천 기준",
       "author": "사용자",
       "mole": [],
-      "recommendationDisabled": true
+      "recommendationDisabled": false
     },
     "쇠뇌": {
       "core": [
@@ -5723,7 +5747,7 @@ const PROJECT_DATA = {
       "kind": "사용자 추천 기준",
       "author": "사용자",
       "mole": [],
-      "recommendationDisabled": true,
+      "recommendationDisabled": false,
       "alternative": [
         "모래시계"
       ]
@@ -6166,6 +6190,353 @@ const PROJECT_DATA = {
       "consumptionPriority": "unspecified"
     },
     "engineFullyImplements": false
+  },
+  "recommendationFramework": {
+    "version": 1,
+    "profiles": {
+      "tankBaseline": {
+        "label": "초소 탱커 기본 축",
+        "purpose": "초소 밀기",
+        "items": [
+          "술 조롱박",
+          "정심회",
+          "덩굴 방패"
+        ],
+        "functions": [
+          "sustain",
+          "rangedMitigation"
+        ],
+        "flex": [
+          "defense",
+          "healing",
+          "shield",
+          "attack",
+          "utility"
+        ],
+        "evidence": "user-confirmed",
+        "note": "기본 생존 축이며, 네 번째 칸과 전투별 교체는 상황에 따라 판단"
+      },
+      "tankHybrid": {
+        "label": "생존 기반 공격 확장",
+        "inherits": "tankBaseline",
+        "functions": [
+          "attackScaling"
+        ],
+        "evidence": "user-confirmed",
+        "note": "검방은 높은 기본 스탯과 스택을 살려 천기산 등 공격 기여 장비를 유연하게 검토"
+      },
+      "shieldSupport": {
+        "label": "보호막 지원 특화",
+        "functions": [
+          "shieldSource",
+          "shieldAmplification"
+        ],
+        "evidence": "user-confirmed",
+        "note": "칼방은 일반 탱커 묶음과 별도로 아군 보호막 제공·강화 효과를 중심으로 판단"
+      },
+      "multiHit": {
+        "label": "다단 공격 활용",
+        "functions": [
+          "onHitDamage",
+          "attackCycle"
+        ],
+        "evidence": "mechanic-recorded",
+        "note": "공격 횟수와 스킬 회전에 연동되는 효과를 우선 검토"
+      },
+      "skillDamage": {
+        "label": "스킬 피해 활용",
+        "functions": [
+          "skillDamage",
+          "rageCycle"
+        ],
+        "evidence": "mechanic-recorded",
+        "note": "스킬 발동 조건과 공격력 계수를 함께 고려"
+      },
+      "rangedCounter": {
+        "label": "원거리 딜러 대응",
+        "functions": [
+          "killSplash"
+        ],
+        "evidence": "user-confirmed",
+        "note": "처치가 가능한 상황에서 가시공의 주변 처치 효과를 검토"
+      }
+    },
+    "unitProfiles": {
+      "검과 방패": [
+        "tankBaseline",
+        "tankHybrid"
+      ],
+      "망치방패": [
+        "tankBaseline"
+      ],
+      "무거운 방패": [
+        "tankBaseline"
+      ],
+      "중기병": [
+        "tankBaseline"
+      ],
+      "창방": [
+        "tankBaseline"
+      ],
+      "칼방": [
+        "shieldSupport"
+      ],
+      "쇠뇌": [
+        "multiHit"
+      ],
+      "장궁": [
+        "multiHit"
+      ],
+      "화궁": [
+        "skillDamage"
+      ],
+      "검기병": [
+        "rangedCounter"
+      ],
+      "긴 창": [
+        "rangedCounter"
+      ]
+    },
+    "equipmentFunctions": {
+      "술 조롱박": [
+        "sustain",
+        "healing"
+      ],
+      "정심회": [
+        "sustain",
+        "healing",
+        "health"
+      ],
+      "덩굴 방패": [
+        "rangedMitigation",
+        "defense"
+      ],
+      "무쇠 방패": [
+        "meleeMitigation",
+        "defense"
+      ],
+      "사슬갑옷": [
+        "flatMitigation",
+        "defense"
+      ],
+      "금 사슬갑옷": [
+        "damageCap",
+        "defense"
+      ],
+      "회피 신발": [
+        "avoidance",
+        "defense"
+      ],
+      "피해 반사 갑옷": [
+        "retaliation",
+        "defense"
+      ],
+      "태양 갑옷": [
+        "tankUtility",
+        "areaDamage"
+      ],
+      "호심경": [
+        "stackingMitigation",
+        "defense"
+      ],
+      "명광 갑옷": [
+        "health",
+        "defense"
+      ],
+      "구리 방패": [
+        "shieldSource",
+        "healing",
+        "defense"
+      ],
+      "황월": [
+        "shieldSource",
+        "defense"
+      ],
+      "적금순": [
+        "shieldAmplification",
+        "shieldSource"
+      ],
+      "옥패": [
+        "shieldSource",
+        "allyProtection"
+      ],
+      "흡혈검": [
+        "sustain",
+        "healing",
+        "attackScaling"
+      ],
+      "환도": [
+        "sustain",
+        "healing",
+        "attackScaling"
+      ],
+      "치료검": [
+        "sustain",
+        "healing"
+      ],
+      "천기산": [
+        "attackScaling",
+        "defense"
+      ],
+      "회심검": [
+        "attackScaling"
+      ],
+      "용연검": [
+        "attackScaling"
+      ],
+      "백참도": [
+        "attackScaling",
+        "sustain"
+      ],
+      "시간 깃발": [
+        "attackScaling"
+      ],
+      "도끼": [
+        "attackScaling",
+        "sustain"
+      ],
+      "쌍도끼": [
+        "attackCycle",
+        "rageCycle"
+      ],
+      "모래시계": [
+        "attackCycle"
+      ],
+      "유성추": [
+        "range",
+        "avoidanceCounter"
+      ],
+      "다트": [
+        "fixedDamage",
+        "onHitDamage"
+      ],
+      "낭아봉": [
+        "onHitDamage",
+        "multiHit"
+      ],
+      "갈고리검": [
+        "fixedDamage",
+        "onHitDamage",
+        "multiHit"
+      ],
+      "건곤도": [
+        "fixedDamage",
+        "areaDamage"
+      ],
+      "가시공": [
+        "fixedDamage",
+        "killSplash"
+      ],
+      "분심계": [
+        "fixedDamage",
+        "skillDamage",
+        "areaDamage"
+      ],
+      "현철 지팡이": [
+        "utilityDamage",
+        "shieldSource",
+        "onHitDamage"
+      ],
+      "구겸": [
+        "attackScaling",
+        "onHitDamage"
+      ],
+      "백사 채찍": [
+        "attackScaling",
+        "targetSwitchDamage"
+      ],
+      "분노의 허리띠": [
+        "rageCycle",
+        "sustain",
+        "healing"
+      ],
+      "현목 영락": [
+        "control",
+        "defense"
+      ],
+      "군기": [
+        "allyProtection",
+        "utility"
+      ],
+      "혈적자": [
+        "execution",
+        "attackScaling"
+      ],
+      "흑요석 갑옷": [
+        "defense",
+        "timeLimited"
+      ]
+    },
+    "equipmentRoles": {
+      "쌍도끼": [
+        "damage"
+      ],
+      "옥패": [
+        "tank"
+      ],
+      "현목 영락": [
+        "tank"
+      ],
+      "태양 갑옷": [
+        "tank"
+      ],
+      "현철 지팡이": [
+        "utilityDamage"
+      ],
+      "분노의 허리띠": [
+        "utilityTank"
+      ],
+      "군기": [
+        "utilityTank"
+      ],
+      "금 사슬갑옷": [
+        "utilityTank"
+      ],
+      "회피 신발": [
+        "utilityTank"
+      ],
+      "황월": [
+        "utilityTank"
+      ],
+      "천기산": [
+        "utilityDamage",
+        "utilityTank"
+      ],
+      "모래시계": [
+        "utilityDamage",
+        "utilityTank"
+      ],
+      "시간 깃발": [
+        "utilityDamage",
+        "utilityTank"
+      ],
+      "치료검": [
+        "lifesteal"
+      ],
+      "흡혈검": [
+        "lifesteal"
+      ],
+      "환도": [
+        "lifesteal"
+      ],
+      "백참도": [
+        "lifesteal"
+      ]
+    },
+    "constraints": {
+      "tankBaselineExcludes": [
+        "칼방"
+      ],
+      "rangedMandatoryHandledByEngine": true,
+      "maximumFixedDamageItems": 2,
+      "incompatiblePairs": [
+        [
+          "회피 신발",
+          "피해 반사 갑옷"
+        ]
+      ],
+      "evidencePolicy": "기존 사용자가 확정한 등급이 기본 우선순위다. 역할 적합도는 같은 등급 후보의 미세 조정에만 사용하고, 확인되지 않은 효과 상호작용은 자동 추정하지 않는다."
+    }
   }
 };
 
@@ -6441,15 +6812,23 @@ const Planner = (()=>{
  }
  function mandatory(unit){const u=unitMap[unit];return !!u&&u.group!=='병기'&&((u.range>=2&&u.range<=3)||unit==='맥도');}
  function recommendationExcluded(unit,name){const u=unitMap[unit],rules=data.recommendationExclusions||{};return (rules.groups?.[u?.group]||[]).includes(name)||(rules.units?.[unit]||[]).includes(name);}
- const incompatibleRecommendationPairs=[['회피 신발','피해 반사 갑옷']];
+ function recommendationProfile(unit){const model=data.recommendationFramework||{},ids=model.unitProfiles?.[unit]||[],profiles=ids.map(id=>model.profiles?.[id]).filter(Boolean);return {ids,profiles,functions:[...new Set(profiles.flatMap(p=>p.functions||[]))],label:profiles.map(p=>p.label).filter(Boolean).join(' · ')};}
+ function recommendationRoleFit(unit,names){const model=data.recommendationFramework||{},profile=recommendationProfile(unit),tags=new Set(names.flatMap(n=>model.equipmentFunctions?.[n]||[])),reasons=[];let score=0;const reward=(tag,label,weight=.2)=>{if(profile.functions.includes(tag)&&tags.has(tag)){score+=weight;reasons.push(label);}};
+  reward('rangedMitigation','원거리 피해 감소');reward('sustain','회복·흡혈');reward('shieldSource','보호막 제공');reward('shieldAmplification','보호막 강화');
+  reward('attackScaling','공격 확장',profile.ids.includes('tankHybrid') ? .25 : .1);reward('onHitDamage','타격 효과');reward('attackCycle','공격 기회');reward('skillDamage','스킬 효과');reward('rageCycle','분노 회전');reward('killSplash','처치 광역');
+  if(profile.ids.includes('tankHybrid')&&tags.has('rangedMitigation')&&tags.has('sustain')&&names.some(n=>(model.equipmentFunctions?.[n]||[]).includes('attackScaling'))){score+=.15;reasons.push('생존 기반 공격 확장');}
+  return {score,reasons,profileIds:profile.ids,label:profile.label};
+ }
+ const incompatibleRecommendationPairs=data.recommendationFramework?.constraints?.incompatiblePairs||[['회피 신발','피해 반사 갑옷']];
  function recommendationCombos(unit,all){return all.filter(c=>c.names.every(name=>!recommendationExcluded(unit,name))&&!incompatibleRecommendationPairs.some(([a,b])=>c.names.includes(a)&&c.names.includes(b)));}
  function buildOpinion(unit){const source=data.weaponBuilds?.[unit]||{core:[],recommended:[],useful:[]};return Object.fromEntries(['core','recommended','useful','alternative','mole'].map(k=>[k,(source[k]||[]).filter(n=>k==='mole'||!recommendationExcluded(unit,n))]).concat([['recommendationDisabled',source.recommendationDisabled===true],['author',source.author],['source',source.source],['date',source.date],['kind',source.kind]]));}
  function candidateItems(unit){return unitMap[unit]?.group==='병기'?[]:data.equipment.map(i=>i.name);}
  const fixedDamageItems=new Set(['다트','건곤도','갈고리검','분심계','가시공','현철 지팡이']);
  function fixedCount(names){return names.filter(n=>fixedDamageItems.has(n)).length;}
- function prioritizeFixed(unit,all){return all.filter(c=>fixedCount(c.names)<=2);}
+ function fixedDamageLimit(){const value=Number(data.recommendationFramework?.constraints?.maximumFixedDamageItems);return Number.isInteger(value)&&value>=0?value:2;}
+ function prioritizeFixed(unit,all){return all.filter(c=>fixedCount(c.names)<=fixedDamageLimit());}
  function recommend(unit){const b=buildOpinion(unit);if(unitMap[unit]?.group==='병기'||b.recommendationDisabled)return [];const list=[...new Set([...(mandatory(unit)?['유성추']:[]),...b.core,...b.recommended])].filter(n=>itemMap[n]&&!recommendationExcluded(unit,n));const first=list.find(n=>fixedDamageItems.has(n));return [...list.filter(n=>!fixedDamageItems.has(n)||n===first),...list.filter(n=>fixedDamageItems.has(n)&&n!==first)].slice(0,8);}
- function buildScore(unit,names){const b=buildOpinion(unit);if(b.recommendationDisabled)return 0;return names.reduce((s,n)=>s+(recommendationExcluded(unit,n)?0:b.core.includes(n)?6:b.recommended.includes(n)?3:b.useful.includes(n)?1:(b.alternative||[]).includes(n)?0.5:0),0)+(mandatory(unit)&&names.includes('유성추')?10:0);}
+ function buildScore(unit,names){const b=buildOpinion(unit);if(b.recommendationDisabled)return 0;const curated=names.reduce((s,n)=>s+(recommendationExcluded(unit,n)?0:b.core.includes(n)?6:b.recommended.includes(n)?3:b.useful.includes(n)?1:(b.alternative||[]).includes(n)?0.5:0),0);return curated+(mandatory(unit)&&names.includes('유성추')?10:0)+recommendationRoleFit(unit,names).score;}
  function rankRecommendationCombos(unit,combos,priorityNames=[],usefulNames=[],limit=5){
   const available=prioritizeFixed(unit,recommendationCombos(unit,combos)),priority=[...new Set(priorityNames)],useful=new Set(usefulNames);
   const score=c=>c.names.filter(n=>priority.includes(n)).length*10000+buildScore(unit,c.names)+c.names.reduce((s,n)=>s+(useful.has(n)?100:0),0);
@@ -6554,7 +6933,7 @@ const Planner = (()=>{
   return {minimum:minParts.reduce((p,c)=>p*c,1),terminal:endParts.reduce((p,c)=>p*c,1)};
  }
  function singleOptionChance(optionChance,poolSize=8,drawCount=2){if(!Number.isFinite(optionChance)||!Number.isFinite(poolSize)||!Number.isFinite(drawCount)||poolSize<=0||drawCount<0)return null;return clamp(optionChance,0,1)*Math.min(poolSize,drawCount)/poolSize;}
- return {broadswordCoefficient,broadswordStack,fixedCount,prioritizeFixed,data,itemMap,unitMap,clamp,roll,betterRollChance,reforgeMilestoneChance,reforgeFinalPathExpected,dedicatedReforgeExpected,reforgeGearExpected,singleOptionChance,pair,options,loadout,combat,recommend,mandatory,combos,recommendationCombos,rankRecommendationCombos,optionFields,buildOpinion,buildScore,candidateItems,recommendationExcluded};
+ return {broadswordCoefficient,broadswordStack,fixedCount,fixedDamageLimit,prioritizeFixed,data,itemMap,unitMap,clamp,roll,betterRollChance,reforgeMilestoneChance,reforgeFinalPathExpected,dedicatedReforgeExpected,reforgeGearExpected,singleOptionChance,pair,options,loadout,combat,recommend,mandatory,combos,recommendationCombos,rankRecommendationCombos,optionFields,buildOpinion,buildScore,recommendationProfile,recommendationRoleFit,candidateItems,recommendationExcluded};
 })();
 
 
@@ -6628,18 +7007,22 @@ function percent(p){return p===null?'—':(p*100).toLocaleString('ko-KR',{maximu
   function dedicatedResult(){const e=dedicatedExpected();if(!e.ready)return '<article class="result reforge-summary-card"><p>2번에서 이번 판 랜덤 옵션 8개를 선택하면 기댓값을 보여줍니다.</p><p class="muted">현재 '+pool.size+'/8 · 최우선 '+[...pool].filter(n=>poolMarks.get(n)==='core').length+'개 · 차선책 '+[...pool].filter(n=>poolMarks.get(n)==='alternative').length+'개</p></article>';const marked=e.effective.length,coreNames=e.core.map(o=>o.name).join(' · ')||'없음',alternativeNames=e.alternative.map(o=>o.name).join(' · ')||'없음',rows=[['유효 옵션 2개까지',e.twoUseful],['종결 옵션 2개까지',e.final]];return '<article class="result reforge-summary-card"><p class="muted">계산 대상 · 최우선 '+e.core.length+'개 ('+esc(coreNames)+') · 차선책 '+e.alternative.length+'개 ('+esc(alternativeNames)+')</p>'+(marked<2?'<p class="info">기댓값을 내려면 2개 이상을 최우선 또는 차선책으로 표시하세요. 선택된 옵션은 최우선·차선책 모두 계산에 포함됩니다.</p>':'')+'<div class="ev-rows">'+rows.map(([label,value])=>'<div class="ev-row"><span>'+label+'</span><strong>'+expectedLabel(value)+'</strong></div>').join('')+'</div>'+(e.finalReason?'<small class="muted">'+esc(e.finalReason)+'</small>':'')+'<small class="muted">유효 2개는 표시한 옵션에서 최소 컷을 넘는 경우입니다. 첫 유효 옵션은 고정하고 남은 칸에서 다른 유효 옵션을 찾습니다. 종결 2개는 최우선·차선책 중 어느 조합이든 종결 컷을 넘으면 인정하며, 첫 종결 옵션이 나오면 고정한 뒤 남은 7개에서 종결을 찾습니다. 표시한 모든 옵션의 효과 범위를 균등 확률로 계산합니다. 고정기 소모와 고정할 수 없는 기본 스탯은 이 옵션 횟수에서 분리했습니다.</small><details><summary>이번 판 최소·종결 수치</summary>'+e.effective.map(n=>'<p><strong>'+esc(n.name)+'</strong>'+cutSummary(n.name,'option')+'</p>').join('')+'</details></article>';}
  function customInfo(){const e=dedicatedExpected();$('dedicated-weapon-result').innerHTML=dedicatedResult();const selected=gears.custom.slice(0,4).filter(g=>g&&g.name);$('chosen-loadout').innerHTML=selected.length?'<strong>보스 탭에 이어질 장비</strong><div class="items">'+selected.map((g,i)=>'<span>'+(i<2?'전용무기':'제련')+' · '+esc(g.name)+'</span>').join('')+'</div>':'<span class="muted">3번에서 조합을 선택하면 장비가 여기에 표시됩니다.</span>';const candidateNames=[...candidates],crafted=candidateNames.map(name=>gears.custom.slice(2,4).find(g=>g?.name===name)||blankInputGear(name)),details=$('candidate-cut-details'),summary=$('candidate-cut-summary'),results=$('crafted-gear-results');details.hidden=!crafted.length;summary.innerHTML=crafted.map(g=>'<article class="candidate-cut-row"><strong>'+icon(g.name)+' '+esc(g.name)+'</strong>'+cutSummary(g.name,'crafted')+'</article>').join('');if(!crafted.length){results.innerHTML='<p class="muted">3번에서 장비를 고르면 최소·종결 기댓값이 자동 계산됩니다. 현재 선택 '+candidates.size+'개</p>';return;}results.innerHTML=crafted.map(g=>{const item=P.itemMap[g.name],criteria=inputCriteria(g.name),stats=['hp','atk'].filter(k=>Array.isArray(item?.[k])&&item[k][0]!==item[k][1]).map(k=>({low:item[k][0],high:item[k][1]})),ev=P.reforgeGearExpected(criteria,stats,.9),chanceLabel=(p,hasCut)=>!hasCut?'기준 자료 없음':!ev?'계산 기준 확인 필요':p===0?'범위 내 달성 불가':expectedLabel(1/p),minimum=chanceLabel(ev?.minimum,criteria.length>0),terminal=chanceLabel(ev?.terminal,criteria.some(c=>c.end!==null)||stats.length>0);return '<article class="result crafted-gear-result"><strong>'+icon(g.name)+' '+esc(g.name)+'</strong><div class="ev-rows"><div class="ev-row"><span>최소 옵션</span><strong>'+minimum+'</strong></div><div class="ev-row"><span>종결 옵션</span><strong>'+terminal+'</strong></div></div></article>';}).join('');}
  function loadCustomBuild(names,source=null){gears.custom=names.slice(0,4).map((name,i)=>{const old=source&&source[i]||gears.custom[i];return old&&old.name===name?{name:name,stats:{...old.stats},values:{...old.values}}:blankInputGear(name);});custom=gears.custom.map(g=>g.name||'');customInfo();$('chosen-loadout').scrollIntoView({behavior:'smooth',block:'center'});}
- function comboBenefit(names){
+ function comboBenefit(names,unitName=unit){
   const chosen=new Set(names),labels={
    '치료검':'유효 타격 후 회복','회심검':'확률형 치명타 폭딜','유성추':'사거리 +1 · 회피 무시','쌍도끼':'추가 분노 획득','월아도':'피해 증가 · 피해 감소 일부 무시','용연검':'공격력 증가 · 장기전 성장','사슬갑옷':'고정 피해 감소 · 피격 중첩 감소','술 조롱박':'매 턴 체력 회복','피해 반사 갑옷':'피격 피해 반사','구리 방패':'위기 시 보호막 · 체력 회복','황월':'유효 타격 후 보호막','무쇠 방패':'근접 피해 감소','흡혈검':'공격 피해 흡혈','환도':'피격 누적 흡혈 강화','흑요석 갑옷':'초반 5턴 피해 감소','다트':'준 피해 일부 고정 피해 전환','덩굴 방패':'원거리 피해 감소','낭아봉':'현재 체력 비례 추가 피해','군기':'주변 아군 강화 · 적 약화','건곤도':'일반 공격 주변 광역 고정 피해','태양 갑옷':'턴 시작 주변 고정 피해','정심회':'최대 HP 증가 · 주기적 회복','적금순':'보호막 강화 · 주기적 보호막','백사 채찍':'새 대상 공격 시 피해 증가','금 사슬갑옷':'피격당 피해 상한 · 초과 피해 지연','갈고리검':'확률형 최대 HP 비례 고정 피해','호심경':'피격 누적 피해 감소','도끼':'저체력 공격력 증가 · 흡혈','옥패':'전투 초반 아군 보호막 · 기술 방어','천기산':'전투 시작 공격력·피해 감소 강화','분심계':'분심 고정 피해 · 주변 확산','구겸':'대상 공격력 기반 추가 피해','분노의 허리띠':'피격 분노 · 기술 후 회복','가시공':'처치 연계 주변 고정 피해','회피 신발':'확률형 피해 회피','혈적자':'처형 · 처치 후 공격력 증가','시간 깃발':'공격력 또는 체력 보강','모래시계':'확률형 추가 행동','현목 영락':'고정 피해 피격 시 기절 확률','현철 지팡이':'새 대상 첫 타 고정 피해 · 보호막','백참도':'재제작으로 공격력 또는 흡혈 강화','명광 갑옷':'재제작으로 최대 HP 또는 피해 감소 강화'
   };
-  if(P.mandatory(unit)&&chosen.has('유성추'))return '사거리 2~3 병종의 사거리를 보완하고 회피를 무시';
+  const fit=P.recommendationRoleFit(unitName,names);
+  if(unitName==='칼방'&&fit.reasons.includes('보호막 제공')&&fit.reasons.includes('보호막 강화'))return '칼방 역할에 맞춰 보호막 제공과 보호막 강화를 함께 구성';
+  if(unitName==='검과 방패'&&fit.reasons.includes('원거리 피해 감소')&&fit.reasons.includes('회복·흡혈')&&fit.reasons.includes('공격 확장'))return '탱커 기본 생존 축을 유지하면서 높은 능력치와 스택을 공격에도 활용';
+  if(fit.profileIds.includes('tankBaseline')&&fit.reasons.includes('원거리 피해 감소')&&fit.reasons.includes('회복·흡혈'))return '초소 탱커 기본 축인 원거리 피해 감소와 회복을 확보';
+  if(P.mandatory(unitName)&&chosen.has('유성추'))return '사거리 2~3 병종의 사거리를 보완하고 회피를 무시';
   if(chosen.has('회심검')&&chosen.has('낭아봉'))return '치명타와 현재 체력 비례 피해를 묶어 단일 적 압박';
   if(chosen.has('다트')&&(chosen.has('갈고리검')||chosen.has('건곤도')||chosen.has('가시공')))return '고정 피해 효과를 함께 확보해 피해 감소 대응';
   if((chosen.has('술 조롱박')||chosen.has('정심회'))&&(chosen.has('덩굴 방패')||chosen.has('무쇠 방패')||chosen.has('금 사슬갑옷')||chosen.has('호심경')))return '지속 회복과 피해 감소를 함께 챙겨 장기 교전 생존 보완';
   return names.map(n=>labels[n]).filter(Boolean).slice(0,2).join(' · ')||'선택한 장비 효과를 조합해 운용';
  }
  function sendBuild(){if(!gears.custom[0]?.name||!gears.custom[1]?.name)throw Error('3번에서 전용무기 옵션 2개를 포함한 조합을 선택하세요.');const selected=gears.custom.slice(0,2+2).filter(g=>g.name);if(new Set(selected.map(g=>g.name)).size!==selected.length)throw Error('같은 장비를 두 번 선택할 수 없습니다.');const target=$('build-target').value==='secondary'?'secondary':'primary';const selector=$(target==='secondary'?'tank-unit':'boss-unit');if(selector.value!==unit){selector.value=unit;selector.dispatchEvent(new Event('change',{bubbles:true}));}gears[target]=selected.map(g=>({name:g.name,stats:{...g.stats},values:{...g.values}}));unitGearCache[target+':'+unit]=gears[target];renderPlayerGearInputs(target);renderPlayerGearSummary();showPage('boss');invalidate();document.dispatchEvent(new Event('nta-unit-transfer'));$('primary-equipment').closest('details').open=true;return target;}
-  function recommend(){try{if(P.buildOpinion(unit).recommendationDisabled){$('recommendations').textContent='이 병종의 추천 조합은 정리 중입니다. 4번에서 직접 구성하세요.';return;}if(pool.size!==8)throw Error('이번 판 풀을 8개 선택하세요.');const priority=[...pool].filter(n=>poolMarks.get(n)==='core'),alternative=[...pool].filter(n=>poolMarks.get(n)==='alternative'),marked=[...priority,...alternative],candidateNames=[...new Set([...candidates,...marked])];if(candidateNames.length<2)throw Error('3번에서 제련 후보를 2개 이상 고르거나, 2번에서 최우선·차선책을 표시하세요.');const generated=P.combos([...pool],candidateNames,null,2).filter(c=>(!P.mandatory(unit)||c.names.includes('유성추'))),ranked=P.rankRecommendationCombos(unit,generated,priority,alternative),top=ranked.top,unavailable=ranked.unavailable;if(!top.length)throw Error('고정 피해 장비는 최대 2개까지 조합합니다. 후보를 바꾸거나 직접 선택하세요.');$('recommendations').innerHTML=(unavailable.length?'<p class="info">이번 판 최우선으로 표시한 '+unavailable.map(esc).join(', ')+'은(는) 고정 피해 제한이나 실제 랜덤 옵션 선택 때문에 이 조합에 넣을 수 없습니다. 다른 장비 후보를 선택해 보세요.</p>':'')+top.map((c,i)=>'<article class="result"><h3>'+(i+1)+'. 우선 검토 조합</h3><div class="items">'+c.names.map((n,j)=>'<span>'+(j<2?'랜덤':'제련')+' · '+esc(n)+' · '+esc(tier(n)||'보완')+(priority.includes(n)?' · 이번 판 최우선':alternative.includes(n)?' · 이번 판 차선책':'')+'</span>').join('')+'</div><p class="combo-benefit"><strong>장점</strong> · '+esc(comboBenefit(c.names))+'</p><details><summary>옵션 기준 보기 · 최소 컷 / 종결 컷</summary><div>'+c.names.map(n=>'<p><strong>'+esc(n)+'</strong> · '+esc(P.itemMap[n].cut)+'</p>').join('')+'</div></details><button class="primary" data-load-rec="'+i+'">4번에 장비 불러오기</button></article>').join('');$('recommendations').querySelectorAll('button[data-load-rec]').forEach(b=>b.onclick=()=>loadCustomBuild(top[+b.dataset.loadRec].names));}catch(e){$('recommendations').textContent=e.message;}}
+  function recommend(){try{if(P.buildOpinion(unit).recommendationDisabled){$('recommendations').textContent='이 병종의 추천 조합은 정리 중입니다. 4번에서 직접 구성하세요.';return;}if(pool.size!==8)throw Error('이번 판 풀을 8개 선택하세요.');const priority=[...pool].filter(n=>poolMarks.get(n)==='core'),alternative=[...pool].filter(n=>poolMarks.get(n)==='alternative'),marked=[...priority,...alternative],candidateNames=[...new Set([...candidates,...marked])];if(candidateNames.length<2)throw Error('3번에서 제련 후보를 2개 이상 고르거나, 2번에서 최우선·차선책을 표시하세요.');const generated=P.combos([...pool],candidateNames,null,2).filter(c=>(!P.mandatory(unit)||c.names.includes('유성추'))),ranked=P.rankRecommendationCombos(unit,generated,priority,alternative),top=ranked.top,unavailable=ranked.unavailable;if(!top.length)throw Error('고정 피해 장비는 최대 '+P.fixedDamageLimit()+'개까지 조합합니다. 후보를 바꾸거나 직접 선택하세요.');$('recommendations').innerHTML=(unavailable.length?'<p class="info">이번 판 최우선으로 표시한 '+unavailable.map(esc).join(', ')+'은(는) 고정 피해 제한이나 실제 랜덤 옵션 선택 때문에 이 조합에 넣을 수 없습니다. 다른 장비 후보를 선택해 보세요.</p>':'')+top.map((c,i)=>'<article class="result"><h3>'+(i+1)+'. 우선 검토 조합</h3><div class="items">'+c.names.map((n,j)=>'<span>'+(j<2?'랜덤':'제련')+' · '+esc(n)+' · '+esc(tier(n)||'보완')+(priority.includes(n)?' · 이번 판 최우선':alternative.includes(n)?' · 이번 판 차선책':'')+'</span>').join('')+'</div><p class="combo-benefit"><strong>장점</strong> · '+esc(comboBenefit(c.names,unit))+'</p><details><summary>옵션 기준 보기 · 최소 컷 / 종결 컷</summary><div>'+c.names.map(n=>'<p><strong>'+esc(n)+'</strong> · '+esc(P.itemMap[n].cut)+'</p>').join('')+'</div></details><button class="primary" data-load-rec="'+i+'">4번에 장비 불러오기</button></article>').join('');$('recommendations').querySelectorAll('button[data-load-rec]').forEach(b=>b.onclick=()=>loadCustomBuild(top[+b.dataset.loadRec].names));}catch(e){$('recommendations').textContent=e.message;}}
   function blankGear(name='',q=1){const it=P.itemMap[name];return {name,stats:{hp:it?Math.round(P.roll(it.hp,q)):0,atk:it?Math.round(P.roll(it.atk,q)):0},values:Object.fromEntries(P.optionFields(name).map(([label,a,b])=>[label,Math.round(P.roll([a,b],q))]))};}
   function renderGear(id,key,kinds,boss=false,slotIndexes=null,inputMode=false){
   gears[key]??=[];const box=$(id),indexes=slotIndexes||kinds.map((_,i)=>i),kindBySlot=new Map(indexes.map((slot,j)=>[slot,kinds[j]]));
