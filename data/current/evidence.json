@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "coverage": "대표 쟁점만 분리. 현행 실행 데이터 전체의 검증 완료를 뜻하지 않음.",
+  "records": [
+    {"id":"tank-core","classification":"user-confirmed","statement":"탱커 기본 3종은 사용자 추천 기준이다.","scope":"탱커 추천; 실제 게임의 강제 장착 규칙 아님","gameVersion":null,"source":{"file":"references/NTA_통합소스_V6.md","quote":"술 조롱박 + 정심회 + 덩굴 방패"},"verification":"원문에 사용자 확정으로 기록됨; 이번 작업에서 실측하지 않음"},
+    {"id":"fixed-damage-count","classification":"operating-policy","statement":"고정 피해 추천 최대 2개는 추천 로직 정책이다.","scope":"사이트 추천; 게임 장착 제한 아님","gameVersion":null,"source":{"file":"references/NTA_통합소스_V6.md","quote":"사이트 추천은 최대 1개 제한에서 최대 2개로 변경한 사용자 요청을 보존한다."},"verification":"사용자 요청이 원문에 기록됨; 실행 로직 전수 대조 미완료"},
+    {"id":"excluded-pair","classification":"operating-policy","statement":"회피 신발과 피해 반사 갑옷의 동시 추천을 제외한다.","scope":"동시 추천 제외; 동시 장착 불가능이라는 의미 아님","gameVersion":null,"source":{"file":"references/NTA_통합소스_V6.md","quote":"동시 장착 불가능이라는 게임 규칙은 아니다."},"verification":"원문의 운영 정책; 게임 규칙으로 사용 금지"},
+    {"id":"bounce-trigger","classification":"unverified","statement":"도끼방패 튕김별 장비 발동 단위는 미확인이다.","scope":"도끼방패의 두 빌드; 장비별 발동 단위","gameVersion":null,"source":{"file":"references/NTA_통합소스_V6.md","quote":"튕김마다 각 장비가 어떤 단위로 발동하는지는 미확인 상태를 유지한다."},"verification":"미확인 유지; 임의 계산 규칙 추가 금지"},
+    {"id":"source-precedence","classification":"source-evidence","statement":"최신 정정 우선 적용에는 대상·조건·버전 일치가 필요하다.","scope":"V6 해석 및 근거 추적","gameVersion":null,"source":{"file":"references/NTA_통합소스_V6.md","quote":"최신 사용자 정정은 같은 대상·조건·버전에 한해 우선한다."},"verification":"원문 기술 확인; 개별 규칙의 게임 검증과 별개"}
+  ]
+}
