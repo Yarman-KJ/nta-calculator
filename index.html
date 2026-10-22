@@ -6965,10 +6965,15 @@ const Planner = (()=>{
  function mandatory(unit){const u=unitMap[unit];return !!u&&u.group!=='병기'&&((u.range>=2&&u.range<=3)||unit==='맥도');}
  function recommendationExcluded(unit,name){const u=unitMap[unit],rules=data.recommendationExclusions||{};return (rules.groups?.[u?.group]||[]).includes(name)||(rules.units?.[unit]||[]).includes(name);}
  function recommendationProfile(unit){const model=data.recommendationFramework||{},ids=model.unitProfiles?.[unit]||[],profiles=ids.map(id=>model.profiles?.[id]).filter(Boolean);return {ids,profiles,functions:[...new Set(profiles.flatMap(p=>p.functions||[]))],label:profiles.map(p=>p.label).filter(Boolean).join(' · ')};}
+ function equipmentRoleForGrowth(unit,profile){const variant=buildOpinion(unit).variantKey;if(variant==='damage')return 'damage';if(variant==='bruiser'||profile.ids.includes('meleeBruiser')||profile.ids.includes('tankHybrid')||profile.ids.includes('lostHpSpear'))return 'hybrid';return unitMap[unit]?.role==='tank'||profile.ids.includes('tankBaseline')||profile.ids.includes('shieldSupport')?'tank':'damage';}
  function recommendationRoleFit(unit,names){const model=data.recommendationFramework||{},profile=recommendationProfile(unit),tags=new Set(names.flatMap(n=>model.equipmentFunctions?.[n]||[])),reasons=[];let score=0;const reward=(tag,label,weight=.2)=>{if(profile.functions.includes(tag)&&tags.has(tag)){score+=weight;reasons.push(label);}};
   reward('rangedMitigation','원거리 피해 감소');reward('sustain','회복·흡혈');reward('shieldSource','보호막 제공');reward('shieldAmplification','보호막 강화');reward('fixedDamage','고정 피해');reward('range','사거리');
   reward('attackScaling','공격 확장',profile.ids.includes('tankHybrid') ? .25 : .1);reward('onHitDamage','타격 효과');reward('attackCycle','공격 기회');reward('skillDamage','스킬 효과');reward('rageCycle','분노 회전');reward('killSplash','처치 광역');
   if(profile.ids.includes('tankHybrid')&&tags.has('rangedMitigation')&&tags.has('sustain')&&names.some(n=>(model.equipmentFunctions?.[n]||[]).includes('attackScaling'))){score+=.15;reasons.push('생존 기반 공격 확장');}
+  // Growth gear is compared at 51 total growths; this is a role fit, not a guaranteed combat multiplier.
+  const role=equipmentRoleForGrowth(unit,profile),other=names.filter(n=>n!=='백참도'),otherTags=new Set(other.flatMap(n=>model.equipmentFunctions?.[n]||[]));
+  if(names.includes('백참도')){if(role==='hybrid'){score+=otherTags.has('sustain')?.15:.7;reasons.push('백참도 완성형 · 공격·흡혈 보완');}else if(role==='damage'){score-=.35;reasons.push('백참도 · 흡혈 활용이 낮으면 후순위');}else score-=.5;}
+  if(names.includes('명광 갑옷')){if(role==='tank'||role==='hybrid'){score+=.45;reasons.push('명광 갑옷 완성형 · 체력·피해 감소 보완');}else score-=.5;}
   return {score,reasons,profileIds:profile.ids,label:profile.label};
  }
  const incompatibleRecommendationPairs=data.recommendationFramework?.constraints?.incompatiblePairs||[['회피 신발','피해 반사 갑옷']];
@@ -7176,6 +7181,8 @@ function percent(p){return p===null?'—':(p*100).toLocaleString('ko-KR',{maximu
    '치료검':'유효 타격 후 회복','회심검':'확률형 치명타 폭딜','유성추':'사거리 +1 · 회피 무시','쌍도끼':'추가 분노 획득','월아도':'피해 증가 · 피해 감소 일부 무시','용연검':'공격력 증가 · 장기전 성장','사슬갑옷':'고정 피해 감소 · 피격 중첩 감소','술 조롱박':'매 턴 체력 회복','피해 반사 갑옷':'피격 피해 반사','구리 방패':'위기 시 보호막 · 체력 회복','황월':'유효 타격 후 보호막','무쇠 방패':'근접 피해 감소','흡혈검':'공격 피해 흡혈','환도':'피격 누적 흡혈 강화','흑요석 갑옷':'초반 5턴 피해 감소','다트':'준 피해 일부 고정 피해 전환','덩굴 방패':'원거리 피해 감소','낭아봉':'현재 체력 비례 추가 피해','군기':'주변 아군 강화 · 적 약화','건곤도':'일반 공격 주변 광역 고정 피해','태양 갑옷':'턴 시작 주변 고정 피해','정심회':'최대 HP 증가 · 주기적 회복','적금순':'보호막 강화 · 주기적 보호막','백사 채찍':'새 대상 공격 시 피해 증가','금 사슬갑옷':'피격당 피해 상한 · 초과 피해 지연','갈고리검':'확률형 최대 HP 비례 고정 피해','호심경':'피격 누적 피해 감소','도끼':'저체력 공격력 증가 · 흡혈','옥패':'전투 초반 아군 보호막 · 기술 방어','천기산':'전투 시작 공격력·피해 감소 강화','분심계':'분심 고정 피해 · 주변 확산','구겸':'대상 공격력 기반 추가 피해','분노의 허리띠':'피격 분노 · 기술 후 회복','가시공':'처치 연계 주변 고정 피해','회피 신발':'확률형 피해 회피','혈적자':'처형 · 처치 후 공격력 증가','시간 깃발':'공격력 또는 체력 보강','모래시계':'확률형 추가 행동','현목 영락':'고정 피해 피격 시 기절 확률','현철 지팡이':'새 대상 첫 타 고정 피해 · 보호막','백참도':'재제작으로 공격력 또는 흡혈 강화','명광 갑옷':'재제작으로 최대 HP 또는 피해 감소 강화'
   };
   const fit=P.recommendationRoleFit(unitName,names);
+  if(chosen.has('백참도')&&fit.reasons.includes('백참도 완성형 · 공격·흡혈 보완'))return '백참도 51회 성장 기준 · 공격과 흡혈을 함께 보완';
+  if(chosen.has('명광 갑옷'))return '명광 갑옷 51회 성장 기준 · 체력과 일반 피해 생존 보완';
   if(unitName==='칼방'&&fit.reasons.includes('보호막 제공')&&fit.reasons.includes('보호막 강화'))return '칼방 역할에 맞춰 보호막 제공과 보호막 강화를 함께 구성';
   if(unitName==='검과 방패'&&fit.reasons.includes('원거리 피해 감소')&&fit.reasons.includes('회복·흡혈')&&fit.reasons.includes('공격 확장'))return '탱커 기본 생존 축을 유지하면서 높은 능력치와 스택을 공격에도 활용';
   if(fit.profileIds.includes('tankBaseline')&&fit.reasons.includes('원거리 피해 감소')&&fit.reasons.includes('회복·흡혈'))return '초소 탱커 기본 축인 원거리 피해 감소와 회복을 확보';
