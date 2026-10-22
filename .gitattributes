@@ -2,4 +2,5 @@
 * -text whitespace=cr-at-eol,-blank-at-eof
 # The archived original must retain even its original whitespace.
 references/* -text -whitespace
+knowledge/sections/** -text -whitespace
 guide/* text eol=crlf
