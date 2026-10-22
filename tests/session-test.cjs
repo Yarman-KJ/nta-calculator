@@ -1,0 +1,24 @@
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
+const {JSDOM}=require('jsdom');
+const names=['project-data','hero-images','planner-engine','planner-app','equipment-search','recommendation-search','squad-ui','attack-calculator','language-ui','session-state'];
+const code=names.map(n=>fs.readFileSync(path.join(__dirname,n==='project-data'?'../data/current/project-data.js':'../src/'+n+'.js'),'utf8')).join('\n;\n');
+const observers=[];
+function boot(saved){const dom=new JSDOM(fs.readFileSync(path.join(__dirname,'../index.html'),'utf8'),{url:'https://nta-test.invalid/',runScripts:'outside-only',pretendToBeVisual:true});const NativeObserver=dom.window.MutationObserver;dom.window.MutationObserver=class extends NativeObserver{constructor(callback){super(callback);observers.push(this)}};dom.window.addEventListener('error',event=>{throw event.error});dom.window.HTMLElement.prototype.scrollIntoView=()=>{};if(saved)dom.window.localStorage.setItem('nta-current-game-v1',saved);dom.window.eval(code);return dom;}
+const dom=boot(),w=dom.window,d=w.document,$=id=>d.getElementById(id);
+const click=s=>{const e=d.querySelector(s);assert.ok(e,s);e.click();};
+const input=(e,value)=>{e.value=value;e.dispatchEvent(new w.Event('input',{bubbles:true}));e.dispatchEvent(new w.Event('change',{bubbles:true}));};
+click('#unit-cards [data-unit="도끼방패"]');assert.equal($('pool-variant-controls').hidden,false);assert.match($('pool-variant-controls').closest('.panel').querySelector('h2').textContent,/^2\./);assert.equal($('candidate-basis').querySelectorAll('[data-role-variant]').length,0);click('#pool-variant-controls [data-role-variant]');click('#unit-cards [data-unit="강화 쇠뇌"]');assert.equal($('pool-variant-controls').hidden,true);
+const pool=['다트','가시공','모래시계','회심검','용연검','시간 깃발','월아도','갈고리검'];
+for(const n of pool)click(`#match-pool [data-name="${n}"]`);for(const n of pool.slice(0,2))click(`#match-pool [data-name="${n}"]`);
+for(const n of ['유성추','낭아봉','쌍도끼','흡혈검'])click(`#craft-candidates [data-name="${n}"]`);
+click('#make-recommendations');assert.equal(d.querySelectorAll('[data-load-rec]').length,6);assert.equal($('boss-transfer-footer'),null);assert.equal($('build-target'),null);
+const primaryBefore=$('boss-unit').value;click('[data-load-rec="0"][data-target="secondary"]');assert.equal($('boss-unit').value,primaryBefore);assert.equal($('tank-unit').value,'강화 쇠뇌');assert.equal(d.querySelector('[data-page="boss"]').getAttribute('aria-pressed'),'true');assert.equal(d.querySelectorAll('#secondary-gear-inputs [data-effect]').length>0,true);
+input(d.querySelector('#secondary-gear-inputs [data-effect]'),'35');input($('tank-weapon-atk'),'23');
+click('[data-action="template-front"]');click('#boss-selection input[value="goat"]');click('[data-boss-card="goat"] [data-boss-item="월아도"]');
+const heroSelect=[...d.querySelectorAll('[data-member-hero]')].find(e=>!e.disabled&&e.options.length>1);assert.ok(heroSelect);input(heroSelect,heroSelect.options[1].value);input(d.querySelector('[data-hero-field="atk"]'),'27');input(d.querySelector('[data-hero-field="mul"]'),'135');input(d.querySelector('[data-speed]'),'9');click('[data-direction="왼쪽"]');click('[data-move-squad="1"]');
+w.dispatchEvent(new w.Event('beforeunload'));const saved=w.localStorage.getItem('nta-current-game-v1');assert.ok(saved);const state=JSON.parse(saved);assert.equal(state.hub.pool.length,8);assert.equal(state.hub.candidates.length,4);assert.equal(state.squads.squads.length,2);assert.equal(state.hub.gears.secondary.length,4);assert.equal(state.squads.squads.flatMap(s=>s.members).find(m=>m.kind==='hero').heroStats.mul,135);
+const restored=boot(saved),rw=restored.window,rd=rw.document;rw.NTASession.save();const after=JSON.parse(rw.localStorage.getItem('nta-current-game-v1'));
+assert.deepEqual(after.hub.pool,state.hub.pool);assert.deepEqual(after.hub.poolMarks,state.hub.poolMarks);assert.deepEqual(after.hub.candidates,state.hub.candidates);assert.deepEqual(after.hub.gears,state.hub.gears);assert.deepEqual(after.squads.squads,state.squads.squads);assert.equal(rd.getElementById('tank-weapon-atk').value,'23');assert.equal(rd.getElementById('pool-count').textContent.startsWith('8/8'),true);assert.equal(rd.querySelector('[data-page="boss"]').getAttribute('aria-pressed'),'true');assert.equal(rd.querySelector('#boss-selection input[value="goat"]').checked,true);
+rd.querySelector('[data-page="units"]').click();rd.querySelector('[data-load-rec="1"][data-target="primary"]').click();rw.NTASession.save();const sent=JSON.parse(rw.localStorage.getItem('nta-current-game-v1'));assert.deepEqual(sent.hub.gears.secondary,state.hub.gears.secondary);assert.equal(sent.hub.gears.primary.length,4);
+for(const observer of observers)observer.disconnect();dom.window.close();restored.window.close();console.log('실제 HTML: 병종 1·2 전달, 상대 병종 보존, 8개 풀·우선순위·후보·수치·보스·2부대 새로고침 복원 통과');
+

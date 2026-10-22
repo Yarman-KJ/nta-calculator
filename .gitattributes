@@ -1,0 +1,5 @@
+# Preserve source/template bytes so Windows and Linux reproduce the same HTML.
+* -text whitespace=cr-at-eol,-blank-at-eof
+# The archived original must retain even its original whitespace.
+references/* -text -whitespace
+guide/* text eol=crlf

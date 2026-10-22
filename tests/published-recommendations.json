@@ -1,0 +1,1162 @@
+{
+  "version": 1,
+  "framework": {
+    "version": 1,
+    "profiles": {
+      "tankBaseline": {
+        "label": "초소 탱커 기본 축",
+        "purpose": "초소 밀기",
+        "items": [
+          "술 조롱박",
+          "정심회",
+          "덩굴 방패"
+        ],
+        "functions": [
+          "sustain",
+          "rangedMitigation"
+        ],
+        "flex": [
+          "defense",
+          "healing",
+          "shield",
+          "attack",
+          "utility"
+        ],
+        "evidence": "user-confirmed",
+        "note": "술 조롱박·정심회·덩굴 방패가 탱커 기본 세트. 셋 중 하나를 빼야 할 때는 술 조롱박을 상황에 맞는 탱 장비로 대체."
+      },
+      "tankHybrid": {
+        "label": "생존 기반 공격 확장",
+        "inherits": "tankBaseline",
+        "functions": [
+          "attackScaling"
+        ],
+        "evidence": "user-confirmed",
+        "note": "검방은 높은 기본 스탯과 스택을 살려 천기산 등 공격 기여 장비를 유연하게 검토"
+      },
+      "shieldSupport": {
+        "label": "보호막 지원 특화",
+        "functions": [
+          "shieldSource",
+          "shieldAmplification"
+        ],
+        "evidence": "user-confirmed",
+        "note": "칼방은 일반 탱커 묶음과 별도로 아군 보호막 제공·강화 효과를 중심으로 판단"
+      },
+      "multiHit": {
+        "label": "다단 공격 활용",
+        "functions": [
+          "onHitDamage",
+          "attackCycle"
+        ],
+        "evidence": "mechanic-recorded",
+        "note": "공격 횟수와 스킬 회전에 연동되는 효과를 우선 검토"
+      },
+      "skillDamage": {
+        "label": "스킬 피해 활용",
+        "functions": [
+          "skillDamage",
+          "rageCycle"
+        ],
+        "evidence": "mechanic-recorded",
+        "note": "스킬 발동 조건과 공격력 계수를 함께 고려"
+      },
+      "rangedCounter": {
+        "label": "원거리 딜러 대응",
+        "functions": [
+          "killSplash"
+        ],
+        "evidence": "user-confirmed",
+        "note": "처치가 가능한 상황에서 가시공의 주변 처치 효과를 검토"
+      },
+      "rangedDamage": {
+        "label": "공격력형 원거리",
+        "functions": [
+          "fixedDamage",
+          "attackScaling",
+          "range"
+        ],
+        "evidence": "user-authored"
+      },
+      "rangedMultiHit": {
+        "label": "광역·다단 원거리",
+        "functions": [
+          "onHitDamage",
+          "attackCycle",
+          "range"
+        ],
+        "evidence": "user-authored"
+      },
+      "meleeBruiser": {
+        "label": "근거리 딜탱",
+        "functions": [
+          "sustain",
+          "attackScaling"
+        ],
+        "evidence": "user-authored"
+      },
+      "lostHpSpear": {
+        "label": "잃은 HP 비례 창병",
+        "functions": [
+          "sustain",
+          "onHitDamage",
+          "attackScaling"
+        ],
+        "evidence": "user-authored"
+      },
+      "skillSupport": {
+        "label": "지원·스킬 운용",
+        "functions": [
+          "skillDamage",
+          "rageCycle",
+          "allyProtection"
+        ],
+        "evidence": "user-authored"
+      }
+    },
+    "unitProfiles": {
+      "강화 쇠뇌": [
+        "rangedDamage",
+        "multiHit"
+      ],
+      "검과 방패": [
+        "tankBaseline",
+        "tankHybrid"
+      ],
+      "검기병": [
+        "rangedCounter",
+        "meleeBruiser"
+      ],
+      "대도기병": [
+        "meleeBruiser",
+        "skillDamage"
+      ],
+      "기병(도끼)": [
+        "multiHit",
+        "meleeBruiser"
+      ],
+      "창기병": [
+        "lostHpSpear"
+      ],
+      "궁기병": [
+        "rangedMultiHit"
+      ],
+      "긴 창": [
+        "rangedCounter",
+        "lostHpSpear"
+      ],
+      "도끼방패": [
+        "meleeBruiser",
+        "rangedCounter"
+      ],
+      "독궁": [
+        "skillSupport",
+        "rangedMultiHit"
+      ],
+      "망치방패": [
+        "tankBaseline"
+      ],
+      "맥도": [
+        "rangedDamage",
+        "multiHit"
+      ],
+      "무거운 방패": [
+        "tankBaseline"
+      ],
+      "사냥꾼": [
+        "skillSupport"
+      ],
+      "쇠뇌": [
+        "rangedMultiHit"
+      ],
+      "쌍창": [
+        "meleeBruiser"
+      ],
+      "장검": [
+        "meleeBruiser",
+        "skillDamage"
+      ],
+      "장과": [
+        "rangedMultiHit"
+      ],
+      "장궁": [
+        "rangedMultiHit"
+      ],
+      "장창": [
+        "meleeBruiser"
+      ],
+      "중기병": [
+        "tankBaseline"
+      ],
+      "창방": [
+        "tankBaseline"
+      ],
+      "칼방": [
+        "shieldSupport"
+      ],
+      "화궁": [
+        "skillDamage"
+      ]
+    },
+    "equipmentFunctions": {
+      "술 조롱박": [
+        "sustain",
+        "healing"
+      ],
+      "정심회": [
+        "sustain",
+        "healing",
+        "health"
+      ],
+      "덩굴 방패": [
+        "rangedMitigation",
+        "defense"
+      ],
+      "무쇠 방패": [
+        "meleeMitigation",
+        "defense"
+      ],
+      "사슬갑옷": [
+        "flatMitigation",
+        "defense"
+      ],
+      "금 사슬갑옷": [
+        "damageCap",
+        "defense"
+      ],
+      "회피 신발": [
+        "avoidance",
+        "defense"
+      ],
+      "피해 반사 갑옷": [
+        "retaliation",
+        "defense"
+      ],
+      "태양 갑옷": [
+        "tankUtility",
+        "areaDamage"
+      ],
+      "호심경": [
+        "stackingMitigation",
+        "defense"
+      ],
+      "명광 갑옷": [
+        "health",
+        "defense"
+      ],
+      "구리 방패": [
+        "shieldSource",
+        "healing",
+        "defense"
+      ],
+      "황월": [
+        "shieldSource",
+        "defense"
+      ],
+      "적금순": [
+        "shieldAmplification",
+        "shieldSource"
+      ],
+      "옥패": [
+        "shieldSource",
+        "allyProtection"
+      ],
+      "흡혈검": [
+        "sustain",
+        "healing",
+        "attackScaling"
+      ],
+      "환도": [
+        "sustain",
+        "healing",
+        "attackScaling"
+      ],
+      "치료검": [
+        "sustain",
+        "healing"
+      ],
+      "천기산": [
+        "attackScaling",
+        "defense"
+      ],
+      "회심검": [
+        "attackScaling"
+      ],
+      "용연검": [
+        "attackScaling"
+      ],
+      "백참도": [
+        "attackScaling",
+        "sustain"
+      ],
+      "시간 깃발": [
+        "attackScaling"
+      ],
+      "도끼": [
+        "attackScaling",
+        "sustain"
+      ],
+      "쌍도끼": [
+        "attackCycle",
+        "rageCycle"
+      ],
+      "모래시계": [
+        "attackCycle"
+      ],
+      "유성추": [
+        "range",
+        "avoidanceCounter"
+      ],
+      "다트": [
+        "fixedDamage",
+        "onHitDamage"
+      ],
+      "낭아봉": [
+        "onHitDamage",
+        "multiHit"
+      ],
+      "갈고리검": [
+        "fixedDamage",
+        "onHitDamage",
+        "multiHit"
+      ],
+      "건곤도": [
+        "fixedDamage",
+        "areaDamage"
+      ],
+      "가시공": [
+        "fixedDamage",
+        "killSplash"
+      ],
+      "분심계": [
+        "fixedDamage",
+        "skillDamage",
+        "areaDamage"
+      ],
+      "현철 지팡이": [
+        "utilityDamage",
+        "shieldSource",
+        "onHitDamage"
+      ],
+      "구겸": [
+        "attackScaling",
+        "onHitDamage"
+      ],
+      "백사 채찍": [
+        "attackScaling",
+        "targetSwitchDamage"
+      ],
+      "분노의 허리띠": [
+        "rageCycle",
+        "sustain",
+        "healing"
+      ],
+      "현목 영락": [
+        "control",
+        "defense"
+      ],
+      "군기": [
+        "allyProtection",
+        "utility"
+      ],
+      "혈적자": [
+        "execution",
+        "attackScaling"
+      ],
+      "흑요석 갑옷": [
+        "defense",
+        "timeLimited"
+      ]
+    },
+    "equipmentRoles": {
+      "쌍도끼": [
+        "damage"
+      ],
+      "옥패": [
+        "tank"
+      ],
+      "현목 영락": [
+        "tank"
+      ],
+      "태양 갑옷": [
+        "tank"
+      ],
+      "현철 지팡이": [
+        "utilityDamage"
+      ],
+      "분노의 허리띠": [
+        "utilityTank"
+      ],
+      "군기": [
+        "utilityTank"
+      ],
+      "금 사슬갑옷": [
+        "utilityTank"
+      ],
+      "회피 신발": [
+        "utilityTank"
+      ],
+      "황월": [
+        "utilityTank"
+      ],
+      "천기산": [
+        "utilityDamage",
+        "utilityTank"
+      ],
+      "모래시계": [
+        "utilityDamage",
+        "utilityTank"
+      ],
+      "시간 깃발": [
+        "utilityDamage",
+        "utilityTank"
+      ],
+      "치료검": [
+        "lifesteal"
+      ],
+      "흡혈검": [
+        "lifesteal"
+      ],
+      "환도": [
+        "lifesteal"
+      ],
+      "백참도": [
+        "lifesteal"
+      ]
+    },
+    "constraints": {
+      "tankBaselineExcludes": [
+        "칼방"
+      ],
+      "rangedMandatoryHandledByEngine": true,
+      "maximumFixedDamageItems": 2,
+      "incompatiblePairs": [
+        [
+          "회피 신발",
+          "피해 반사 갑옷"
+        ]
+      ],
+      "evidencePolicy": "기존 사용자가 확정한 등급이 기본 우선순위다. 역할 적합도는 같은 등급 후보의 미세 조정에만 사용하고, 확인되지 않은 효과 상호작용은 자동 추정하지 않는다."
+    }
+  },
+  "builds": {
+    "강화 쇠뇌": {
+      "core": [
+        "회심검",
+        "낭아봉"
+      ],
+      "recommended": [
+        "다트",
+        "유성추",
+        "백사 채찍"
+      ],
+      "useful": [
+        "건곤도",
+        "모래시계",
+        "월아도"
+      ],
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
+      "author": "사용자",
+      "mole": [],
+      "recommendationDisabled": false,
+      "alternative": [],
+      "roleNote": "공격력·타격 효과를 함께 살립니다. 다트 외 고정 피해는 옵션과 전용무기 구성을 보고 더합니다."
+    },
+    "검과 방패": {
+      "core": [
+        "술 조롱박",
+        "정심회",
+        "덩굴 방패"
+      ],
+      "recommended": [
+        "분노의 허리띠",
+        "천기산"
+      ],
+      "useful": [
+        "흡혈검",
+        "피해 반사 갑옷",
+        "사슬갑옷"
+      ],
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
+      "author": "사용자",
+      "mole": [],
+      "alternative": [
+        "옥패",
+        "회피 신발",
+        "현목 영락",
+        "구리 방패",
+        "군기",
+        "모래시계"
+      ],
+      "recommendationDisabled": false,
+      "roleNote": "술 조롱박·정심회·덩굴 방패가 기본 생존 세트입니다. 셋 중 하나를 빼야 한다면 술 조롱박을 상황에 맞는 탱 장비로 바꿉니다. 스택과 높은 기본 능력치가 갖춰지면 천기산 등 공격 장비도 검토합니다."
+    },
+    "검기병": {
+      "core": [
+        "가시공",
+        "쌍도끼",
+        "흡혈검"
+      ],
+      "recommended": [
+        "유성추",
+        "현철 지팡이"
+      ],
+      "useful": [
+        "회심검",
+        "구겸",
+        "금 사슬갑옷"
+      ],
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
+      "author": "사용자",
+      "mole": [
+        "치료검",
+        "황월",
+        "흑요석 갑옷",
+        "흡혈검",
+        "구리 방패",
+        "무쇠 방패",
+        "현철 지팡이",
+        "덩굴 방패"
+      ],
+      "recommendationDisabled": false,
+      "alternative": [],
+      "roleNote": "원거리 딜러 대응 역할에서는 가시공을 우선합니다. 쌍도끼·흡혈검은 공격 지속과 생존을 보완합니다."
+    },
+    "대도기병": {
+      "core": [
+        "시간 깃발",
+        "쌍도끼"
+      ],
+      "recommended": [
+        "모래시계",
+        "흡혈검",
+        "유성추"
+      ],
+      "useful": [
+        "백참도",
+        "가시공",
+        "회심검"
+      ],
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
+      "author": "사용자",
+      "mole": [
+        "치료검",
+        "황월",
+        "흑요석 갑옷",
+        "흡혈검",
+        "현철 지팡이",
+        "무쇠 방패",
+        "구리 방패",
+        "덩굴 방패"
+      ],
+      "recommendationDisabled": false,
+      "alternative": [
+        "용연검"
+      ],
+      "roleNote": "시간 깃발은 공격력 옵션이 붙었을 때 핵심 가치가 높습니다. 쌍도끼는 스킬 회전이 실제로 좋아지는 경우에 사용합니다."
+    },
+    "기병(도끼)": {
+      "core": [
+        "건곤도",
+        "낭아봉"
+      ],
+      "recommended": [
+        "회심검",
+        "흡혈검"
+      ],
+      "useful": [
+        "다트",
+        "덩굴 방패",
+        "금 사슬갑옷"
+      ],
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
+      "author": "사용자",
+      "mole": [
+        "치료검",
+        "황월",
+        "흑요석 갑옷",
+        "구리 방패",
+        "무쇠 방패",
+        "흡혈검",
+        "현철 지팡이",
+        "덩굴 방패"
+      ],
+      "recommendationDisabled": false,
+      "alternative": [],
+      "roleNote": "건곤도의 주변 피해와 낭아봉의 현재 HP 비례 피해를 중심으로 구성합니다."
+    },
+    "창기병": {
+      "core": [
+        "흡혈검",
+        "덩굴 방패"
+      ],
+      "recommended": [
+        "갈고리검",
+        "시간 깃발",
+        "쌍도끼"
+      ],
+      "useful": [
+        "천기산",
+        "환도",
+        "유성추"
+      ],
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
+      "author": "사용자",
+      "mole": [
+        "치료검",
+        "황월",
+        "흑요석 갑옷",
+        "구리 방패",
+        "무쇠 방패",
+        "흡혈검",
+        "현철 지팡이",
+        "덩굴 방패"
+      ],
+      "recommendationDisabled": false,
+      "alternative": [
+        "정심회",
+        "구겸"
+      ],
+      "roleNote": "흡혈과 방어를 기본으로 두고, 방어 장비 한 칸은 상대 공격 유형에 맞춥니다. 잃은 HP 비례 피해 재능이 있을 때 갈고리검 가치가 올라갑니다."
+    },
+    "궁기병": {
+      "core": [
+        "낭아봉",
+        "갈고리검"
+      ],
+      "recommended": [
+        "쌍도끼",
+        "회심검",
+        "다트"
+      ],
+      "useful": [
+        "유성추",
+        "건곤도",
+        "현철 지팡이"
+      ],
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
+      "author": "사용자",
+      "mole": [],
+      "recommendationDisabled": false,
+      "alternative": [
+        "월아도",
+        "용연검"
+      ],
+      "roleNote": "낭아봉·갈고리검 등 공격 방식에 맞는 고정 피해를 우선 검토합니다. 탱·유틸 탱 장비는 추천에서 제외합니다."
+    },
+    "긴 창": {
+      "core": [
+        "쌍도끼",
+        "유성추",
+        "가시공"
+      ],
+      "recommended": [
+        "다트",
+        "구겸"
+      ],
+      "useful": [
+        "낭아봉",
+        "회심검",
+        "백참도"
+      ],
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
+      "author": "사용자",
+      "mole": [],
+      "recommendationDisabled": false,
+      "alternative": [],
+      "roleNote": "원거리 딜러를 노리는 세팅이면 가시공을 우선합니다. 사거리 2~3 조건에 해당하면 유성추가 필수입니다."
+    },
+    "도끼방패": {
+      "core": [
+        "유성추",
+        "가시공"
+      ],
+      "recommended": [
+        "쌍도끼",
+        "회심검",
+        "낭아봉"
+      ],
+      "useful": [
+        "다트",
+        "구겸",
+        "환도",
+        "흡혈검",
+        "현철 지팡이",
+        "분심계",
+        "시간 깃발",
+        "백참도"
+      ],
+      "source": "사용자 제공 NTA 공략",
+      "date": "2026-10-03",
+      "kind": "사용자 추천 기준",
+      "author": "사용자",
+      "mole": [],
+      "recommendationDisabled": false,
+      "alternative": [],
+      "defaultVariant": "damage",
+      "variants": {
+        "damage": {
+          "label": "딜 빌드",
+          "core": [
+            "유성추",
+            "가시공"
+          ],
+          "recommended": [
+            "쌍도끼",
+            "회심검",
+            "낭아봉"
+          ],
+          "useful": [
+            "다트",
+            "구겸",
+            "환도",
+            "흡혈검",
+            "현철 지팡이",
+            "분심계",
+            "시간 깃발",
+            "백참도"
+          ],
+          "roleNote": "손도끼 투척의 공격 계수와 튕김을 살리는 화력형입니다. 유성추·가시공을 중심으로 두고, 흡혈검은 생존 보완용입니다. 현철 지팡이·분심계는 광역 스킬에, 시간 깃발·백참도는 공격 보완에 활용할 수 있습니다."
+        },
+        "bruiser": {
+          "label": "딜탱 빌드",
+          "core": [
+            "흡혈검",
+            "덩굴 방패"
+          ],
+          "recommended": [
+            "도끼",
+            "천기산",
+            "호심경"
+          ],
+          "useful": [
+            "환도",
+            "금 사슬갑옷",
+            "정심회",
+            "가시공",
+            "현철 지팡이",
+            "분심계",
+            "시간 깃발",
+            "백참도",
+            "회피 신발",
+            "분노의 허리띠"
+          ],
+          "roleNote": "흡혈과 방어를 함께 챙겨 공격을 이어가는 생존형입니다. 도끼는 저체력 공격·흡혈, 천기산은 공격·피해 감소, 호심경은 피격이 많은 전투에서 보완합니다. 가시공은 처치 연계, 현철 지팡이·분심계는 광역 스킬, 시간 깃발·백참도는 공격 보완용으로 고려합니다."
+        }
+      },
+      "roleNote": "딜 빌드는 손도끼 투척과 처치 연계를 살리고, 딜탱 빌드는 흡혈·방어를 더해 오래 버티며 공격합니다."
+    },
+    "독궁": {
+      "core": [
+        "쌍도끼"
+      ],
+      "recommended": [
+        "유성추",
+        "분심계"
+      ],
+      "useful": [
+        "갈고리검",
+        "현철 지팡이"
+      ],
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
+      "author": "사용자",
+      "mole": [],
+      "recommendationDisabled": false,
+      "roleNote": "중독 유지가 병종의 핵심입니다. 쌍도끼는 분노와 스킬 회전이 실제로 개선되는지 함께 봅니다.",
+      "alternative": []
+    },
+    "망치방패": {
+      "core": [
+        "술 조롱박",
+        "덩굴 방패",
+        "정심회"
+      ],
+      "recommended": [
+        "회피 신발",
+        "금 사슬갑옷"
+      ],
+      "useful": [
+        "옥패",
+        "구리 방패",
+        "명광 갑옷"
+      ],
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
+      "author": "사용자",
+      "mole": [],
+      "alternative": [
+        "호심경",
+        "군기",
+        "분노의 허리띠",
+        "모래시계",
+        "현목 영락"
+      ],
+      "recommendationDisabled": false,
+      "roleNote": "술 조롱박·정심회·덩굴 방패가 기본 생존 세트입니다. 술 조롱박을 빼는 상황이면 회피 신발이나 금 사슬갑옷 등으로 목적에 맞게 대체합니다."
+    },
+    "맥도": {
+      "core": [
+        "유성추",
+        "회심검"
+      ],
+      "recommended": [
+        "다트",
+        "낭아봉",
+        "흡혈검"
+      ],
+      "useful": [
+        "건곤도",
+        "가시공",
+        "시간 깃발"
+      ],
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
+      "author": "사용자",
+      "mole": [],
+      "recommendationDisabled": false,
+      "alternative": [
+        "혈적자",
+        "천기산"
+      ],
+      "roleNote": "유성추·회심검을 중심으로 공격 기회와 공격력을 확보합니다. 탱·유틸 탱 장비는 추천에서 제외합니다."
+    },
+    "무거운 방패": {
+      "core": [
+        "술 조롱박",
+        "덩굴 방패",
+        "정심회"
+      ],
+      "recommended": [
+        "피해 반사 갑옷",
+        "명광 갑옷"
+      ],
+      "useful": [
+        "금 사슬갑옷",
+        "옥패",
+        "호심경"
+      ],
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
+      "author": "사용자",
+      "mole": [],
+      "alternative": [
+        "구리 방패",
+        "군기",
+        "분노의 허리띠",
+        "모래시계",
+        "현목 영락"
+      ],
+      "recommendationDisabled": false,
+      "roleNote": "술 조롱박·정심회·덩굴 방패가 기본 생존 세트입니다. 반사 갑옷은 반격 효율이 있는 상대에게 추천합니다."
+    },
+    "사냥꾼": {
+      "core": [],
+      "recommended": [
+        "유성추",
+        "낭아봉",
+        "갈고리검"
+      ],
+      "useful": [
+        "쌍도끼",
+        "다트",
+        "모래시계"
+      ],
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
+      "author": "사용자",
+      "mole": [],
+      "recommendationDisabled": false,
+      "roleNote": "격려 유지와 지원 역할이 핵심입니다. 고정 코어 장비보다 사거리·타격 기회·지원 운영에 맞춰 고릅니다.",
+      "alternative": []
+    },
+    "쇠뇌": {
+      "core": [
+        "쌍도끼",
+        "낭아봉",
+        "갈고리검"
+      ],
+      "recommended": [
+        "유성추",
+        "회심검"
+      ],
+      "useful": [
+        "다트",
+        "모래시계",
+        "구겸"
+      ],
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
+      "author": "사용자",
+      "mole": [],
+      "recommendationDisabled": false,
+      "alternative": [],
+      "roleNote": "다단 공격과 스킬 회전을 살립니다. 사거리 2~3 조건에 해당하면 유성추를 포함합니다."
+    },
+    "쌍창": {
+      "core": [
+        "쌍도끼",
+        "흡혈검"
+      ],
+      "recommended": [
+        "덩굴 방패",
+        "시간 깃발",
+        "갈고리검"
+      ],
+      "useful": [
+        "천기산",
+        "현철 지팡이",
+        "백참도"
+      ],
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
+      "author": "사용자",
+      "mole": [],
+      "recommendationDisabled": false,
+      "alternative": [
+        "모래시계"
+      ],
+      "roleNote": "쌍도끼·흡혈검으로 공격 회전과 생존을 갖춘 뒤, 덩굴 방패나 시간 깃발 등으로 부족한 기능을 보완합니다."
+    },
+    "장검": {
+      "core": [
+        "흡혈검",
+        "시간 깃발"
+      ],
+      "recommended": [
+        "덩굴 방패",
+        "도끼",
+        "갈고리검"
+      ],
+      "useful": [
+        "천기산",
+        "환도",
+        "호심경"
+      ],
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
+      "author": "사용자",
+      "mole": [],
+      "recommendationDisabled": false,
+      "alternative": [],
+      "roleNote": "흡혈검을 바탕으로 공격력 옵션 시간 깃발을 검토합니다. 시간 깃발은 공격력 옵션일 때 우선도가 높습니다."
+    },
+    "장과": {
+      "core": [
+        "쌍도끼",
+        "유성추"
+      ],
+      "recommended": [
+        "갈고리검",
+        "낭아봉"
+      ],
+      "useful": [
+        "회심검",
+        "건곤도"
+      ],
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
+      "author": "사용자",
+      "mole": [],
+      "recommendationDisabled": false,
+      "alternative": [
+        "백사 채찍",
+        "백참도"
+      ],
+      "roleNote": "쌍도끼·유성추를 중심으로 공격 기회와 스킬 회전을 확보합니다. 탱·유틸 탱 장비는 추천에서 제외합니다."
+    },
+    "장궁": {
+      "core": [
+        "쌍도끼",
+        "낭아봉"
+      ],
+      "recommended": [
+        "갈고리검",
+        "구겸",
+        "유성추"
+      ],
+      "useful": [
+        "회심검",
+        "다트",
+        "분심계"
+      ],
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
+      "author": "사용자",
+      "mole": [],
+      "recommendationDisabled": false,
+      "alternative": [
+        "현철 지팡이"
+      ],
+      "roleNote": "쌍도끼·낭아봉을 중심으로 분노 회전과 다수 타격을 살립니다. 탱·유틸 탱 장비는 추천에서 제외합니다."
+    },
+    "장창": {
+      "core": [
+        "회피 신발"
+      ],
+      "recommended": [
+        "흡혈검",
+        "덩굴 방패",
+        "회심검"
+      ],
+      "useful": [
+        "호심경",
+        "금 사슬갑옷"
+      ],
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
+      "author": "사용자",
+      "mole": [],
+      "recommendationDisabled": false,
+      "alternative": [
+        "백참도",
+        "명광 갑옷"
+      ],
+      "roleNote": "회피와 자체 회복을 활용합니다. 사거리 2~3 조건에 해당하면 유성추를 포함합니다."
+    },
+    "중기병": {
+      "core": [
+        "술 조롱박",
+        "덩굴 방패",
+        "정심회"
+      ],
+      "recommended": [
+        "피해 반사 갑옷"
+      ],
+      "useful": [
+        "금 사슬갑옷",
+        "명광 갑옷",
+        "분노의 허리띠"
+      ],
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
+      "author": "사용자",
+      "mole": [],
+      "alternative": [
+        "태양 갑옷",
+        "군기",
+        "옥패",
+        "현목 영락",
+        "모래시계"
+      ],
+      "recommendationDisabled": false,
+      "roleNote": "술 조롱박·정심회·덩굴 방패가 기본 생존 세트입니다. 술 조롱박을 빼야 할 때 피해 반사 갑옷 등으로 대체합니다."
+    },
+    "창방": {
+      "core": [
+        "술 조롱박",
+        "덩굴 방패",
+        "정심회"
+      ],
+      "recommended": [
+        "분노의 허리띠"
+      ],
+      "useful": [
+        "금 사슬갑옷",
+        "천기산",
+        "쌍도끼"
+      ],
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
+      "author": "사용자",
+      "mole": [],
+      "alternative": [
+        "피해 반사 갑옷",
+        "구리 방패",
+        "군기",
+        "태양 갑옷",
+        "옥패",
+        "회피 신발",
+        "모래시계",
+        "현목 영락",
+        "명광 갑옷"
+      ],
+      "recommendationDisabled": false,
+      "roleNote": "술 조롱박·정심회·덩굴 방패가 기본 생존 세트입니다. 술 조롱박을 빼는 상황이면 분노의 허리띠 등으로 대체합니다."
+    },
+    "칼방": {
+      "core": [
+        "정심회",
+        "황월",
+        "적금순"
+      ],
+      "recommended": [
+        "술 조롱박",
+        "덩굴 방패"
+      ],
+      "useful": [
+        "옥패",
+        "회피 신발",
+        "피해 반사 갑옷"
+      ],
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
+      "author": "사용자",
+      "mole": [],
+      "alternative": [
+        "구리 방패",
+        "군기",
+        "태양 갑옷",
+        "호심경",
+        "모래시계",
+        "현목 영락",
+        "명광 갑옷"
+      ],
+      "recommendationDisabled": false,
+      "roleNote": "보호막 제공·강화와 정심회를 중심으로 구성합니다. 일반 탱커와 같은 고정 3종 세트로 평가하지 않습니다."
+    },
+    "화궁": {
+      "core": [
+        "시간 깃발",
+        "쌍도끼"
+      ],
+      "recommended": [
+        "용연검",
+        "분심계"
+      ],
+      "useful": [
+        "백참도",
+        "유성추",
+        "천기산"
+      ],
+      "source": "사용자 제공 병종별 추천 시스템 통합안",
+      "date": "2026-10-21",
+      "kind": "역할·조건 반영 추천 기준",
+      "author": "사용자",
+      "mole": [],
+      "recommendationDisabled": false,
+      "alternative": [],
+      "roleNote": "시간 깃발의 공격력 옵션과 쌍도끼로 스킬 화력을 높입니다. 분심계는 스킬 적중·확산을 노릴 때 추천합니다."
+    }
+  }
+}
