@@ -91,4 +91,14 @@
 <script>
   document.querySelectorAll('.item img').forEach(img=>img.addEventListener('error',()=>{img.hidden=true;}));
 </script>
-<script>(()=>{const details=document.querySelector('.item-records'),summary=details.querySelector('summary'),label=summary.querySelector('.item-records-action-label');function update(){label.textContent=details.open?'접기':'펼치기';summary.setAttribute('aria-expanded',String(details.open));}details.addEventListener('toggle',update);details.querySelector('.item-records-close').onclick=()=>{details.open=false;update();summary.scrollIntoView?.({block:'nearest'});summary.focus({preventScroll:true});};update();})();</script></body></html>
+<script>(()=>{const details=document.querySelector('.item-records'),summary=details.querySelector('summary'),label=summary.querySelector('.item-records-action-label');function update(){label.textContent=details.open?'접기':'펼치기';summary.setAttribute('aria-expanded',String(details.open));}details.addEventListener('toggle',update);details.querySelector('.item-records-close').onclick=()=>{details.open=false;update();summary.scrollIntoView?.({block:'nearest'});summary.focus({preventScroll:true});};update();})();</script><script>/* Public guide friction only. This cannot prevent OS/browser screenshots or source inspection. */
+(()=>{
+ const article=document.querySelector('article');if(!article)return;
+ const editable=target=>target?.closest?.('input,textarea,select,[contenteditable="true"]');
+ const inside=target=>target instanceof Element&&article.contains(target);
+ const style=document.createElement('style');style.textContent='article{-webkit-user-select:none;user-select:none}article img{-webkit-user-drag:none}article input,article textarea,article select,article [contenteditable="true"]{-webkit-user-select:text;user-select:text}';document.head.append(style);
+ for(const name of ['contextmenu','dragstart','selectstart'])article.addEventListener(name,e=>{if(!editable(e.target))e.preventDefault();});
+ document.addEventListener('copy',e=>{const selection=window.getSelection();if(editable(document.activeElement))return;if(inside(e.target)||inside(selection?.anchorNode?.parentElement))e.preventDefault();});
+ article.querySelectorAll('img').forEach(image=>image.draggable=false);
+})();
+</script></body></html>
