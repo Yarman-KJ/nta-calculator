@@ -522,6 +522,34 @@ body{background:radial-gradient(ellipse at top,#fbf2df 0%,#eee5d1 65%);backgroun
 #page-attack .attack-evidence{margin-top:28px;font-size:13px}
 #page-attack .attack-evidence summary{font-weight:700;color:var(--green)}
 @media(max-width:760px){#page-attack .attack-panel{padding:18px}.attack-layout{grid-template-columns:1fr;gap:22px;margin-top:20px}.attack-heading h2{font-size:22px}#attack-result{padding:16px}#attack-result tbody td:last-child strong{font-size:20px}.attack-output{min-width:0}}
+/* 공략: 제목·내용 범위·펼침 상태가 구분되는 동일 크기 카드. */
+#page-guide>.panel{padding:28px}
+#page-guide>.panel>h2{font-size:25px;margin:0 0 8px}
+#page-guide .guide-content{max-width:none;margin-top:24px}
+#page-guide .guide-part{background:var(--paper);border:1px solid var(--line);margin:14px 0;border-radius:12px;overflow:hidden}
+#page-guide .guide-part>summary{padding:19px 20px;gap:16px;min-height:96px;transition:background .15s}
+#page-guide .guide-part>summary:before{display:none}
+#page-guide .guide-part>summary:hover{background:var(--soft)}
+#page-guide .guide-part>summary:focus-visible{outline:3px solid var(--gold);outline-offset:-4px}
+.guide-card-number{flex:0 0 44px;display:grid;place-items:center;width:44px;height:44px;background:var(--soft);border:1px solid var(--line);border-radius:10px;font-size:16px;letter-spacing:.05em;color:var(--green)}
+.guide-card-text{display:flex;flex:1;min-width:0;flex-direction:column;gap:5px}
+.guide-card-title{font-size:18px;line-height:1.4;color:var(--ink)}
+#page-guide .guide-part-hint{margin:0;font-size:12px;line-height:1.5;color:var(--muted);font-weight:400}
+.guide-card-action{display:flex;align-items:center;gap:12px;font-size:12px;font-weight:600;color:var(--green);padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--paper);white-space:nowrap}
+.guide-card-arrow{font-size:23px;line-height:1;transition:transform .15s}
+#page-guide .guide-part[open]>summary{background:var(--soft);border-bottom:1px solid var(--line)}
+.guide-part[open] .guide-card-arrow{transform:rotate(180deg)}
+#page-guide .guide-frame{display:block;width:100%;border:0;border-radius:0;margin:0;min-height:540px;height:78vh;background:var(--paper)}
+#page-guide .guide-checklist-body{border:0;padding:22px}
+#page-guide .guide-checkgrid{gap:16px;margin-top:20px}
+#page-guide .guide-checkgrid fieldset{background:var(--paper);padding:16px;border-radius:10px}
+#page-guide .guide-checkgrid label{padding:10px 0;font-size:14px;line-height:1.65;gap:10px}
+#page-guide .guide-checkgrid input{width:18px;height:18px;margin-top:3px}
+#page-guide .guide-checkgrid label:has(input:checked){color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line)}
+#page-guide .guide-check-reset{font-size:12px;min-height:40px;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--muted)}
+.guide-close-row{padding:12px 20px;display:flex;justify-content:flex-end;border-top:1px solid var(--line);background:var(--paper)}
+.guide-close-row button{min-height:40px;min-width:80px;border:1px solid var(--line);border-radius:8px;background:var(--soft);color:var(--green);font-size:13px}
+@media(max-width:600px){#page-guide>.panel{padding:16px}#page-guide>.panel>h2{font-size:22px}#page-guide .guide-part>summary{padding:16px 12px;gap:10px;min-height:90px}.guide-card-number{width:34px;height:38px;flex-basis:34px;font-size:13px}.guide-card-title{font-size:16px}#page-guide .guide-part-hint{font-size:11px}.guide-card-action{gap:6px;padding:7px 8px;font-size:11px}.guide-card-arrow{font-size:20px}#page-guide .guide-checklist-body{padding:16px}#page-guide .guide-frame{height:75vh;min-height:460px}}
 </style><style>/* Pair recommendations: one consistent layout for desktop and mobile. */
 #page-pairs{--pf-green:#4a6244;--pf-line:#ded2b9;--pf-paper:#fffdf6;--pf-ink:#393d2e;--pf-soft:#f5efdf;color:var(--pf-ink)}
 .pf-shell{max-width:940px;margin:18px auto;padding:26px 28px 24px;background:var(--pf-paper)}
@@ -7389,7 +7417,16 @@ function guide(cfg){const enc=D.encounters.find(e=>e.id===cfg.encounter)||select
  function renderGuide(){
   const host=$('guide-content');if(!host)return;
   host.innerHTML='<details class="guide-part guide-checklist-part"><summary>✅ 초보자 체크리스트<span class="guide-part-hint">첫날 · 둘째날 · 셋째날</span></summary><div class="guide-checklist-body"><div class="guide-checklist-head"><p>진행한 항목을 체크하면 이 브라우저에 저장됩니다.</p><button type="button" class="guide-check-reset">체크 초기화</button></div><div class="guide-checkgrid"><fieldset><legend>첫날 목표</legend><label><input type="checkbox" data-guide-check="day1-0">도감 확인</label><label><input type="checkbox" data-guide-check="day1-1">달팽이 그리기</label><label><input type="checkbox" data-guide-check="day1-2">거점 14레벨</label><label><input type="checkbox" data-guide-check="day1-3">대장간 14레벨(전용무기 제련)</label><label><input type="checkbox" data-guide-check="day1-4">영지 100개+</label><label><input type="checkbox" data-guide-check="day1-5">팀 게임이면 대사관 8</label></fieldset><fieldset><legend>둘째날 목표</legend><label><input type="checkbox" data-guide-check="day2-0">거점 18레벨</label><label><input type="checkbox" data-guide-check="day2-1">2번째 전용무기 제작</label><label><input type="checkbox" data-guide-check="day2-2">팀 게임이면 대사관 13</label></fieldset><fieldset><legend>셋째날 목표</legend><label><input type="checkbox" data-guide-check="day3-0">거점 20레벨</label><label><input type="checkbox" data-guide-check="day3-1">6렙 병력 최대한 영끌</label><label><input type="checkbox" data-guide-check="day3-2">전무 제련(임시옵션, 여름 중 완성)</label><label><input type="checkbox" data-guide-check="day3-3">영지 190 이하 유지(안전 할 때 까지 절대 넘지 말 것)</label></fieldset></div><h4>🎯 반드시 숙지해야 할 핵심 사항</h4></div></details><details class="guide-part"><summary>기본편<span class="guide-part-hint">초반 성장 · 파밍 · 장비</span></summary><iframe class="guide-frame" src="guide/basic.html" loading="lazy" title="초보자를 위한 공략 기본편"></iframe></details><details class="guide-part"><summary>전투편<span class="guide-part-hint">공타 · 전투 준비 · 거점 전투</span></summary><iframe class="guide-frame" src="guide/combat.html" loading="lazy" title="초보자를 위한 전투 공략"></iframe></details><details class="guide-part"><summary>장비<span class="guide-part-hint">역할별 구성 · 피해 계산 · 차선책</span></summary><iframe class="guide-frame" src="guide/equipment.html?v=public-readonly-1" loading="lazy" title="병종 역할에 맞는 장비 구성"></iframe></details>';
-  host.querySelectorAll('.guide-part').forEach(part=>{part.open=false;});
+  host.querySelectorAll('.guide-part').forEach((part,index)=>{
+   part.open=false;const summary=part.querySelector('summary'),hint=summary.querySelector('.guide-part-hint');
+   const title=document.createElement('span');title.className='guide-card-title';title.textContent=summary.firstChild.textContent.replace('✅ ','');
+   const text=document.createElement('span');text.className='guide-card-text';text.append(title);if(hint)text.append(hint);
+   const number=document.createElement('span');number.className='guide-card-number';number.textContent=String(index+1).padStart(2,'0');number.setAttribute('aria-hidden','true');
+   const action=document.createElement('span');action.className='guide-card-action';const label=document.createElement('span');label.textContent='펼치기';const arrow=document.createElement('span');arrow.className='guide-card-arrow';arrow.textContent='⌄';arrow.setAttribute('aria-hidden','true');action.append(label,arrow);
+   summary.replaceChildren(number,text,action);summary.setAttribute('aria-expanded','false');
+   const bottom=document.createElement('div');bottom.className='guide-close-row';const close=document.createElement('button');close.type='button';close.textContent='접기';close.onclick=()=>{part.open=false;summary.scrollIntoView({block:'nearest',behavior:'smooth'});summary.focus();};bottom.append(close);part.append(bottom);
+   part.addEventListener('toggle',()=>{label.textContent=part.open?'접기':'펼치기';summary.setAttribute('aria-expanded',String(part.open));});
+  });
   const checks=[...host.querySelectorAll('[data-guide-check]')];
   for(const c of checks){c.checked=localStorage.getItem('nta-guide-check-'+c.dataset.guideCheck)==='1';c.addEventListener('change',()=>localStorage.setItem('nta-guide-check-'+c.dataset.guideCheck,c.checked?'1':'0'));}
   host.querySelector('.guide-check-reset')?.addEventListener('click',()=>{for(const c of checks){c.checked=false;localStorage.removeItem('nta-guide-check-'+c.dataset.guideCheck);}});
