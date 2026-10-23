@@ -564,9 +564,6 @@
  const editable=target=>target?.closest?.('input,textarea,select,[contenteditable="true"]');
  const inside=target=>target instanceof Element&&article.contains(target);
  const style=document.createElement('style');style.textContent='article{-webkit-user-select:none;user-select:none}article img{-webkit-user-drag:none}article input,article textarea,article select,article [contenteditable="true"]{-webkit-user-select:text;user-select:text}';document.head.append(style);
- const mark=document.createElement('style');
- const svg='<svg xmlns="http://www.w3.org/2000/svg" width="320" height="200"><text x="160" y="100" text-anchor="middle" transform="rotate(-25 160 100)" fill="#385442" font-family="sans-serif" font-size="20" font-weight="600">익명연구원</text></svg>';
- mark.textContent='article{position:relative}article::after{content:"";position:absolute;inset:0;z-index:8;pointer-events:none;opacity:.14;background-image:url("data:image/svg+xml,'+encodeURIComponent(svg)+'");background-repeat:repeat}';document.head.append(mark);
  for(const name of ['contextmenu','dragstart','selectstart'])article.addEventListener(name,e=>{if(!editable(e.target))e.preventDefault();});
  document.addEventListener('copy',e=>{const selection=window.getSelection();if(editable(document.activeElement))return;if(inside(e.target)||inside(selection?.anchorNode?.parentElement))e.preventDefault();});
  article.querySelectorAll('img').forEach(image=>image.draggable=false);
